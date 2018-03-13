@@ -1,0 +1,332 @@
+#!/usr/bin/python
+import sys, os, subprocess, re
+
+''' The goal of this program is to 
+find out from a given git log who
+the main contributors are.
+
+We will sort the data based on some
+interesting metrics like most frequent
+patches, long /sensible commit messages, 
+who has been contributing when, the 
+"quality" or content of the commits, 
+the "domain experts" based on files 
+that are touched most, etc.
+
+@author: Anupam Kaul
+''' 
+
+'''
+Global hash/map
+Fns for creatin a git log file in a given path
+Fn for reading file and creating global hash/map
+Fns for various sorting methods (expand using SHAs)
+Fns for linking data structures and making them bigger..
+'''
+
+''' ideas for the hash/map
+key: author name
+elements: email/company, a list of [SHAs, date], a count of SHAs
+to go inside, execute git show SHA each time and store in a string
+(since the SHAs are unique)
+
+to sort, run by the hash and create an array of similar elements?
+'''
+
+'''
+http://www.tutorialspoint.com/python/python_classes_objects.htm
+'''
+
+class gitAuthor:
+
+	'''
+	personality = 0
+	activeCoder = 0
+	activeReviewer = 0
+	'''
+
+	def __init__(self, author):
+
+		self.author = author
+		self.gitCommitList = []
+		self.commitCount = 0
+		# http://stackoverflow.com/questions/3222251/python-2-6-class-inside-a-class
+
+	def __repr__(self):
+		#return '{} :: {} :: {}'.format(self.__class__.__name__, self.author, self.commitCount)
+		return '{} has {} commits'.format(self.author, self.commitCount)
+
+	def addCommit(self, gitCommitObj):
+		# print "Append gitCommitObj %s to internal list" % gitCommitObj
+		self.gitCommitList.append(gitCommitObj)
+		self.commitCount += 1
+		#print "Adding count %d to author %s" %(self.commitCount, self.author)
+
+	def getCommitList(self):
+		return self.gitCommitList
+
+	def getCommitCount(self):
+		return self.commitCount
+
+def sortByCommits(author):
+	return author.commitCount
+
+class gitCommit:
+	def __init__(self, author, email, date, commitmsg, sha):
+		self.author = author
+		self.email = email
+		self.date = date
+		self.commitmsg = commitmsg
+		self.sha = sha
+		self.count = 0
+
+	def showsha(self):
+		print "SHA is %s" % self.sha
+
+	def getsha(self):
+		return self.sha
+
+	def addcount(self):
+		self.count += 1
+
+	def getcount(self):
+		return self.count
+
+	def getEmail(self):
+		return self.email
+
+def sort_by_author():
+	print "Most frequent authors.."
+
+def sort_by_frequency_of_patches_in_a_given_timeperiod():
+	print " "
+
+def example_hash_this(outGitLog):
+
+	print outGitLog
+	example1 = gitCommit("anupam", "myemail@company.com", "12.1.2014", "this is a sample", "12345678")
+	example2 = gitCommit("anuradha", "myemail@company.com", "12.5.2014", "this is another sample", "0012567834")
+
+	example2.addcount()
+	example2.addcount()
+
+	example2.showsha()
+	example1.showsha()
+
+	bigHash = {}
+	bigHash["anupam"] = example1
+	bigHash["anuradha"] = example2
+
+	print "Object for anupam is %s " % bigHash["anupam"]
+	bigHash["anuradha"].showsha()
+	print "SHA for anuradha is %s and count is %d" % (bigHash["anuradha"].getsha(), bigHash["anuradha"].getcount())
+
+	from collections import defaultdict
+	bigHashOfLists = defaultdict(list)
+
+	bigList = [example1, example2]
+	for i in bigList:
+		bigHashOfLists["mackarel"].append(i)
+
+	bigHashOfLists["kaultiki"].append(example2)
+
+	print "yippie.."
+	print bigHashOfLists["mackarel"]
+	print bigHashOfLists["kaultiki"]
+	print "yay.."
+	print bigHashOfLists["mackarel"][0].getsha()
+	print bigHashOfLists["mackarel"][1].getsha()
+	print bigHashOfLists["kaultiki"][0].getsha()
+	# http://stackoverflow.com/questions/960733/python-creating-a-dictionary-of-lists
+
+	commitsha = re.compile("commit\s+(\S+)")
+        authorstring = re.compile("Author:\s+(.*)\<(.*)\>")
+        datestring = re.compile("Date:\s+(.*)\n")
+
+	#fullpattern = re.compile("commit\s+(\S+)(.*)\n(.*)Author:\s+(.*)\<(.*)\>")
+	fullpattern = re.compile("commit\s+(\S+)(.*)\n(.*)Author:\s+(.*)\s*\<(.*)\>(.*)\n(.*)Date:\s+(.*)\n")
+
+	
+	commitsha1 = r"commit\s+(\S+)"
+        authorstring1 = r"Author:\s+(.*)\<(.*)\>"
+
+        result = commitsha.match(outGitLog)
+	print "match: %s" % result.group()
+	
+
+	for m in re.finditer(fullpattern, outGitLog):
+		#print "group 0 match: %s" % m.group(0)
+		print "group 1 match: %s" % m.group(1)
+		print "group 4 match: %s" % m.group(4)
+		print "group 5 match: %s" % m.group(5)
+		print "group 8 match: %s" % m.group(8)
+		print " "
+
+	
+	'''
+	for m in re.finditer(commitsha, outGitLog):
+		#print "group 0 match: %s" % m.group(0)
+		print "group 1 match: %s" % m.group(1)
+	'''
+	
+	'''
+	for m in re.finditer(datestring, outGitLog):
+		print "group 0 match: %s" % m.group(0)
+		print "group 1 match: %s" % m.group(1)
+	'''
+
+	'''
+	for m in re.finditer(authorstring, outGitLog):
+		print m.group(0)
+		print m.group(1)
+		print m.group(2)
+	'''
+
+	'''
+	megapattern = re.compile(re.escape(commitsha1) + re.escape(authorstring1))
+	for m in re.finditer(megapattern, outGitLog):
+		print m.group(0)
+		print m.group(1)
+	'''
+
+'''
+instead of appending gitCommit objs to the hash,
+there should be a list of gitCommit objs that is
+part of an author class. The author obj should
+be hashed by author name, in authorHash. 
+
+The author class can keep a count of the gitCommit 
+objs, and have characteristics like most files modified, 
+type of committer, number of commits etc.
+
+To sort by author, grab the contents of the authorHash
+into a list and then sort using list functions
+http://stackoverflow.com/questions/613183/sort-a-python-dictionary-by-value
+'''
+
+def hash_by_authorClass(outGitLog):
+
+	from collections import defaultdict
+	bigHash = defaultdict(list)
+
+	authorHash = {}
+
+	# just grab gitCommit objects and stick them in the hash
+	fullpattern = re.compile("commit\s+(\S+)(.*)\n(.*)Author:\s+(.*)\s+\<(.*)\>(.*)\n(.*)Date:\s+(.*)\n")
+
+	for m in re.finditer(fullpattern, outGitLog):
+
+		'''
+		print "group 1 match: %s" % m.group(1)
+		print "group 4 match: %s" % m.group(4)
+		print "group 5 match: %s" % m.group(5)
+		print "group 8 match: %s" % m.group(8)
+		print " "
+		'''
+		shakey = m.group(1)
+		authorkey = m.group(4)
+		emailkey = m.group(5) 
+		datekey = m.group(8)
+
+		commitObj = gitCommit(authorkey, emailkey, datekey, "this is a sample", shakey)
+
+		if authorkey in authorHash:
+			authorHash[authorkey].addCommit(authorkey)
+		else:
+			authorObj = gitAuthor(authorkey)
+			authorHash[authorkey] = authorObj
+			authorHash[authorkey].addCommit(commitObj)
+
+	
+	print "This is what we have:"
+	'''
+	for i in authorHash:
+		print "%s has committed %d patches" % (i, authorHash[i].getCommitCount())
+	'''
+
+	#http://stackoverflow.com/questions/72899/how-do-i-sort-a-list-of-dictionaries-by-values-of-the-dictionary-in-python
+	# Note: This is key: use values() instead of items to truly create a list of objects !
+	#AuthorsList = authorHash.items()
+
+	#print "\n\nThe actual sort by commits.."
+	AuthorsList = authorHash.values()
+
+	import operator
+	sortedAuthorsList = sorted(AuthorsList, key=sortByCommits, reverse=True)
+	rank = 0
+	for i in sortedAuthorsList:
+		rank += 1
+		print "%d) %s " % (rank, i)
+
+
+	#http://stackoverflow.com/questions/9524209/count-indexes-using-for-in-python
+	#for i in sortedAuthorsList:
+
+	print "\n\n..Next we go:"
+	for index in range(len(sortedAuthorsList)):
+		thisCommitList = sortedAuthorsList[index].getCommitList()
+		thisEmail = thisCommitList[0].getEmail()
+		oneSHA = thisCommitList[0].getsha()
+		print  "%s (email %s) has %d patches. \n(One of the SHAs is %s)\n\n" % (sortedAuthorsList[index].author, thisEmail,  sortedAuthorsList[index].commitCount, oneSHA)
+
+'''
+An alternate to create a hash (of lists) of gitCommit objs
+'''
+
+def hash_this(outGitLog):
+
+	from collections import defaultdict
+	bigHash = defaultdict(list)
+
+	# just grab gitCommit objects and stick them in the hash
+	fullpattern = re.compile("commit\s+(\S+)(.*)\n(.*)Author:\s+(.*)\s+\<(.*)\>(.*)\n(.*)Date:\s+(.*)\n")
+
+	for m in re.finditer(fullpattern, outGitLog):
+
+		'''
+		print "group 1 match: %s" % m.group(1)
+		print "group 4 match: %s" % m.group(4)
+		print "group 5 match: %s" % m.group(5)
+		print "group 8 match: %s" % m.group(8)
+		print " "
+		'''
+		shakey = m.group(1)
+		authorkey = m.group(4)
+		emailkey = m.group(5) 
+		datekey = m.group(8)
+		commitObj = gitCommit(authorkey, emailkey, datekey, "this is a sample", shakey)
+		bigHash[authorkey].append(commitObj)
+		#bigHash[authorkey].addcount()
+
+	print "This is what we have:"
+	for i in bigHash:
+		print "%s has committed %d patches" % (i, len(bigHash[i]))
+		print "%s's email is %s\n" % (i, bigHash[i][0].getEmail())
+
+def getGitLog(pathname):
+	#print pathname
+	if pathname != ".":
+		os.chdir(pathname)
+		retpath = os.getcwd()
+		print "(searching in %s)" % retpath
+
+	p = subprocess.Popen(['git', 'log'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	outGitLog, err = p.communicate()
+
+	if err:
+		print err
+	else:
+		#example_hash_this(outGitLog)
+		#hash_this(outGitLog)
+		hash_by_authorClass(outGitLog)
+	
+def __main__():
+
+        if len(sys.argv) == 1:
+		pathname = "."
+	else:
+		pathname = sys.argv[1]
+	getGitLog(pathname)
+
+__main__()
+
