@@ -86,7 +86,22 @@ colorsel1 = color_thresh(warped, rgb_thold_gnd)
 plt.imshow(colorsel1, cmap='gray')
 plt.show()
 
- 
+# lets now make sure that the coordinates are with respect to the robot
+# this robot centric coordinate system helps describes the env w.r.t robot
+
+# (extract all white coordinates and transform them to 'rover-centric' coordinates)
+
+ypos, xpos = colorsel1.nonzero()
+plt.plot(xpos, ypos, '.')
+plt.xlim(0, 320)
+plt.ylim(0, 160)
+plt.show()
+
+# the above gives an 'upside down' image because the origin (0,0) is now
+# on the lower left (instead of upper left), and the y-axis reversed.
+
+
+
 
 
 
