@@ -48,7 +48,45 @@ warped = perspect_transform(image, source, destin)
 plt.imshow(warped)
 plt.show()
 
+'''
+to generate a map now, first apply perspective_transform
+and then apply color_threshold to isolate the area. That
+is the traversable map from top view ! 
+'''
 
+def color_thresh(img, rgb_thresh=(0,0,0)):
+
+	# create an empty array the same size x and y as in image
+	# but just a single channel
+
+	color_select = np.zeros_like(img[:,:,0])  # gotta love this function ! 
+
+	# this is how it should ideally be:
+	#color_select[:,:,0] = (img[:,:,[0,1,2]] > rgb_thresh) 
+
+	# this could have worked but notice that the dont care on LHS is a different loop than dont care of RHS
+	# and there is ambiguity in options here
+	# color_select[:,:,0] = (img[:,:,0] > rgb_thresh[0]) & (img[:,:,1] > rgb_thresh[1]) & (img[:,:,2] > rgb_thresh[2]) 
+
+	# its fkin amazing how the variable above_thresh holds a for loop together:
+
+	above_thresh = (img[:,:,0] > rgb_thresh[0]) & (img[:,:,1] > rgb_thresh[1]) & (img[:,:,2] > rgb_thresh[2]) 
+	color_select[above_thresh] = 1
+
+	return color_select
+
+# a threshold for ground
+r_thold_gnd = 160 
+g_thold_gnd = 160
+b_thold_gnd = 160
+rgb_thold_gnd = (r_thold_gnd, g_thold_gnd, b_thold_gnd) # tuple
+
+colorsel1 = color_thresh(warped, rgb_thold_gnd)
+#plt.imshow(colorsel1)
+plt.imshow(colorsel1, cmap='gray')
+plt.show()
+
+ 
 
 
 
