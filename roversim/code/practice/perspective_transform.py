@@ -89,6 +89,8 @@ plt.show()
 # lets now make sure that the coordinates are with respect to the robot
 # this robot centric coordinate system helps describes the env w.r.t robot
 
+# i.e. the coordinates start from x=0, y=0 instead of from (TL, TR) (lower left instead of upper left)
+
 # (extract all white coordinates and transform them to 'rover-centric' coordinates)
 
 ypos, xpos = colorsel1.nonzero()
@@ -100,9 +102,43 @@ plt.show()
 # the above gives an 'upside down' image because the origin (0,0) is now
 # on the lower left (instead of upper left), and the y-axis reversed.
 
+# We will use and define two coordinate systems (the 'World Coordinate' (bottom left),
+# and rover's own coordinate system (its own x and y, which may be rotated wrt world coordinates)
+# (see 'rover_vs_world.png)
 
+# now lets take a binary image, extract the x,y coordinates, and return x,y in rover coordinates
 
+# first is the simple case when the yaw angle is zero
 
+def rover_coords(binary_img):
+
+	# extract xpos, ypos pixel positions from binary_img and
+	# convert xpos, ypos to rover_centric coordinates
+
+	x_pixel=0
+	y_pixel=0
+
+	# get the non-zero pixels
+	xpos, ypos = binary_img.nonzero()
+
+	# calculate the pixel positions with reference to the rover position being at the\
+	# center bottom of the image (like it is shown in the simulator usually)
+
+	x_pixel = -(ypos - binary_img.shape[0]).astype(np.float)
+	y_pixel = -(xpos - binary_img.shape[1]/2).astype(np.float)
+
+	return x_pixel, y_pixel
+
+xpix, ypix = rover_coords(colorsel1)
+
+# plot the map in rover centric coordinates
+
+fig = plt.figure(figsize = (5, 7.5))
+plt.plot(xpix, ypix, '.')
+plt.ylim(-160, 160)
+plt.xlim(0, 160)
+plt.title('Rover Centric Map', fontsize=20)
+plt.show()
 
 
 
