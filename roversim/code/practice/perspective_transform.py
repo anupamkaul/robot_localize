@@ -42,7 +42,18 @@ def perspect_transform(img, src, dst):
 # define source and destination points
 
 source = np.float32([ [116.274,97.9516] , [195.984,97.9516] , [0.5,141.177] , [289.177,141.177] ])
-destin = np.float32([ [116.274,97.9516] , [126.274,97.9516] , [116.274,107.9516] , [126.274,107.9516] ])
+#destin = np.float32([ [116.274,97.9516] , [126.274,97.9516] , [116.274,107.9516] , [126.274,107.9516] ])
+
+# try a better destination calculation (Set a bottom offset to account for the fact that the bottom of the image 
+# is not the position of the rover but a bit in front of it)
+
+dst_size = 5
+bottom_offset = 6
+destin = np.float32([[image.shape[1]/2 - dst_size, image.shape[0] - bottom_offset],
+                  [image.shape[1]/2 + dst_size, image.shape[0] - bottom_offset],
+                  [image.shape[1]/2 + dst_size, image.shape[0] - 2*dst_size - bottom_offset], 
+                  [image.shape[1]/2 - dst_size, image.shape[0] - 2*dst_size - bottom_offset],
+                  ])
 
 warped = perspect_transform(image, source, destin)
 plt.imshow(warped)
