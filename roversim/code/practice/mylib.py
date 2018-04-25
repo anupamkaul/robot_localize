@@ -32,3 +32,24 @@ def color_thresh(img, rgb_thresh=(0,0,0)):
 	color_select[above_thresh] = 1
 
 	return color_select
+
+
+def rover_coords(binary_img):
+
+	# extract xpos, ypos pixel positions from binary_img and
+	# convert xpos, ypos to rover_centric coordinates
+
+	x_pixel=0
+	y_pixel=0
+
+	# get the non-zero pixels
+	xpos, ypos = binary_img.nonzero()
+
+	# calculate the pixel positions with reference to the rover position being at the\
+	# center bottom of the image (like it is shown in the simulator usually)
+
+	x_pixel = -(ypos - binary_img.shape[0]).astype(np.float)
+	y_pixel = -(xpos - binary_img.shape[1]/2).astype(np.float)
+
+	return x_pixel, y_pixel
+
