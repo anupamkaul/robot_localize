@@ -74,6 +74,26 @@ plt.arrow(0, 0, x_arrow, y_arrow, color='red', zorder=2, head_width=10, width=2)
 plt.show()
 
 
+# final notes from this concept:
+
+'''
+The direction (angle) with that represents the average angle of all navigable terrain pixels 
+in the rover's field of view is at roughly 0.7 radians in the plot above.
+
+Given the approximate field of view of the camera, the average values for angle that you get 
+will vary between about +/- \frac{\pi}/{4} RADIANS 
+
+The input for steering angles you can send to the rover is in DEGREES 
+over the range -15 (to the right) to +15 (to the left), so the last step is to choose 
+a conversion between your average angle and the steering angle you want to send to the rover. 
+
+The simplest thing to do would be to convert to degrees and clip to the range +/- 15 like this:
+
+avg_angle_degrees = avg_angle * 180/np.pi
+steering = np.clip(avg_angle_degrees, -15, 15)
+
+'''
+
 
 
 
