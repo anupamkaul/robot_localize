@@ -49,4 +49,22 @@ class RoverState():
 
 Rover = RoverState()
 
+'''
+Now you can update Rover with each new set of telemetry values, for example:
+
+Rover.vel = new_velocity_from_telemetry
+Rover.yaw = new_yaw_from_telemetry
+
+you can create a decision tree using conditional statements to decide what to do next 
+based on current telemetry and / or your analysis, for example:
+
+if Rover.vel >= Rover.max_vel:
+    Rover.throttle = 0
+else:
+    Rover.throttle = Rover.throttle_set
+You now have the ability to send commands to the rover to change throttle, brake,
+steering angle and take action!
+
+'''
+
 
