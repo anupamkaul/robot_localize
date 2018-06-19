@@ -124,7 +124,7 @@ def perception_step(Rover):
 
     Rover.vision_image[:,:,0] = obstacles
     Rover.vision_image[:,:,1] = rock_samples
-    Rover.vision_image[:,:,2] = nav_terrain 
+    Rover.vision_image[:,:,2] += nav_terrain 
 
     # good debug statements..
     #xtemp = plt.imshow(nav_terrain, cmap='gray')
@@ -136,7 +136,7 @@ def perception_step(Rover):
     #xtemp = plt.imshow(rock_samples)  
     #plt.show()
 
-    Rover.vision_image = warped # this works! on the top half I can continuously see the warped output ...
+    #Rover.vision_image = warped # this works! on the top half I can continuously see the warped output ...
     #Rover.vision_image = nav_terrain
 
     # 5) Convert map image pixel values to rover-centric coords
