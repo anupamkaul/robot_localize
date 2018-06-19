@@ -134,7 +134,7 @@ def perception_step(Rover):
     nav_xpix, nav_ypix = rover_coords(nav_terrain)
 
     # 6) Convert rover-centric pixel values to world coordinates
-    scale = 10
+    scale = 20
 
     # get navigable pixel positions in world coords
     # (where xpix, ypix are rover coordinates from the function rover_coords())
