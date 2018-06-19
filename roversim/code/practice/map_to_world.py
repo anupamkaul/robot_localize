@@ -27,6 +27,7 @@ rgb_thold_gnd = (r_thold_gnd, g_thold_gnd, b_thold_gnd) # tuple
 colorsel1 = mlib.color_thresh(warped, rgb_thold_gnd)
 #plt.imshow(colorsel1)
 plt.imshow(colorsel1, cmap='gray')
+#plt.imshow(colorsel1)
 plt.show()
 
 # lets now make sure that the coordinates are with respect to the robot
