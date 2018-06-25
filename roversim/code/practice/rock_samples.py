@@ -7,6 +7,44 @@ image = mpimg.imread(filename) # read a 3 color image
 plt.imshow(image)
 plt.show()
 
+'''
+Light Goldenrod Yellow	250-250-210	fafad2
+Light Yellow	        255-255-224	ffffe0
+Yellow	                255-255-0	ffff00
+Gold	                255-215-0	ffd700
+'''
+
+import mylib as mlib
+import os
+path = './Test_IMG/rock_samples/'
+
+files = os.listdir(path)
+
+for nextfile in files:
+	print ("Analyzing " + nextfile)
+	#os.system(cmd)
+
+	nextfile = path + nextfile
+	image = mpimg.imread(nextfile) # read a 3 color image
+	plt.imshow(image)
+	plt.show()
+
+        # I am using values based on the visual rgb inspector from eog ..
+        # a lower limit on the 3rd channel isolates the rock color from the silhoutte area that spreads across.
+
+	colorsel = mlib.color_thresh_range(image, (130, 100, 40), (190, 190, 90)) 
+	plt.imshow(colorsel, cmap='gray')
+	#plt.imshow(colorsel2)
+	plt.show()
+
+
+exit()
+
+filename = 'robocam_example_grid1.jpg'
+image = mpimg.imread(filename) # read a 3 color image
+#plt.imshow(image)
+#plt.show()
+
 import mylib as mlib
 
 # define source and destination points
@@ -16,7 +54,7 @@ destin = np.float32([ [116.274,97.9516] , [126.274,97.9516] , [116.274,107.9516]
 
 # colorsel 'obstacles' ..
 #colorsel2 = mlib.color_thresh_range(image, (0, 0, 0), (30, 30, 30))
-colorsel2 = mlib.color_thresh_range(image, (0, 0, 0), (165, 42, 42))
+colorsel2 = mlib.color_thresh_range(image, (0, 0, 0), (255, 255, 0))
 plt.imshow(colorsel2, cmap='gray')
 #plt.imshow(colorsel2)
 plt.show()
