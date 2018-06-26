@@ -91,6 +91,9 @@ def create_output_images(Rover):
       rock_world_pos = Rover.worldmap[:,:,1].nonzero()
       # If there are, we'll step through the known sample positions
       # to confirm whether detections are real
+
+      print("ANUPAM: ROVER X and ROVER Y", Rover.pos[0], Rover.pos[1])
+
       samples_located = 0
       if rock_world_pos[0].any():
             
