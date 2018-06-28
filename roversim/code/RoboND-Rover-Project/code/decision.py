@@ -29,8 +29,27 @@ def decision_step(Rover):
         isOld += 1
         RoverPath[pathKey] += 1
 
-        if (isOld > 50):
-            print("Looks like STUCK !!")
+        if (isOld > 200):
+            print("Looks like STUCK !! ", Rover.mode, Rover.vel, Rover.throttle)
+  
+            print("Helping Out ..")
+            Rover.steer =- 15
+
+            #if Rover.vel < Rover.max_vel:
+             #   Rover.throttle = Rover.throttle_set
+            #else:
+             #   Rover.throttle = 0
+                
+            Rover.throttle = 0  # this works but causes Rover to rotate on spot as throttle is 0. If its not zero, steer doesnt work on a rock.
+            Rover.brake = 0
+
+            #Rover.mode = 'stop' #debug this .. goes into mean steer mode (return directly for now)
+
+            #isOld = 100
+            return Rover 
+
+            # the basic problem is that when stuck in an obstacle, nav_angles is still not zero which causes stop mode to think
+            # there is room to move, when in fact there is not.
 
     else:
         isOld = 0
@@ -88,7 +107,9 @@ def decision_step(Rover):
 
         elif Rover.mode == 'stop':
             # If we're in stop mode but still moving keep braking
+            print("In STOP mode")
             if Rover.vel > 0.2:
+                print("In STOP mode (1) .. set zero steer")
                 Rover.throttle = 0
                 Rover.brake = Rover.brake_set
                 Rover.steer = 0
@@ -96,6 +117,7 @@ def decision_step(Rover):
             elif Rover.vel <= 0.2:
                 # Now we're stopped and we have vision data to see if there's a path forward
                 if len(Rover.nav_angles) < Rover.go_forward:
+                    print("In STOP mode (2) .. force steer")
                     Rover.throttle = 0
                     # Release the brake to allow turning
                     Rover.brake = 0
@@ -103,6 +125,7 @@ def decision_step(Rover):
                     Rover.steer = -15 # Could be more clever here about which way to turn
                 # If we're stopped but see sufficient navigable terrain in front then go!
                 if len(Rover.nav_angles) >= Rover.go_forward:
+                    print("In STOP mode (3) .. set mean steer")
                     # Set throttle back to stored value
                     Rover.throttle = Rover.throttle_set
                     # Release the brake
@@ -114,6 +137,7 @@ def decision_step(Rover):
     # Just to make the rover do something 
     # even if no modifications have been made to the code
     else:
+        print("Bad Mode..")
         Rover.throttle = Rover.throttle_set
         Rover.steer = 0
         Rover.brake = 0
