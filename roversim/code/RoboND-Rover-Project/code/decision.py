@@ -29,8 +29,8 @@ def decision_step(Rover):
         isOld += 1
         RoverPath[pathKey] += 1
 
-        if (isOld > 200):
-            print("Looks like STUCK !! ", Rover.mode, Rover.vel, Rover.throttle)
+        if (isOld > 150):
+            print("Looks like STUCK !! ", Rover.mode, Rover.vel, Rover.throttle, len(Rover.nav_angles))
   
             print("Helping Out ..")
             Rover.steer =- 15
@@ -45,7 +45,7 @@ def decision_step(Rover):
 
             #Rover.mode = 'stop' #debug this .. goes into mean steer mode (return directly for now)
 
-            #isOld = 100
+            isOld = 140 # stall and let the normal code take over next time..
             return Rover 
 
             # the basic problem is that when stuck in an obstacle, nav_angles is still not zero which causes stop mode to think
@@ -92,7 +92,7 @@ def decision_step(Rover):
 
 		# (Anupam) - Add a directional left bias for 'wall hugging' and see if that improves
                 # completing the map scan (quicker)
-                Rover.steer += 5
+                Rover.steer += 10
 
             # If there's a lack of navigable terrain pixels then go to 'stop' mode
             elif len(Rover.nav_angles) < Rover.stop_forward:
