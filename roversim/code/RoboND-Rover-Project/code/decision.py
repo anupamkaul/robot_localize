@@ -29,7 +29,7 @@ def decision_step(Rover):
         isOld += 1
         RoverPath[pathKey] += 1
 
-        if (isOld > 150):
+        if (isOld > 100):
             print("Looks like STUCK !! ", Rover.mode, Rover.vel, Rover.throttle, len(Rover.nav_angles))
   
             print("Helping Out ..")
@@ -45,7 +45,7 @@ def decision_step(Rover):
 
             #Rover.mode = 'stop' #debug this .. goes into mean steer mode (return directly for now)
 
-            isOld = 140 # stall and let the normal code take over next time..
+            isOld = 90 # stall and let the normal code take over next time..
             return Rover 
 
             # the basic problem is that when stuck in an obstacle, nav_angles is still not zero which causes stop mode to think
@@ -92,7 +92,7 @@ def decision_step(Rover):
 
 		# (Anupam) - Add a directional left bias for 'wall hugging' and see if that improves
                 # completing the map scan (quicker)
-                Rover.steer += 10
+                Rover.steer += 12
 
             # If there's a lack of navigable terrain pixels then go to 'stop' mode
             elif len(Rover.nav_angles) < Rover.stop_forward:
@@ -102,6 +102,7 @@ def decision_step(Rover):
                     Rover.brake = Rover.brake_set
                     Rover.steer = 0
                     Rover.mode = 'stop'
+                    print("Put Rover in STOP mode! ", len(Rover.nav_angles)) 
 
         # If we're already in "stop" mode then make different decisions
 
@@ -126,6 +127,7 @@ def decision_step(Rover):
                 # If we're stopped but see sufficient navigable terrain in front then go!
                 if len(Rover.nav_angles) >= Rover.go_forward:
                     print("In STOP mode (3) .. set mean steer")
+                    print("Put Rover in Forward mode! ", len(Rover.nav_angles)) 
                     # Set throttle back to stored value
                     Rover.throttle = Rover.throttle_set
                     # Release the brake
@@ -134,7 +136,7 @@ def decision_step(Rover):
                     Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -15, 15)
                   
                     # (Anupam) - Add directional steer for wall hugging
-                    Rover.steer += 10
+                    Rover.steer += 12
 
                     Rover.mode = 'forward'
 
