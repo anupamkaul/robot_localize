@@ -33,7 +33,7 @@ def decision_step(Rover):
             print("Looks like STUCK !! ", Rover.mode, Rover.vel, Rover.throttle, len(Rover.nav_angles))
   
             print("Helping Out ..")
-            Rover.steer =- 15
+            Rover.steer =- 30 
 
             #if Rover.vel < Rover.max_vel:
              #   Rover.throttle = Rover.throttle_set
@@ -132,6 +132,10 @@ def decision_step(Rover):
                     Rover.brake = 0
                     # Set steer to mean angle
                     Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -15, 15)
+                  
+                    # (Anupam) - Add directional steer for wall hugging
+                    Rover.steer += 10
+
                     Rover.mode = 'forward'
 
     # Just to make the rover do something 
