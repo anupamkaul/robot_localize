@@ -1,0 +1,16 @@
+To run this when you're looking at like like months from now:
+
+1. ~/.bashrc 'rr' to enable (source activate) a Conda environment for RoboND (sourcing from miniconda3/envs/RoboND)
+
+   (make sure this is done on every terminal being used) ...
+   as a check, which python should give /home/anupam/miniconda3/envs/RoboND/bin/python
+
+2. Run simulator : cd roversim; ./Roversim.x64_64 .. choose a good resolution and I have to use Autonomous Mode ... launch.
+3. python drive_rover.py - this should connect to the simulator, and the code starts executing, the mars rover starts driving in autonomous mode, collecting rocks, etc.
+
+-------------------------------------------------------
+-------------------------------------------------------
+
+
+ 
+ 
