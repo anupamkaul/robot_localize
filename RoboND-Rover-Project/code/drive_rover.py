@@ -82,6 +82,11 @@ class RoverState():
         self.near_sample = 0 # Will be set to telemetry value data["near_sample"]
         self.picking_up = 0 # Will be set to telemetry value data["picking_up"]
         self.send_pickup = False # Set to True to trigger rock pickup
+       
+        #Anupam - add more state variables
+        self.perc_pathmapped = 0 # total percentage of the mission path that has been traversed
+        self.mission_complete = 0 
+
 # Initialize our rover 
 Rover = RoverState()
 
@@ -112,6 +117,10 @@ def telemetry(sid, data):
         Rover, image = update_rover(Rover, data)
 
         if np.isfinite(Rover.vel):
+
+            # Anupam
+            if (Rover.mission_complete):
+                return
 
             # Execute the perception and decision steps to update the Rover's state
             Rover = perception_step(Rover)

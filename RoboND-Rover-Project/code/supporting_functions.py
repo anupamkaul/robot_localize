@@ -160,6 +160,15 @@ def create_output_images(Rover):
       pil_img.save(buff, format="JPEG")
       encoded_string2 = base64.b64encode(buff.getvalue()).decode("utf-8")
 
+      # Anupam - Figure out the mission state
+
+      Rover.samples_located = samples_located
+      Rover.perc_pathmapped = perc_mapped
+      
+      # print ("rock samples located : ", samples_located)
+      #if (samples_located == 6):
+      #    print ("MISSION COMPLETE !")
+
       return encoded_string1, encoded_string2
 
 

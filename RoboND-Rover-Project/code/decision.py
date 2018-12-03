@@ -151,6 +151,16 @@ def decision_step(Rover):
     # If in a state where want to pickup a rock send pickup command
     if Rover.near_sample and Rover.vel == 0 and not Rover.picking_up:
         Rover.send_pickup = True
+
+    # If mission is complete then stop for now and await further instructions
+    if ((Rover.samples_located == 6) and (Rover.perc_pathmapped > 85)):
+        print ("(Decision): Mission Completed. Rocks Located : ", Rover.samples_located, " Area mapped : ", Rover.perc_pathmapped)
+    
+        Rover.mode = 'stop'
+        Rover.throttle = 0
+        Rover.steer = 0
+        Rover.brake = 0
+        Rover.mission_complete = 1
     
     return Rover
 
