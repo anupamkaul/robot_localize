@@ -134,6 +134,17 @@ def create_output_images(Rover):
             fidelity = round(100*good_nav_pix/(tot_nav_pix), 1)
       else:
             fidelity = 0
+
+      # Plot the rover vehicle on rh map in yellow
+      rover_size = 2
+      rover_y = np.int(Rover.pos[1])
+      rover_x = np.int(Rover.pos[0])
+
+      map_add[rover_y-rover_size:rover_y+rover_size, rover_x-rover_size:rover_x+rover_size, 0] = 255
+      map_add[rover_y-rover_size:rover_y+rover_size, rover_x-rover_size:rover_x+rover_size, 1] = 255
+      map_add[rover_y-rover_size:rover_y+rover_size, rover_x-rover_size:rover_x+rover_size, 2] = 0
+
+
       # Flip the map for plotting so that the y-axis points upward in the display
       map_add = np.flipud(map_add).astype(np.float32)
       # Add some text about map and rock sample detection results
