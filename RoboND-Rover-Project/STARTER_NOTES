@@ -11,6 +11,15 @@ To run this when you're looking at like like months from now:
 -------------------------------------------------------
 -------------------------------------------------------
 
+TO DO:
 
+* Increase probabilty of picking up rocks. (i.e. create conditions such that telenan[near_sample] is more true than not.
+* Find a faster way to scan the entire area (right now based on left hugging, but add more optimizations)
+* Return back to the starting spot once finished
+* Apply more path planning / control logic, or test out an algorithm if possible, given the telemetry data coming from the simulator
+* Do not repeat a travelled area (detect if the path has already been travelled)
+* Find a way to Map Out the travelling rover so it can be seen on the world map
+* Apply RL if possible to improve / optimize the travel
+* Apply better steering control and maneuvers / improve the decision states
  
  
