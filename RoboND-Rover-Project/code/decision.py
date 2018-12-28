@@ -25,11 +25,26 @@ def decision_step(Rover):
     #pathKey = (np.int(Rover.pos[0]), np.int(Rover.pos[1]))
     pathKey = (currX, currY) # tuple
 
+    # If in a state where want to pickup a rock send pickup command
+    if Rover.near_sample and Rover.vel == 0 and not Rover.picking_up:
+        Rover.send_pickup = True
+
+    # Check if near sample
+    if Rover.near_sample:
+        print(" NEAR SAMPLE ..")
+        isOld = 0
+        #Rover.mode = 'stop'
+        Rover.throttle = 0
+        Rover.steer = 0
+        Rover.brake = 0
+        return Rover
+        
     if pathKey in RoverPath:
         isOld += 1
         RoverPath[pathKey] += 1
 
         if (isOld > 100):
+
             print("Looks like STUCK !! ", Rover.mode, Rover.vel, Rover.throttle, len(Rover.nav_angles))
   
             print("Helping Out ..")
@@ -53,9 +68,10 @@ def decision_step(Rover):
 
     else:
         isOld = 0
-        print ("ANUPAM: NEW ROV POS: ", np.int(Rover.pos[0]), np.int(Rover.pos[1]))
+        #print ("ANUPAM: NEW ROV POS: ", np.int(Rover.pos[0]), np.int(Rover.pos[1]))
         RoverPath[pathKey] = 1
 
+        '''
         # calc new things on changes only
         if ((currX - prevX) >= 0) & ((currY - prevY) >= 0):
             print("Going TR ..")
@@ -67,6 +83,7 @@ def decision_step(Rover):
             print("Going BL ..")
         else:
             print("Could not figure out: ", currX, currY, prevX, prevY)
+        '''
 
        
     prevX = currX
@@ -147,10 +164,6 @@ def decision_step(Rover):
         Rover.throttle = Rover.throttle_set
         Rover.steer = 0
         Rover.brake = 0
-        
-    # If in a state where want to pickup a rock send pickup command
-    if Rover.near_sample and Rover.vel == 0 and not Rover.picking_up:
-        Rover.send_pickup = True
 
     # If mission is complete then stop for now and await further instructions
     if ((Rover.samples_located == 6) and (Rover.perc_pathmapped > 85)):
