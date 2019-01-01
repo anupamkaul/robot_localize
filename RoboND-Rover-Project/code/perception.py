@@ -159,7 +159,9 @@ def perception_step(Rover):
     rok_xpix, rok_ypix = rover_coords(rock_samples)
 
     if rock_samples.any():
-        print ("PERCEP: UPCOMING ROCK SAMPLE SEEN!\n")
+        print ("\n\nPERCEP: UPCOMING ROCK SAMPLE SEEN!")
+        print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+        print("Number of possible pixels: ", len(rok_xpix))
         print (rok_xpix, rok_ypix)
 
     # 6) Convert rover-centric pixel values to world coordinates
