@@ -159,11 +159,30 @@ def perception_step(Rover):
     rok_xpix, rok_ypix = rover_coords(rock_samples)
 
     if rock_samples.any():
-        print ("\n\nPERCEP: UPCOMING ROCK SAMPLE SEEN!")
-        print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
-        print("Mean of rock is at ", np.mean(rok_xpix), " ", np.mean(rok_ypix))
-        print("Number of possible pixels: ", len(rok_xpix))
-        print (rok_xpix, rok_ypix)
+
+        #print ("\n\nPERCEP: ROCK SAMPLE SEEN!")
+
+        rover_posx = np.int(Rover.pos[0])
+        rover_posy = np.int(Rover.pos[1])
+        rock_meanx = np.int(np.mean(rok_xpix))
+        rock_meany = np.int(np.mean(rok_ypix))
+
+        '''
+        rock_dists = np.sqrt((rover_posx - rock_meanx)**2 + \
+                                    (rover_posy - rock_meany)**2)
+        
+
+        if (rock_dists < 10):
+        '''
+
+        if ((np.absolute(rover_posx - rock_meanx) < 10) or (np.absolute(rover_posy - rock_meany) < 10)):
+            print ("\n\nPERCEP: UPCOMING NEAR ROCK SAMPLE SEEN!")
+
+            print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+            #print("Mean of rock is at ", np.mean(rok_xpix), " ", np.mean(rok_ypix))
+            print("Mean of rock is at ", rock_meanx, " ", rock_meany)
+            print("Number of possible pixels: ", len(rok_xpix))
+            print (rok_xpix, rok_ypix)
 
     # 6) Convert rover-centric pixel values to world coordinates
     scale = 23 
