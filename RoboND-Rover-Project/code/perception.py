@@ -161,6 +161,7 @@ def perception_step(Rover):
     if rock_samples.any():
         print ("\n\nPERCEP: UPCOMING ROCK SAMPLE SEEN!")
         print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+        print("Mean of rock is at ", np.mean(rok_xpix), " ", np.mean(rok_ypix))
         print("Number of possible pixels: ", len(rok_xpix))
         print (rok_xpix, rok_ypix)
 
