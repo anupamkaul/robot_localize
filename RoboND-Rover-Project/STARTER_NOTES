@@ -97,5 +97,6 @@ TO DO:
 * Find a way to Map Out the travelling rover so it can be seen on the world map
 * Apply RL if possible to improve / optimize the travel
 * Apply better steering control and maneuvers / improve the decision states
+* Avoid going into obstacles !! (specially if you can detect them in the camera image..!) 
  
  

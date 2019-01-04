@@ -25,6 +25,41 @@ def decision_step(Rover):
     #pathKey = (np.int(Rover.pos[0]), np.int(Rover.pos[1]))
     pathKey = (currX, currY) # tuple
 
+    if Rover.rocks_in_path:
+
+        #print ("\n\nDECISION: ROCK SAMPLE SEEN!")
+
+        rover_posx = np.int(Rover.pos[0])
+        rover_posy = np.int(Rover.pos[1])
+        rock_meanx = np.int(np.mean(Rover.rock_pixels_x))
+        rock_meany = np.int(np.mean(Rover.rock_pixels_y))
+
+        '''
+        rock_dists = np.sqrt((rover_posx - rock_meanx)**2 + \
+                                    (rover_posy - rock_meany)**2)
+        
+
+        if (rock_dists < 10):
+        '''
+
+        if ((np.absolute(rover_posx - rock_meanx) < 10) or (np.absolute(rover_posy - rock_meany) < 10)):
+
+            print ("\n\nDECISION: UPCOMING NEAR ROCK SAMPLE SEEN!")
+            print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+            print("Mean of rock is at ", rock_meanx, " ", rock_meany)
+            print("Number of possible pixels: ", len(Rover.rock_pixels_x))
+            print (Rover.rock_pixels_x, Rover.rock_pixels_y)
+
+            # set steer towards new rock goal and reduce velocity accordingly
+            
+            # policy : grab rocks first that are along the wall hugging path or straight ahead
+            # since we are evaluating in 2D map we need to be cognizant of 'direction' as well..
+
+            # if in _this_ direction:
+            # if ((rock_meanx < rover_posx) and len(Rover.rock_pixels_x) > 30 and (... etc, etc
+
+
+    # Addionally make use of the Telemetry 'near_sample' data that comes from simulator..
     # If in a state where want to pickup a rock send pickup command
     if Rover.near_sample and Rover.vel == 0 and not Rover.picking_up:
         Rover.send_pickup = True
@@ -38,7 +73,8 @@ def decision_step(Rover):
         Rover.steer = 0
         Rover.brake = 0
         return Rover
-        
+    
+    # code to determine if rover is stuck, and to 'unstuck' it..    
     if pathKey in RoverPath:
         isOld += 1
         RoverPath[pathKey] += 1

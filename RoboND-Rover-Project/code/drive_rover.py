@@ -87,6 +87,11 @@ class RoverState():
         self.perc_pathmapped = 0 # total percentage of the mission path that has been traversed
         self.mission_complete = 0 
 
+        #Anupam - Variables to aid rock collection
+        self.rocks_in_path = False
+        self.rock_pixels_x = None
+        self.rock_pixels_y = None 
+
 # Initialize our rover 
 Rover = RoverState()
 
