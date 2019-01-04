@@ -91,6 +91,7 @@ class RoverState():
         self.rocks_in_path = False
         self.rock_pixels_x = None
         self.rock_pixels_y = None 
+        self.direction = None
 
 # Initialize our rover 
 Rover = RoverState()

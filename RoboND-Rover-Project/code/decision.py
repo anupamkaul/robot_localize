@@ -1,9 +1,17 @@
 import numpy as np
 
+# Determine direction and previously travelled paths
 RoverPath = {}
 prevX = 0
 prevY = 0
 isOld = 0
+
+from enum import Enum
+class Direction(Enum):
+    TopLeft     = 1
+    TopRight    = 2
+    BottomLeft  = 3
+    BottomRight = 4
 
 # This is where you can build a decision tree for determining throttle, brake and steer 
 # commands based on the output of the perception_step() function
@@ -22,7 +30,6 @@ def decision_step(Rover):
 
     currX = np.int(Rover.pos[0])
     currY = np.int(Rover.pos[1])
-    #pathKey = (np.int(Rover.pos[0]), np.int(Rover.pos[1]))
     pathKey = (currX, currY) # tuple
 
     if Rover.rocks_in_path:
@@ -34,18 +41,15 @@ def decision_step(Rover):
         rock_meanx = np.int(np.mean(Rover.rock_pixels_x))
         rock_meany = np.int(np.mean(Rover.rock_pixels_y))
 
-        '''
-        rock_dists = np.sqrt((rover_posx - rock_meanx)**2 + \
+        rock_dist = np.sqrt((rover_posx - rock_meanx)**2 + \
                                     (rover_posy - rock_meany)**2)
         
-
-        if (rock_dists < 10):
-        '''
-
         if ((np.absolute(rover_posx - rock_meanx) < 10) or (np.absolute(rover_posy - rock_meany) < 10)):
 
             print ("\n\nDECISION: UPCOMING NEAR ROCK SAMPLE SEEN!")
             print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+            print("Rover velocity ", Rover.vel)
+            print("Distance from rock ", rock_dist)
             print("Mean of rock is at ", rock_meanx, " ", rock_meany)
             print("Number of possible pixels: ", len(Rover.rock_pixels_x))
             print (Rover.rock_pixels_x, Rover.rock_pixels_y)
@@ -55,9 +59,17 @@ def decision_step(Rover):
             # policy : grab rocks first that are along the wall hugging path or straight ahead
             # since we are evaluating in 2D map we need to be cognizant of 'direction' as well..
 
-            # if in _this_ direction:
-            # if ((rock_meanx < rover_posx) and len(Rover.rock_pixels_x) > 30 and (... etc, etc
+            if ((Rover.direction is Direction.TopLeft) or (Rover.direction is Direction.TopRight)): 
+                if ((rock_meany > rover_posy) and (len(Rover.rock_pixels_x) > 15)):
+                    print("\n-->ACTION: Set steer towards rock and reduce velocity")
+                    Rover.steer += (rock_meanx - rover_posx)
+                    Rover.vel   -=  np.int((Rover.vel/rock_dist))
 
+            if ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
+                if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15)):
+                    print("\n-->ACTION: Set steer towards rock and reduce velocity")
+                    Rover.steer += (rock_meanx - rover_posx)
+                    Rover.vel   -=  np.int((Rover.vel/rock_dist))
 
     # Addionally make use of the Telemetry 'near_sample' data that comes from simulator..
     # If in a state where want to pickup a rock send pickup command
@@ -107,21 +119,20 @@ def decision_step(Rover):
         #print ("ANUPAM: NEW ROV POS: ", np.int(Rover.pos[0]), np.int(Rover.pos[1]))
         RoverPath[pathKey] = 1
 
-        '''
+        
         # calc new things on changes only
         if ((currX - prevX) >= 0) & ((currY - prevY) >= 0):
-            print("Going TR ..")
+            Rover.direction = Direction.TopRight
         elif ((currX - prevX) <= 0) & ((currY - prevY) >= 0):
-            print("Going TL ..")
+            Rover.direction = Direction.TopLeft
         elif ((currX - prevX) >= 0) & ((currY - prevY) <= 0):
-            print("Going BR ..")
+            Rover.direction = Direction.BottomRight
         elif ((currX - prevX) <= 0) & ((currY - prevY) <= 0):
-            print("Going BL ..")
+            Rover.direction = Direction.BottomLeft
         else:
-            print("Could not figure out: ", currX, currY, prevX, prevY)
-        '''
+            print("Could not figure out direction: ", currX, currY, prevX, prevY)
+        
 
-       
     prevX = currX
     prevY = currY
 
