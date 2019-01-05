@@ -6,6 +6,9 @@ prevX = 0
 prevY = 0
 isOld = 0
 
+steer_for_rock = 0
+steer_iter = 0
+
 from enum import Enum
 class Direction(Enum):
     TopLeft     = 1
@@ -28,6 +31,9 @@ def decision_step(Rover):
     global prevY
     global isOld
 
+    global steer_for_rock
+    global steer_iter
+
     currX = np.int(Rover.pos[0])
     currY = np.int(Rover.pos[1])
     pathKey = (currX, currY) # tuple
@@ -46,13 +52,17 @@ def decision_step(Rover):
         
         if ((np.absolute(rover_posx - rock_meanx) < 10) or (np.absolute(rover_posy - rock_meany) < 10)):
 
-            print ("\n\nDECISION: UPCOMING NEAR ROCK SAMPLE SEEN!")
-            print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
-            print("Rover velocity ", Rover.vel)
-            print("Distance from rock ", rock_dist)
-            print("Mean of rock is at ", rock_meanx, " ", rock_meany)
-            print("Number of possible pixels: ", len(Rover.rock_pixels_x))
-            print (Rover.rock_pixels_x, Rover.rock_pixels_y)
+            if (len(Rover.rock_pixels_x) > 15):
+
+                print ("\n\nDECISION: UPCOMING NEAR ROCK SAMPLE SEEN!")
+                print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+                print("Mean of rock is at ", rock_meanx, " ", rock_meany)
+                print("Distance from rock ", rock_dist)
+                print("Number of possible pixels: ", len(Rover.rock_pixels_x))
+                print("Rover velocity ", Rover.vel)
+                print("Rover direction ", Rover.direction)
+                print("steer iter ", steer_iter)
+                print (Rover.rock_pixels_x, Rover.rock_pixels_y)
 
             # set steer towards new rock goal and reduce velocity accordingly
             
@@ -61,21 +71,58 @@ def decision_step(Rover):
 
             if ((Rover.direction is Direction.TopLeft) or (Rover.direction is Direction.TopRight)): 
                 if ((rock_meany > rover_posy) and (len(Rover.rock_pixels_x) > 15)):
-                    print("\n-->ACTION: Set steer towards rock and reduce velocity")
-                    Rover.steer += (rock_meanx - rover_posx)
+                    print("old steer: ", Rover.steer, "old vel: ", Rover.vel)
+
+                    # Apply steer, give it time to settle, check again ...
+
+                    if (steer_iter == 0):
+                        print("\n-->ACTION TOP: Set steer towards rock and reduce velocity")
+                        steer_iter = 10
+                        if ((rock_meanx - rover_posx) > 0): # rock to the right then steer right
+                            Rover.steer -= 12
+                        else:
+                            Rover.steer += 12
+                    else:
+                        steer_iter -= 1
+
+                    #Rover.steer += (rock_meanx - rover_posx) 
+
                     Rover.vel   -=  np.int((Rover.vel/rock_dist))
 
-                    if ((rock_dist) < 10):
+                    print("new steer: ", Rover.steer, "new vel: ", Rover.vel)
+
+                    if ((rock_dist) < 35):
                         Rover.brake = Rover.brake_set
+                        print("brake applied")
 
             if ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
                 if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15)):
-                    print("\n-->ACTION: Set steer towards rock and reduce velocity")
-                    Rover.steer += (rock_meanx - rover_posx)
+                    print("old steer: ", Rover.steer, "old vel: ", Rover.vel)
+
+                    # Apply steer, give it time to settle, check again ...
+
+                    if (steer_iter == 0):
+                        print("\n-->ACTION BOTTOM: Set steer towards rock and reduce velocity")
+                        steer_iter = 10
+                        if ((rock_meanx - rover_posx) > 0): # rock to the right then steer left
+                            Rover.steer += 12
+                        else:
+                            Rover.steer -= 12
+                    else:
+                        steer_iter -= 1
+
+                    #Rover.steer += (rock_meanx - rover_posx) 
                     Rover.vel   -=  np.int((Rover.vel/rock_dist))
 
-                    if ((rock_dist) < 10):
+                    print("new steer: ", Rover.steer, "new vel: ", Rover.vel)
+
+                    if ((rock_dist) < 35):
                         Rover.brake = Rover.brake_set
+                        print("brake applied")
+
+
+    else:
+        steer_iter=0
 
     # Addionally make use of the Telemetry 'near_sample' data that comes from simulator..
     # If in a state where want to pickup a rock send pickup command
@@ -122,10 +169,8 @@ def decision_step(Rover):
 
     else:
         isOld = 0
-        #print ("ANUPAM: NEW ROV POS: ", np.int(Rover.pos[0]), np.int(Rover.pos[1]))
         RoverPath[pathKey] = 1
 
-        
         # calc new things on changes only
         if ((currX - prevX) >= 0) & ((currY - prevY) >= 0):
             Rover.direction = Direction.TopRight
@@ -141,6 +186,10 @@ def decision_step(Rover):
 
     prevX = currX
     prevY = currY
+
+    # ---- DEBUG: Avoid the additional code below for now ----
+    if (Rover.rocks_in_path):
+        return Rover
 
     #print(" !! Path Table: ", RoverPath)
 
