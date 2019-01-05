@@ -65,11 +65,17 @@ def decision_step(Rover):
                     Rover.steer += (rock_meanx - rover_posx)
                     Rover.vel   -=  np.int((Rover.vel/rock_dist))
 
+                    if ((rock_dist) < 10):
+                        Rover.brake = Rover.brake_set
+
             if ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
                 if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15)):
                     print("\n-->ACTION: Set steer towards rock and reduce velocity")
                     Rover.steer += (rock_meanx - rover_posx)
                     Rover.vel   -=  np.int((Rover.vel/rock_dist))
+
+                    if ((rock_dist) < 10):
+                        Rover.brake = Rover.brake_set
 
     # Addionally make use of the Telemetry 'near_sample' data that comes from simulator..
     # If in a state where want to pickup a rock send pickup command
