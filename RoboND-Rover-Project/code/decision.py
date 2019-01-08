@@ -44,8 +44,8 @@ def decision_step(Rover):
 
         rover_posx = np.int(Rover.pos[0])
         rover_posy = np.int(Rover.pos[1])
-        rock_meanx = np.int(np.mean(Rover.rock_pixels_x))
-        rock_meany = np.int(np.mean(Rover.rock_pixels_y))
+        rock_meanx = abs(np.int(np.mean(Rover.rock_pixels_x)))
+        rock_meany = abs(np.int(np.mean(Rover.rock_pixels_y)))
 
         rock_dist = np.sqrt((rover_posx - rock_meanx)**2 + \
                                     (rover_posy - rock_meany)**2)
@@ -77,7 +77,7 @@ def decision_step(Rover):
 
                     if (steer_iter == 0):
                         print("\n-->ACTION TOP: Set steer towards rock and reduce velocity")
-                        steer_iter = 10
+                        steer_iter = 2
                         if ((rock_meanx - rover_posx) > 0): # rock to the right then steer right
                             Rover.steer -= 12
                         else:
@@ -92,6 +92,7 @@ def decision_step(Rover):
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel)
 
                     if ((rock_dist) < 35):
+                        Rover.throttle = 0
                         Rover.brake = Rover.brake_set
                         print("brake applied")
 
@@ -103,7 +104,7 @@ def decision_step(Rover):
 
                     if (steer_iter == 0):
                         print("\n-->ACTION BOTTOM: Set steer towards rock and reduce velocity")
-                        steer_iter = 10
+                        steer_iter = 2
                         if ((rock_meanx - rover_posx) > 0): # rock to the right then steer left
                             Rover.steer += 12
                         else:
@@ -117,11 +118,13 @@ def decision_step(Rover):
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel)
 
                     if ((rock_dist) < 35):
+                        Rover.throttle = 0
                         Rover.brake = Rover.brake_set
                         print("brake applied")
 
 
     else:
+        print("SET steer_iter to ZERO")
         steer_iter=0
 
     # Addionally make use of the Telemetry 'near_sample' data that comes from simulator..

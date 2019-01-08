@@ -100,3 +100,20 @@ TO DO:
 * Avoid going into obstacles !! (specially if you can detect them in the camera image..!) 
  
  
+--------------------------------
+
+Rock Collection - Problems encountered:
+
+1. Rock detection may not always be accurate in perception (false positives and false negatives) - and these distored sense of reality once a rock is discovered (or they miss a rock)
+
+2. Mean rock values are negative (like Y) but rover Y is positive - so use abs in mean
+
+3. Rover may go to stop mode upon an immediate obstacle seen between a close rock and path (like rock is along wall hugging way). That causes a force steer in stop mode and that 'crazy' mode in Rover ..
+
+4. steer_iter gets stuck sometimes (meaning either rock is undiscovered while reality thread is high (incorrect) or the ACTION condition goes to false when it shouldn't. (Also probably need to reduce steer iter 10 to a lower value)
+
+5. Brake = brake_set is correct? Also add throttle to zero.
+
+6. 
+
+
