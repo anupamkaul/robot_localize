@@ -89,6 +89,8 @@ class RoverState():
 
         #Anupam - Variables to aid rock collection
         self.rocks_in_path = False
+        self.goal_to_rock = False
+        self.goal_to_rock_steps = 0
         self.rock_pixels_x = None
         self.rock_pixels_y = None 
         self.direction = None
