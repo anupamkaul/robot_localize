@@ -73,6 +73,8 @@ def decision_step(Rover):
               
             rock_world_pos = Rover.worldmap[:,:,1].nonzero()
             if rock_world_pos[0].any():
+               # print("rock world pos:")
+               # print(rock_world_pos) 
             
                 for idx in range(len(Rover.samples_pos[0])):
                       test_rock_x = Rover.samples_pos[0][idx]
@@ -110,11 +112,13 @@ def decision_step(Rover):
                         print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
                         Rover.steer -= 15
                         Rover.brake += 0.2
+                        Rover.brake = Rover.brake_set  
                     else:
                         print("GOING UP, ROCK TO LEFT, STEER LEFT!\n\n")
                         print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
                         Rover.steer += 15
                         Rover.brake += 0.2
+                        Rover.brake = Rover.brake_set  
 
                     #Rover.steer += (rock_meanx - rover_posx) 
 
@@ -122,12 +126,11 @@ def decision_step(Rover):
 
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    '''
                     if ((rock_dist) < 35):
                         Rover.throttle = 0
                         Rover.brake = 1
                         print("brake applied")
-                    '''
+                    
 
             if ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
                 if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15)):
@@ -144,23 +147,24 @@ def decision_step(Rover):
                         print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
                         Rover.steer += 15
                         Rover.brake += 0.2
+                        Rover.brake = Rover.brake_set  
                     else:
                         print("GOING DOWN, ROCK TO RIGHT, STEER RIGHT!\n\n")
                         print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
                         Rover.steer -= 15
                         Rover.brake += 0.2
+                        Rover.brake = Rover.brake_set  
 
                     #Rover.steer += (rock_meanx - rover_posx) 
                     Rover.vel   -=  np.int((Rover.vel/rock_dist))
 
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    '''
                     if ((rock_dist) < 35):
                         Rover.throttle = 0
                         Rover.brake = 1
                         print("NEAR ROCK - BRAKE APPLIED")
-                    '''
+                    
 
 
     else:
