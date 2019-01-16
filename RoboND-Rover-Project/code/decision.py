@@ -71,6 +71,7 @@ def decision_step(Rover):
             # If samples have been detected by vision, map it to the most known
             # accurate positioning of the rock already present in the world map
               
+            near_map_rock = 0
             rock_world_pos = Rover.worldmap[:,:,1].nonzero()
             if rock_world_pos[0].any():
                # print("rock world pos:")
@@ -87,6 +88,7 @@ def decision_step(Rover):
                             print("BINGO -- ROVER AT ", rover_posx, " ", rover_posy)
                             rock_meanx = test_rock_x
                             rock_meany = test_rock_y
+                            near_map_rock = 1
                             break  # for now quit with the first good result. Needs revisiting.
             
             print("Rover is at ", rover_posx, " ", rover_posy)
@@ -98,7 +100,7 @@ def decision_step(Rover):
             # since we are evaluating in 2D map we need to be cognizant of 'direction' as well..
 
             if ((Rover.direction is Direction.TopLeft) or (Rover.direction is Direction.TopRight)): 
-                if ((rock_meany > rover_posy) and (len(Rover.rock_pixels_x) > 15)):
+                if ((rock_meany > rover_posy) and (len(Rover.rock_pixels_x) > 15) and near_map_rock):
 
                     if (Rover.goal_to_rock == False):
                         print("GOAL SET GOING UP - GO FOR ROCK !\n")
@@ -133,7 +135,7 @@ def decision_step(Rover):
                     
 
             if ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
-                if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15)):
+                if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15) and near_map_rock):
 
                     if (Rover.goal_to_rock == False):
                         print("GOAL SET GOING DOWN - GO FOR ROCK !\n")
