@@ -158,6 +158,7 @@ def perception_step(Rover):
     obs_xpix, obs_ypix = rover_coords(obstacles)
     rok_xpix, rok_ypix = rover_coords(rock_samples)
 
+    
     Rover.rocks_in_path = False 
     if rock_samples.any():
 
@@ -165,6 +166,7 @@ def perception_step(Rover):
         Rover.rocks_in_path = True 
         Rover.rock_pixels_x = rok_xpix
         Rover.rock_pixels_y = rok_ypix 
+   
 
     # 6) Convert rover-centric pixel values to world coordinates
     scale = 23 

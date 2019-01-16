@@ -113,7 +113,7 @@ def create_output_images(Rover):
                   # consider it a success and plot the location of the known
                   # sample on the map
                   if np.min(rock_sample_dists) < 3:
-                        #print(" NEW ROCK SAMPLE SEEN .. ")
+                        #print("LOCATE_ROCK: NEW ROCK SAMPLE SEEN AT ", test_rock_x, " ", test_rock_y)
                         samples_located += 1
                         map_add[test_rock_y-rock_size:test_rock_y+rock_size, 
                         test_rock_x-rock_size:test_rock_x+rock_size, :] = 255
