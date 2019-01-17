@@ -127,6 +127,7 @@ def perception_step(Rover):
     nav_terrain  = color_thresh(warped, (160, 160, 160)) # good value for ground pixels
 
     obstacles    = color_thresh_range(warped, (0, 0, 0), (165, 42, 42)) # brown's RGB  
+    #obstacles    = color_thresh_range(warped, (0, 0, 0), (159, 159, 159)) # toggle of nav area
 
     rock_samples =  color_thresh_range(warped, (130, 100, 40), (190, 190, 90)) # by visual inspection (EOG)
 
@@ -135,9 +136,9 @@ def perception_step(Rover):
         #          Rover.vision_image[:,:,1] = rock_sample color-thresholded binary image
         #          Rover.vision_image[:,:,2] = navigable terrain color-thresholded binary image
 
-    Rover.vision_image[:,:,0] += obstacles
-    Rover.vision_image[:,:,1] += rock_samples
-    Rover.vision_image[:,:,2] += nav_terrain 
+    Rover.vision_image[:,:,0] = obstacles * 200
+    Rover.vision_image[:,:,1] = rock_samples * 200
+    Rover.vision_image[:,:,2] = nav_terrain * 200
 
     # good debug statements..
     #xtemp = plt.imshow(nav_terrain, cmap='gray')
