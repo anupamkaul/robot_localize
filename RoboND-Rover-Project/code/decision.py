@@ -36,7 +36,7 @@ def decision_step(Rover):
         Rover.goal_to_rock_steps += 1
         print("Collect Rock Attempt: ", Rover.goal_to_rock_steps)
 
-        if (Rover.goal_to_rock_steps > 50):
+        if (Rover.goal_to_rock_steps > 200):
             print("Give up Rock Collection Attempt (timeout)")
             Rover.goal_to_rock = False
             Rover.goal_to_rock_steps = 0
@@ -131,7 +131,7 @@ def decision_step(Rover):
                         print("brake applied")
                     
 
-            if ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
+            elif ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
                 if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15) and near_map_rock):
 
                     if (Rover.goal_to_rock == False):
@@ -165,8 +165,13 @@ def decision_step(Rover):
                         print("NEAR ROCK - BRAKE APPLIED")
 
             # cases where rock was seen and then became untrackable even though goal has been set
-            else:         
-                print("--> ATTENTION!!! : Rock Collect Goal Set but LOST rock tracking because: ")
+            else:
+
+                if (Rover.goal_to_rock):         
+                    print("--> ATTENTION!!! : Rock Collect Goal Set but LOST rock tracking because: ")
+
+                else:
+                    print("--> Another case where Rover was near a Rock but failed to steer direction to collect !")
 
 
     else:
