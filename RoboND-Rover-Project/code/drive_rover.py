@@ -89,6 +89,7 @@ class RoverState():
 
         #Anupam - Variables to aid rock collection
         self.rocks_in_path = False
+        self.rock_pos     = None # nearest worldmap based rock pos - (x, y) 
         self.goal_to_rock = False
         self.goal_to_rock_steps = 0
         self.rock_pixels_x = None

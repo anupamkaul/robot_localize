@@ -50,29 +50,14 @@ def decision_step(Rover):
         rock_meanx = abs(np.int(np.mean(Rover.rock_pixels_x)))
         rock_meany = abs(np.int(np.mean(Rover.rock_pixels_y)))
 
-        rock_dist = np.sqrt((rover_posx - rock_meanx)**2 + \
-                                    (rover_posy - rock_meany)**2)
-        
-        if ((np.absolute(rover_posx - rock_meanx) < 30) or (np.absolute(rover_posy - rock_meany) < 30)):
+        if (((np.absolute(rover_posx - rock_meanx) < 10) or (np.absolute(rover_posy - rock_meany) < 10)) and (len(Rover.rock_pixels_x) > 15)):
 
-            
-            if (len(Rover.rock_pixels_x) > 15):
-
-                print ("\n\nDECISION: UPCOMING NEAR ROCK SAMPLE SEEN!")
-                print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
-                print("Mean of rock is at ", rock_meanx, " ", rock_meany)
-                print("Distance from rock ", rock_dist)
-                print("Number of possible pixels: ", len(Rover.rock_pixels_x))
-                print("Rover velocity ", Rover.vel)
-                print("Rover direction ", Rover.direction)
-                print (Rover.rock_pixels_x, Rover.rock_pixels_y)
-
-            
             # If samples have been detected by vision, map it to the most known
             # accurate positioning of the rock already present in the world map
               
             near_map_rock = 0
             rock_world_pos = Rover.worldmap[:,:,1].nonzero()
+
             if rock_world_pos[0].any():
                # print("rock world pos:")
                # print(rock_world_pos) 
@@ -82,6 +67,7 @@ def decision_step(Rover):
                       test_rock_y = Rover.samples_pos[1][idx]
                       rock_sample_dists = np.sqrt((test_rock_x - rock_world_pos[1])**2 + \
                                         (test_rock_y - rock_world_pos[0])**2)
+
                       # Check if rocks were visually detected within 3 meters of known sample positions
                       if np.min(rock_sample_dists) < 3:
                             print("BONGO -- LOCATE_ROCK: NEW ROCK SAMPLE SEEN AT ", test_rock_x, " ", test_rock_y)
@@ -89,10 +75,21 @@ def decision_step(Rover):
                             rock_meanx = test_rock_x
                             rock_meany = test_rock_y
                             near_map_rock = 1
-                            break  # for now quit with the first good result. Needs revisiting.
+
+                            rock_rover_dist = np.sqrt((rover_posx - rock_meanx)**2 + \
+                                        (rover_posy - rock_meany)**2)
             
-            print("Rover is at ", rover_posx, " ", rover_posy)
-            print("Actual Mean of rock is at ", rock_meanx, " ", rock_meany)
+                            # Debug Info ------
+                            print ("DECISION: UPCOMING NEAR ROCK SAMPLE SEEN!")
+                            print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+                            print("Mean of rock is at ", rock_meanx, " ", rock_meany)
+                            print("--> Distance from rock ", rock_rover_dist)
+                            print("Number of possible pixels: ", len(Rover.rock_pixels_x))
+                            print("Rover velocity ", Rover.vel)
+                            print("Rover direction ", Rover.direction)
+                            print (Rover.rock_pixels_x, Rover.rock_pixels_y)
+
+                            break  # for now quit with the first good result. Needs revisiting.
 
             # set steer towards new rock goal and reduce velocity accordingly
             
@@ -124,11 +121,11 @@ def decision_step(Rover):
 
                     #Rover.steer += (rock_meanx - rover_posx) 
 
-                    Rover.vel   -=  np.int((Rover.vel/rock_dist))
+                    Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
 
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    if ((rock_dist) < 35):
+                    if ((rock_rover_dist) < 35):
                         Rover.throttle = 0
                         Rover.brake = 1
                         print("brake applied")
@@ -158,15 +155,18 @@ def decision_step(Rover):
                         Rover.brake = Rover.brake_set  
 
                     #Rover.steer += (rock_meanx - rover_posx) 
-                    Rover.vel   -=  np.int((Rover.vel/rock_dist))
+                    Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
 
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    if ((rock_dist) < 35):
+                    if ((rock_rover_dist) < 35):
                         Rover.throttle = 0
                         Rover.brake = 1
                         print("NEAR ROCK - BRAKE APPLIED")
-                    
+
+            # cases where rock was seen and then became untrackable even though goal has been set
+            else:         
+                print("--> ATTENTION!!! : Rock Collect Goal Set but LOST rock tracking because: ")
 
 
     else:
