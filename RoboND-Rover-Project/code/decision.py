@@ -41,16 +41,23 @@ def decision_step(Rover):
             Rover.goal_to_rock = False
             Rover.goal_to_rock_steps = 0
 
-    if Rover.rocks_in_path:
+    #if ((Rover.goal_to_rock) or (Rover.rocks_in_path and len(Rover.rock_pixels_x) > 15)):
+    if (Rover.rocks_in_path and len(Rover.rock_pixels_x) > 15):
 
-        #print ("\n\nDECISION: ROCK SAMPLE SEEN!")
+        #print("Rock Collection Mode")
 
         rover_posx = np.int(Rover.pos[0])
         rover_posy = np.int(Rover.pos[1])
-        rock_meanx = abs(np.int(np.mean(Rover.rock_pixels_x)))
-        rock_meany = abs(np.int(np.mean(Rover.rock_pixels_y)))
 
-        if (((np.absolute(rover_posx - rock_meanx) < 10) or (np.absolute(rover_posy - rock_meany) < 10)) and (len(Rover.rock_pixels_x) > 15)):
+        rock_meanx = rock_meany = 0
+        if (Rover.goal_to_rock == False):
+            rock_meanx = abs(np.int(np.mean(Rover.rock_pixels_x)))
+            rock_meany = abs(np.int(np.mean(Rover.rock_pixels_y)))
+        else:
+            rock_meanx = Rover.rock_posx
+            rock_meany = Rover.rock_posy
+
+        if ((np.absolute(rover_posx - rock_meanx) <= 10) or (np.absolute(rover_posy - rock_meany) <= 10)):
 
             # If samples have been detected by vision, map it to the most known
             # accurate positioning of the rock already present in the world map
@@ -72,8 +79,10 @@ def decision_step(Rover):
                       if np.min(rock_sample_dists) < 3:
                             print("BONGO -- LOCATE_ROCK: NEW ROCK SAMPLE SEEN AT ", test_rock_x, " ", test_rock_y)
                             print("BINGO -- ROVER AT ", rover_posx, " ", rover_posy)
-                            rock_meanx = test_rock_x
-                            rock_meany = test_rock_y
+                            rock_meanx =  test_rock_x
+                            rock_meany =  test_rock_y
+                            Rover.rock_posx  = test_rock_x
+                            Rover.rock_posy  = test_rock_y
                             near_map_rock = 1
 
                             rock_rover_dist = np.sqrt((rover_posx - rock_meanx)**2 + \
@@ -97,7 +106,7 @@ def decision_step(Rover):
             # since we are evaluating in 2D map we need to be cognizant of 'direction' as well..
 
             if ((Rover.direction is Direction.TopLeft) or (Rover.direction is Direction.TopRight)): 
-                if ((rock_meany > rover_posy) and (len(Rover.rock_pixels_x) > 15) and near_map_rock):
+                if ((rock_meany >= rover_posy) and near_map_rock):
 
                     if (Rover.goal_to_rock == False):
                         print("GOAL SET GOING UP - GO FOR ROCK !\n")
@@ -125,14 +134,15 @@ def decision_step(Rover):
 
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    if ((rock_rover_dist) < 35):
+                    if ((rock_rover_dist) < 2):
                         Rover.throttle = 0
+                        Rover.vel = 0
                         Rover.brake = 1
                         print("brake applied")
                     
 
             elif ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
-                if ((rock_meany < rover_posy) and (len(Rover.rock_pixels_x) > 15) and near_map_rock):
+                if ((rock_meany <= rover_posy) and near_map_rock):
 
                     if (Rover.goal_to_rock == False):
                         print("GOAL SET GOING DOWN - GO FOR ROCK !\n")
@@ -159,8 +169,9 @@ def decision_step(Rover):
 
                     print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    if ((rock_rover_dist) < 35):
+                    if ((rock_rover_dist) < 2):
                         Rover.throttle = 0
+                        Rover.vel = 0
                         Rover.brake = 1
                         print("NEAR ROCK - BRAKE APPLIED")
 
@@ -171,23 +182,31 @@ def decision_step(Rover):
                     print("--> ATTENTION!!! : Rock Collect Goal Set but LOST rock tracking because: ")
 
                 else:
-                    print("--> Another case where Rover was near a Rock but failed to steer direction to collect !")
+                    print("--> ATTENTION!!! : Another case where Rover was near a Rock but failed to steer direction to collect !")
 
+        # unmet initial condition
+        #else:
+        #    print("ATTENTION!!! : Rocks in Path but mismatch ", Rover.rocks_in_path, " ", rock_meanx, " ", rock_meany, "Dist: ", np.absolute(rover_posx - rock_meanx) , " ", np.absolute(rover_posy - rock_meany) )
 
+    # No rocks_in_path
     else:
         #print("SET steer_iter to ZERO")
 
         # this kills the determined rock collection mode
         if (Rover.goal_to_rock):
-            print("Give up Rock Collection Attempt (no rocks in path seen)")
+            print("--> BAD RESET: While Goal is set, Give up Rock Collection Attempt (no rocks in path seen)")
         Rover.goal_to_rock = False
         Rover.goal_to_rock_steps = 0
+        Rover.rock_posx = 0 
+        Rover.rock_posy = 0 
 
     # Addionally make use of the Telemetry 'near_sample' data that comes from simulator..
     # If in a state where want to pickup a rock send pickup command
     if Rover.near_sample and Rover.vel == 0 and not Rover.picking_up:
         Rover.send_pickup = True
         Rover.goal_to_rock = False
+        Rover.rock_posx = 0  
+        Rover.rock_posy = 0  
 
     # Check if near sample
     if Rover.near_sample:
@@ -208,8 +227,12 @@ def decision_step(Rover):
 
             print("Looks like STUCK !! ", Rover.mode, Rover.vel, Rover.throttle, len(Rover.nav_angles))
   
-            print("Helping Out ..")
-            Rover.steer =- 30 
+            if (Rover.goal_to_rock):
+              print("But in Rock Collection State")
+              Rover.steer =- 30  # disabling this causes all sorts of wierd things
+            else:
+              print("Helping Out ..")
+              Rover.steer =- 30 
 
             #if Rover.vel < Rover.max_vel:
              #   Rover.throttle = Rover.throttle_set
