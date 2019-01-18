@@ -52,15 +52,7 @@ def decision_step(Rover):
         # else try to collect the rock
         else:
 
-            rock_world_pos = Rover.worldmap[:,:,1].nonzero()
-            if (not rock_world_pos[0].any()):
-                print("WARNING: Goal Set BUT No Rock in World Pos Detected")
-        
-               # print("rock world pos:")
-               # print(rock_world_pos) 
- 
             # See if Rover is near a non-collected but located rock (vicinity of 3m)
-              
             near_map_rock = 0
             for idx in range(len(Rover.samples_pos[0])):
                   test_rock_x = Rover.samples_pos[0][idx]
@@ -69,7 +61,7 @@ def decision_step(Rover):
                                     (test_rock_y - rover_posy)**2)
 
                   # Check if rocks were visually detected within acceptable distance of action (10m for now)
-                  if np.min(rock_rover_dist) < 10: 
+                  if np.min(rock_rover_dist) < 5: 
 
                         print("BONGO -- LOCATE_ROCK: NEW ROCK SAMPLE SEEN AT ", test_rock_x, " ", test_rock_y)
                         print("BINGO -- ROVER AT ", rover_posx, " ", rover_posy)
@@ -119,12 +111,10 @@ def decision_step(Rover):
                             Rover.brake = Rover.brake_set  
 
                         #Rover.steer += (rock_meanx - rover_posx) 
-
-                        Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
-
+                        #Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
                         print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                        if ((rock_rover_dist) < 2):
+                        if ( (np.absolute(rock_meany - rover_posy) < 2) or (np.absolute(rock_meanx - rover_posx) < 2)):
                             Rover.throttle = 0
                             Rover.vel = 0
                             Rover.brake = 1
@@ -150,12 +140,11 @@ def decision_step(Rover):
                             Rover.brake += (0.2 + (rock_rover_dist/10))
                             Rover.brake = Rover.brake_set  
 
-                            #Rover.steer += (rock_meanx - rover_posx) 
-                            Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
-
+                        #Rover.steer += (rock_meanx - rover_posx) 
+                        #Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
                         print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                        if ((rock_rover_dist) < 2):
+                        if ( (np.absolute(rock_meany - rover_posy) < 2) or (np.absolute(rock_meanx - rover_posx) < 2)):
                             Rover.throttle = 0
                             Rover.vel = 0
                             Rover.brake = 1
