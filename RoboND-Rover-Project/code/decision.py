@@ -32,179 +32,141 @@ def decision_step(Rover):
     currY = np.int(Rover.pos[1])
     pathKey = (currX, currY) # tuple
 
+    rover_posx = np.int(Rover.pos[0])
+    rover_posy = np.int(Rover.pos[1])
+
+    # Try to collect a rock
+
     if (Rover.goal_to_rock):
         Rover.goal_to_rock_steps += 1
         print("Collect Rock Attempt: ", Rover.goal_to_rock_steps)
 
+        # check if exceeded rock collection timeout
         if (Rover.goal_to_rock_steps > 200):
             print("Give up Rock Collection Attempt (timeout)")
             Rover.goal_to_rock = False
             Rover.goal_to_rock_steps = 0
+            Rover.rock_posx = 0  
+            Rover.rock_posy = 0  
 
-    #if ((Rover.goal_to_rock) or (Rover.rocks_in_path and len(Rover.rock_pixels_x) > 15)):
-    if (Rover.rocks_in_path and len(Rover.rock_pixels_x) > 15):
-
-        #print("Rock Collection Mode")
-
-        rover_posx = np.int(Rover.pos[0])
-        rover_posy = np.int(Rover.pos[1])
-
-        rock_meanx = rock_meany = 0
-        if (Rover.goal_to_rock == False):
-            rock_meanx = abs(np.int(np.mean(Rover.rock_pixels_x)))
-            rock_meany = abs(np.int(np.mean(Rover.rock_pixels_y)))
+        # else try to collect the rock
         else:
-            rock_meanx = Rover.rock_posx
-            rock_meany = Rover.rock_posy
 
-        if ((np.absolute(rover_posx - rock_meanx) <= 10) or (np.absolute(rover_posy - rock_meany) <= 10)):
-
-            # If samples have been detected by vision, map it to the most known
-            # accurate positioning of the rock already present in the world map
-              
+            # See if Rover is near a non-collected but located rock (vicinity of 3m)
             near_map_rock = 0
-            rock_world_pos = Rover.worldmap[:,:,1].nonzero()
+            for idx in range(len(Rover.samples_pos[0])):
+                  test_rock_x = Rover.samples_pos[0][idx]
+                  test_rock_y = Rover.samples_pos[1][idx]
+                  rock_rover_dist = np.sqrt((test_rock_x - rover_posx)**2 + \
+                                    (test_rock_y - rover_posy)**2)
 
-            if rock_world_pos[0].any():
-               # print("rock world pos:")
-               # print(rock_world_pos) 
+                  # Check if rocks were visually detected within acceptable distance of action (10m for now)
+                  if np.min(rock_rover_dist) < 5: 
+
+                        print("BONGO -- LOCATE_ROCK: NEW ROCK SAMPLE SEEN AT ", test_rock_x, " ", test_rock_y)
+                        print("BINGO -- ROVER AT ", rover_posx, " ", rover_posy)
+                        rock_meanx =  test_rock_x
+                        rock_meany =  test_rock_y
+                        Rover.rock_posx  = test_rock_x
+                        Rover.rock_posy  = test_rock_y
+                        near_map_rock = 1
+
+                        # Debug Info ------
+                        print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
+                        print("Mean of rock is at ", rock_meanx, " ", rock_meany)
+                        print("--> Distance from rock ", rock_rover_dist)
+                        #print("Number of possible pixels: ", len(Rover.rock_pixels_x))
+                        print("Rover velocity ", Rover.vel)
+                        print("Rover direction ", Rover.direction)
+                        #print (Rover.rock_pixels_x, Rover.rock_pixels_y)
+
+                        # actually go for first non-collected nearby rock
+                        break  # for now quit with the first good result. Needs revisiting.
+
+                # set steer towards new rock goal and reduce velocity accordingly
             
-                for idx in range(len(Rover.samples_pos[0])):
-                      test_rock_x = Rover.samples_pos[0][idx]
-                      test_rock_y = Rover.samples_pos[1][idx]
-                      rock_sample_dists = np.sqrt((test_rock_x - rock_world_pos[1])**2 + \
-                                        (test_rock_y - rock_world_pos[0])**2)
+                # policy : grab rocks first that are along the wall hugging path or straight ahead
+                # since we are evaluating in 2D map we need to be cognizant of 'direction' as well..
 
-                      # Check if rocks were visually detected within 3 meters of known sample positions
-                      if np.min(rock_sample_dists) < 3:
-                            print("BONGO -- LOCATE_ROCK: NEW ROCK SAMPLE SEEN AT ", test_rock_x, " ", test_rock_y)
-                            print("BINGO -- ROVER AT ", rover_posx, " ", rover_posy)
-                            rock_meanx =  test_rock_x
-                            rock_meany =  test_rock_y
-                            Rover.rock_posx  = test_rock_x
-                            Rover.rock_posy  = test_rock_y
-                            near_map_rock = 1
+            if (near_map_rock):
+                print("\n\n===> TRY TO COLLECT ROCK! attempt: ", Rover.goal_to_rock_steps)
 
-                            rock_rover_dist = np.sqrt((rover_posx - rock_meanx)**2 + \
-                                        (rover_posy - rock_meany)**2)
-            
-                            # Debug Info ------
-                            print ("DECISION: UPCOMING NEAR ROCK SAMPLE SEEN!")
-                            print("Rover is at ", np.int(Rover.pos[0]), " ", np.int(Rover.pos[1]))
-                            print("Mean of rock is at ", rock_meanx, " ", rock_meany)
-                            print("--> Distance from rock ", rock_rover_dist)
-                            print("Number of possible pixels: ", len(Rover.rock_pixels_x))
-                            print("Rover velocity ", Rover.vel)
-                            print("Rover direction ", Rover.direction)
-                            print (Rover.rock_pixels_x, Rover.rock_pixels_y)
+                if ((Rover.direction is Direction.TopLeft) or (Rover.direction is Direction.TopRight)): 
+                    if ((rock_meany >= rover_posy) and near_map_rock):
 
-                            break  # for now quit with the first good result. Needs revisiting.
+                        # Apply steer, give it time to settle, check again ...
 
-            # set steer towards new rock goal and reduce velocity accordingly
-            
-            # policy : grab rocks first that are along the wall hugging path or straight ahead
-            # since we are evaluating in 2D map we need to be cognizant of 'direction' as well..
+                        print("-->ACTION TOP: Set steer towards rock and reduce velocity")
+                        if ((rock_meanx - rover_posx) > 0): # rock to the right then steer right
+                            print("GOING UP, ROCK TO RIGHT, STEER RIGHT!\n\n")
+                            print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
+                            Rover.steer -= (15 - (rock_rover_dist/10))
+                            Rover.brake += (0.2 + (rock_rover_dist/10))
+                            Rover.brake = Rover.brake_set  
+                        else:
+                            print("GOING UP, ROCK TO LEFT, STEER LEFT!\n\n")
+                            print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
+                            Rover.steer += (15 - (rock_rover_dist/10))
+                            Rover.brake += (0.2 + (rock_rover_dist/10)) 
+                            Rover.brake = Rover.brake_set  
 
-            if ((Rover.direction is Direction.TopLeft) or (Rover.direction is Direction.TopRight)): 
-                if ((rock_meany >= rover_posy) and near_map_rock):
+                        #Rover.steer += (rock_meanx - rover_posx) 
+                        #Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
+                        print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    if (Rover.goal_to_rock == False):
-                        print("GOAL SET GOING UP - GO FOR ROCK !\n")
-                        Rover.goal_to_rock = True
-
-                    # Apply steer, give it time to settle, check again ...
-
-                    print("\n-->ACTION TOP: Set steer towards rock and reduce velocity")
-                    if ((rock_meanx - rover_posx) > 0): # rock to the right then steer right
-                        print("GOING UP, ROCK TO RIGHT, STEER RIGHT!\n\n")
-                        print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
-                        Rover.steer -= 15
-                        Rover.brake += 0.2
-                        Rover.brake = Rover.brake_set  
-                    else:
-                        print("GOING UP, ROCK TO LEFT, STEER LEFT!\n\n")
-                        print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
-                        Rover.steer += 15
-                        Rover.brake += 0.2
-                        Rover.brake = Rover.brake_set  
-
-                    #Rover.steer += (rock_meanx - rover_posx) 
-
-                    Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
-
-                    print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
-
-                    if ((rock_rover_dist) < 2):
-                        Rover.throttle = 0
-                        Rover.vel = 0
-                        Rover.brake = 1
-                        print("brake applied")
+                        if ( (np.absolute(rock_meany - rover_posy) < 2) or (np.absolute(rock_meanx - rover_posx) < 2)):
+                            Rover.throttle = 0
+                            Rover.vel = 0
+                            Rover.brake = 1
+                            print("brake applied")
                     
 
-            elif ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
-                if ((rock_meany <= rover_posy) and near_map_rock):
+                elif ((Rover.direction is Direction.BottomLeft) or (Rover.direction is Direction.BottomRight)): 
+                    if ((rock_meany <= rover_posy) and near_map_rock):
 
-                    if (Rover.goal_to_rock == False):
-                        print("GOAL SET GOING DOWN - GO FOR ROCK !\n")
-                        Rover.goal_to_rock = True
+                        # Apply steer, give it time to settle, check again ...
 
-                    # Apply steer, give it time to settle, check again ...
+                        print("-->ACTION BOTTOM: Set steer towards rock and reduce velocity")
+                        if ((rock_meanx - rover_posx) > 0): # rock to the left then steer left
+                            print("GOING DOWN, ROCK TO LEFT, STEER LEFT!\n\n")
+                            print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
+                            Rover.steer += (15 - (rock_rover_dist/10))
+                            Rover.brake += (0.2 + (rock_rover_dist/10))
+                            Rover.brake = Rover.brake_set  
+                        else:
+                            print("GOING DOWN, ROCK TO RIGHT, STEER RIGHT!\n\n")
+                            print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
+                            Rover.steer -= (15 - (rock_rover_dist/10)) 
+                            Rover.brake += (0.2 + (rock_rover_dist/10))
+                            Rover.brake = Rover.brake_set  
 
-                    print("\n-->ACTION BOTTOM: Set steer towards rock and reduce velocity")
-                    if ((rock_meanx - rover_posx) > 0): # rock to the left then steer left
-                        print("GOING DOWN, ROCK TO LEFT, STEER LEFT!\n\n")
-                        print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
-                        Rover.steer += 15
-                        Rover.brake += 0.2
-                        Rover.brake = Rover.brake_set  
-                    else:
-                        print("GOING DOWN, ROCK TO RIGHT, STEER RIGHT!\n\n")
-                        print("old steer: ", Rover.steer, "old vel: ", Rover.vel, "old brake: ", Rover.brake)
-                        Rover.steer -= 15
-                        Rover.brake += 0.2
-                        Rover.brake = Rover.brake_set  
+                        #Rover.steer += (rock_meanx - rover_posx) 
+                        #Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
+                        print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
 
-                    #Rover.steer += (rock_meanx - rover_posx) 
-                    Rover.vel   -=  np.int((Rover.vel/rock_rover_dist))
+                        if ( (np.absolute(rock_meany - rover_posy) < 2) or (np.absolute(rock_meanx - rover_posx) < 2)):
+                            Rover.throttle = 0
+                            Rover.vel = 0
+                            Rover.brake = 1
+                            print("NEAR ROCK - BRAKE APPLIED")
 
-                    print("new steer: ", Rover.steer, "new vel: ", Rover.vel, "new brake: ", Rover.brake)
-
-                    if ((rock_rover_dist) < 2):
-                        Rover.throttle = 0
-                        Rover.vel = 0
-                        Rover.brake = 1
-                        print("NEAR ROCK - BRAKE APPLIED")
-
-            # cases where rock was seen and then became untrackable even though goal has been set
-            else:
-
-                if (Rover.goal_to_rock):         
-                    print("--> ATTENTION!!! : Rock Collect Goal Set but LOST rock tracking because: ")
-
+                # cases where rock was seen and then became untrackable even though goal has been set
                 else:
-                    print("--> ATTENTION!!! : Another case where Rover was near a Rock but failed to steer direction to collect !")
 
-        # unmet initial condition
-        #else:
-        #    print("ATTENTION!!! : Rocks in Path but mismatch ", Rover.rocks_in_path, " ", rock_meanx, " ", rock_meany, "Dist: ", np.absolute(rover_posx - rock_meanx) , " ", np.absolute(rover_posy - rock_meany) )
+                    if (Rover.goal_to_rock):         
+                        print("--> ATTENTION!!! : Rock Collect Goal Set but LOST rock tracking because: ")
 
-    # No rocks_in_path
-    else:
-        #print("SET steer_iter to ZERO")
+                    else:
+                        print("--> ATTENTION!!! : Another case where Rover was near a Rock but failed to steer direction to collect !")
 
-        # this kills the determined rock collection mode
-        if (Rover.goal_to_rock):
-            print("--> BAD RESET: While Goal is set, Give up Rock Collection Attempt (no rocks in path seen)")
-        Rover.goal_to_rock = False
-        Rover.goal_to_rock_steps = 0
-        Rover.rock_posx = 0 
-        Rover.rock_posy = 0 
+    # else rock-collection goal is not on (but trigger it when rock is located, in supporting_functions...)
 
     # Addionally make use of the Telemetry 'near_sample' data that comes from simulator..
     # If in a state where want to pickup a rock send pickup command
     if Rover.near_sample and Rover.vel == 0 and not Rover.picking_up:
         Rover.send_pickup = True
         Rover.goal_to_rock = False
+        Rover.goal_to_rock_steps = 0
         Rover.rock_posx = 0  
         Rover.rock_posy = 0  
 
