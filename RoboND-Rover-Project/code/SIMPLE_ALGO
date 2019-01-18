@@ -1,0 +1,13 @@
+This does NOT look at pixel values etc and ONLY relies on map sample data for rock.
+
+0. Mark rover_rock (located) as collected or not. 
+1. Determine if Rock is Locatable. (same logic as supporting function). 
+   Compare a 3m gap with Rover's current Position and make sure Rock has not been collected.
+2. Now check current direction, rover location and rover_rock. And take current distance from rock.
+3. If rock is "behind" (w.r.t direction) and within acceptable distance (3m?), then stop and turn "enough"
+4. If rock is "ahead" (w.r.t direction) then :
+   apply steer but reduce it as current distance from rock gets smaller
+   apply brake (make sure it works!) and increase it as current distance from rock gets smaller
+   make sure brakes are applied and rover is near stationary at about 1 pixel distance
+5. In case of (3) remember to re-turn to continue mission in original direction
+
