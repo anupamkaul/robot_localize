@@ -1,0 +1,1602 @@
+[ 50%] Building CXX object CMakeFiles/hello.dir/script/hello.cpp.o
+In file included from /usr/include/c++/5/random:35:0,
+                 from /usr/include/ignition/math2/ignition/math/Rand.hh:20,
+                 from /usr/include/ignition/math2/ignition/math.hh:18,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:34,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/c++/5/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support \
+  ^
+In file included from /usr/include/sdformat-4.0/sdf/sdf.hh:3:0,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/sdformat-4.0/sdf/Console.hh:55:16: error: 'shared_ptr' in namespace 'std' does not name a template type
+   typedef std::shared_ptr<Console> ConsolePtr;
+                ^
+/usr/include/sdformat-4.0/sdf/Console.hh:96:20: error: 'ConsolePtr' does not name a type
+     public: static ConsolePtr Instance();
+                    ^
+/usr/include/sdformat-4.0/sdf/Console.hh:118:19: error: 'unique_ptr' in namespace 'std' does not name a template type
+     private: std::unique_ptr<ConsolePrivate> dataPtr;
+                   ^
+/usr/include/sdformat-4.0/sdf/Console.hh: In member function 'sdf::Console::ConsoleStream& sdf::Console::ConsoleStream::operator<<(const T&)':
+/usr/include/sdformat-4.0/sdf/Console.hh:145:9: error: 'Instance' is not a member of 'sdf::Console'
+     if (Console::Instance()->dataPtr->logFileStream.is_open())
+         ^
+/usr/include/sdformat-4.0/sdf/Console.hh:147:7: error: 'Instance' is not a member of 'sdf::Console'
+       Console::Instance()->dataPtr->logFileStream << _rhs;
+       ^
+/usr/include/sdformat-4.0/sdf/Console.hh:148:7: error: 'Instance' is not a member of 'sdf::Console'
+       Console::Instance()->dataPtr->logFileStream.flush();
+       ^
+In file included from /usr/include/ignition/math2/ignition/math/AffineException.hh:21:0,
+                 from /usr/include/ignition/math2/ignition/math.hh:3,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:34,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/ignition/math2/ignition/math/Helpers.hh: In function 'T ignition::math::precision(const T&, const unsigned int&)':
+/usr/include/ignition/math2/ignition/math/Helpers.hh:242:14: error: 'round' is not a member of 'std'
+       return std::round(_a * pow(10, _precision)) / pow(10, _precision);
+              ^
+/usr/include/ignition/math2/ignition/math/Helpers.hh:242:14: note: suggested alternatives:
+In file included from /usr/include/features.h:367:0,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/5/bits/c++config.h:482,
+                 from /usr/include/c++/5/string:38,
+                 from /usr/include/gazebo-7/gazebo/common/Animation.hh:20,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:5,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:319:1: note:   'round'
+ __MATHCALLX (round,, (_Mdouble_ __x), (__const__));
+ ^
+In file included from /usr/include/boost/math/special_functions/math_fwd.hpp:26:0,
+                 from /usr/include/boost/math/special_functions/sign.hpp:17,
+                 from /usr/include/boost/lexical_cast/detail/inf_nan.hpp:34,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical_streams.hpp:64,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical.hpp:53,
+                 from /usr/include/boost/lexical_cast/try_lexical_convert.hpp:34,
+                 from /usr/include/boost/lexical_cast.hpp:32,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/math/special_functions/detail/round_fwd.hpp:44:42: note:   'boost::math::round'
+    typename tools::promote_args<T>::type round(const T& v);
+                                          ^
+In file included from /usr/include/ignition/math2/ignition/math.hh:6:0,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:34,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/ignition/math2/ignition/math/Filter.hh: At global scope:
+/usr/include/ignition/math2/ignition/math/Filter.hh:57:23: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: T y0{};
+                       ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:57:22: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T y0{};
+                      ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:57:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T y0{};
+                       ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:67:27: warning: defaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+       public: OnePole() = default;
+                           ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:94:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: double a0 = 0;
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:97:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: double b1 = 0;
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:157:26: warning: defaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+       public: BiQuad() = default;
+                          ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:215:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: double a0 = 0,
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:216:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+                         a1 = 0,
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:217:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+                         a2 = 0,
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:218:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+                         b0 = 0,
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:219:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+                         b1 = 0,
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:220:30: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+                         b2 = 0;
+                              ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:23: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                       ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:29: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                             ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:35: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                                   ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:41: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                                         ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:22: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                      ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:23: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                       ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:28: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                            ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:29: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                             ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:34: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                                  ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:35: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                                   ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:40: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                                        ^
+/usr/include/ignition/math2/ignition/math/Filter.hh:223:41: warning: extended initializer lists only available with -std=c++11 or -std=gnu++11
+       protected: T x1{}, x2{}, y1{}, y2{};
+                                         ^
+In file included from /usr/include/ignition/math2/ignition/math.hh:12:0,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:34,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/ignition/math2/ignition/math/Line3.hh:35:25: warning: defaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+       public: Line3() = default;
+                         ^
+In file included from /usr/include/ignition/math2/ignition/math.hh:14:0,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:34,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/ignition/math2/ignition/math/Matrix4.hh: In constructor 'ignition::math::Matrix4<T>::Matrix4(const ignition::math::Pose3<T>&)':
+/usr/include/ignition/math2/ignition/math/Matrix4.hh:108:67: warning: delegating constructors only available with -std=c++11 or -std=gnu++11
+       public: Matrix4(const Pose3<T> &_pose) : Matrix4(_pose.Rot())
+                                                                   ^
+In file included from /usr/include/ignition/math2/ignition/math.hh:18:0,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:34,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/ignition/math2/ignition/math/Rand.hh: At global scope:
+/usr/include/ignition/math2/ignition/math/Rand.hh:31:18: error: 'mt19937' in namespace 'std' does not name a type
+     typedef std::mt19937 GeneratorType;
+                  ^
+/usr/include/ignition/math2/ignition/math/Rand.hh:34:18: error: 'uniform_real_distribution' in namespace 'std' does not name a template type
+     typedef std::uniform_real_distribution<double> UniformRealDist;
+                  ^
+/usr/include/ignition/math2/ignition/math/Rand.hh:37:18: error: 'normal_distribution' in namespace 'std' does not name a template type
+     typedef std::normal_distribution<double> NormalRealDist;
+                  ^
+/usr/include/ignition/math2/ignition/math/Rand.hh:40:18: error: 'uniform_int_distribution' in namespace 'std' does not name a template type
+     typedef std::uniform_int_distribution<int32_t> UniformIntDist;
+                  ^
+/usr/include/ignition/math2/ignition/math/Rand.hh:77:23: error: 'GeneratorType' does not name a type
+       private: static GeneratorType *randGenerator;
+                       ^
+In file included from /usr/include/ignition/math2/ignition/math.hh:22:0,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:34,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/ignition/math2/ignition/math/Triangle.hh:36:28: warning: defaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+       public: Triangle() = default;
+                            ^
+/usr/include/ignition/math2/ignition/math/Triangle.hh: In member function 'bool ignition::math::Triangle<T>::Intersects(const ignition::math::Line2<T>&, ignition::math::Vector2<T>&, ignition::math::Vector2<T>&) const':
+/usr/include/ignition/math2/ignition/math/Triangle.hh:181:16: error: 'iter' does not name a type
+           auto iter = points.begin();
+                ^
+/usr/include/ignition/math2/ignition/math/Triangle.hh:183:20: error: 'iter' was not declared in this scope
+           _ipt1 = *iter;
+                    ^
+/usr/include/ignition/math2/ignition/math/Triangle.hh:193:16: error: 'iter' does not name a type
+           auto iter = points.begin();
+                ^
+/usr/include/ignition/math2/ignition/math/Triangle.hh:194:21: error: 'iter' was not declared in this scope
+           _ipt1 = *(iter++);
+                     ^
+In file included from /usr/include/sdformat-4.0/sdf/Element.hh:24:0,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/sdformat-4.0/sdf/Param.hh: At global scope:
+/usr/include/sdformat-4.0/sdf/Param.hh:55:16: error: 'shared_ptr' in namespace 'std' does not name a template type
+   typedef std::shared_ptr<Param> ParamPtr;
+                ^
+/usr/include/sdformat-4.0/sdf/Param.hh:59:23: error: 'ParamPtr' was not declared in this scope
+   typedef std::vector<ParamPtr> Param_V;
+                       ^
+/usr/include/sdformat-4.0/sdf/Param.hh:59:31: error: template argument 1 is invalid
+   typedef std::vector<ParamPtr> Param_V;
+                               ^
+/usr/include/sdformat-4.0/sdf/Param.hh:59:31: error: template argument 2 is invalid
+/usr/include/sdformat-4.0/sdf/Param.hh:127:13: error: 'ParamPtr' does not name a type
+     public: ParamPtr Clone() const;
+             ^
+/usr/include/sdformat-4.0/sdf/Param.hh:221:18: error: 'function' in namespace 'std' does not name a template type
+     public: std::function<boost::any ()> updateFunc;
+                  ^
+/usr/include/sdformat-4.0/sdf/Param.hh: In member function 'void sdf::Param::SetUpdateFunc(T)':
+/usr/include/sdformat-4.0/sdf/Param.hh:252:20: error: 'class sdf::ParamPrivate' has no member named 'updateFunc'
+     this->dataPtr->updateFunc = _updateFunc;
+                    ^
+In file included from /usr/include/sdformat-4.0/sdf/sdf.hh:3:0,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/sdformat-4.0/sdf/Param.hh: In member function 'bool sdf::Param::Set(const T&)':
+/usr/include/sdformat-4.0/sdf/Console.hh:47:19: error: 'Instance' is not a member of 'sdf::Console'
+   #define sdferr (sdf::Console::Instance()->ColorMsg("Error", \
+                   ^
+/usr/include/sdformat-4.0/sdf/Param.hh:265:7: note: in expansion of macro 'sdferr'
+       sdferr << "Unable to set parameter["
+       ^
+/usr/include/sdformat-4.0/sdf/Param.hh: In member function 'bool sdf::Param::Get(T&) const':
+/usr/include/sdformat-4.0/sdf/Console.hh:47:19: error: 'Instance' is not a member of 'sdf::Console'
+   #define sdferr (sdf::Console::Instance()->ColorMsg("Error", \
+                   ^
+/usr/include/sdformat-4.0/sdf/Param.hh:298:7: note: in expansion of macro 'sdferr'
+       sdferr << "Unable to convert parameter["
+       ^
+/usr/include/sdformat-4.0/sdf/Param.hh: In member function 'bool sdf::Param::GetDefault(T&) const':
+/usr/include/sdformat-4.0/sdf/Console.hh:47:19: error: 'Instance' is not a member of 'sdf::Console'
+   #define sdferr (sdf::Console::Instance()->ColorMsg("Error", \
+                   ^
+/usr/include/sdformat-4.0/sdf/Param.hh:318:7: note: in expansion of macro 'sdferr'
+       sdferr << "Unable to convert parameter["
+       ^
+/usr/include/sdformat-4.0/sdf/Param.hh: In member function 'void sdf::Param::Init(const string&)':
+/usr/include/sdformat-4.0/sdf/Console.hh:47:19: error: 'Instance' is not a member of 'sdf::Console'
+   #define sdferr (sdf::Console::Instance()->ColorMsg("Error", \
+                   ^
+/usr/include/sdformat-4.0/sdf/Param.hh:350:9: note: in expansion of macro 'sdferr'
+         sdferr << "Unable to init parameter value from string["
+         ^
+In file included from /usr/include/sdformat-4.0/sdf/sdf.hh:5:0,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/sdformat-4.0/sdf/Element.hh: At global scope:
+/usr/include/sdformat-4.0/sdf/Element.hh:53:16: error: 'shared_ptr' in namespace 'std' does not name a template type
+   typedef std::shared_ptr<Element> ElementPtr;
+                ^
+/usr/include/sdformat-4.0/sdf/Element.hh:57:16: error: 'weak_ptr' in namespace 'std' does not name a template type
+   typedef std::weak_ptr<Element> ElementWeakPtr;
+                ^
+/usr/include/sdformat-4.0/sdf/Element.hh:61:23: error: 'ElementPtr' was not declared in this scope
+   typedef std::vector<ElementPtr> ElementPtr_V;
+                       ^
+/usr/include/sdformat-4.0/sdf/Element.hh:61:33: error: template argument 1 is invalid
+   typedef std::vector<ElementPtr> ElementPtr_V;
+                                 ^
+/usr/include/sdformat-4.0/sdf/Element.hh:61:33: error: template argument 2 is invalid
+/usr/include/sdformat-4.0/sdf/Element.hh:69:40: error: expected template-name before '<' token
+     public std::enable_shared_from_this<Element>
+                                        ^
+/usr/include/sdformat-4.0/sdf/Element.hh:69:40: error: expected '{' before '<' token
+/usr/include/sdformat-4.0/sdf/Element.hh:69:40: error: expected unqualified-id before '<' token
+/usr/include/sdformat-4.0/sdf/Element.hh:297:13: error: 'ElementWeakPtr' does not name a type
+     public: ElementWeakPtr parent;
+             ^
+/usr/include/sdformat-4.0/sdf/Element.hh:303:13: error: 'ParamPtr' does not name a type
+     public: ParamPtr value;
+             ^
+/usr/include/sdformat-4.0/sdf/Element.hh:320:41: error: invalid use of incomplete type 'class sdf::Element'
+   T Element::Get(const std::string &_key)
+                                         ^
+/usr/include/sdformat-4.0/sdf/Element.hh:68:26: note: forward declaration of 'class sdf::Element'
+   class SDFORMAT_VISIBLE Element :
+                          ^
+/usr/include/sdformat-4.0/sdf/Element.hh:343:36: error: invalid use of incomplete type 'class sdf::Element'
+   bool Element::Set(const T &_value)
+                                    ^
+/usr/include/sdformat-4.0/sdf/Element.hh:68:26: note: forward declaration of 'class sdf::Element'
+   class SDFORMAT_VISIBLE Element :
+                          ^
+In file included from /usr/include/sdformat-4.0/sdf/parser.hh:23:0,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:8,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:46:16: error: 'shared_ptr' in namespace 'std' does not name a template type
+   typedef std::shared_ptr<SDF> SDFPtr;
+                ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:74:29: error: variable or field 'setFindCallback' declared void
+   void setFindCallback(std::function<std::string (const std::string &)> _cb);
+                             ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:74:24: error: 'function' is not a member of 'std'
+   void setFindCallback(std::function<std::string (const std::string &)> _cb);
+                        ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:74:50: error: expected primary-expression before '(' token
+   void setFindCallback(std::function<std::string (const std::string &)> _cb);
+                                                  ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:74:51: error: expected primary-expression before 'const'
+   void setFindCallback(std::function<std::string (const std::string &)> _cb);
+                                                   ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:74:73: error: '_cb' was not declared in this scope
+   void setFindCallback(std::function<std::string (const std::string &)> _cb);
+                                                                         ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:94:13: error: 'ElementPtr' does not name a type
+     public: ElementPtr Root() const;
+             ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:98:29: error: 'ElementPtr' does not name a type
+     public: void Root(const ElementPtr _root);
+                             ^
+/usr/include/sdformat-4.0/sdf/SDFImpl.hh:117:13: error: 'ElementPtr' does not name a type
+     public: ElementPtr root SDF_DEPRECATED(4.0);
+             ^
+In file included from /usr/include/sdformat-4.0/sdf/sdf.hh:8:0,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/sdformat-4.0/sdf/parser.hh:32:13: error: 'SDFPtr' was not declared in this scope
+   bool init(SDFPtr _sdf);
+             ^
+/usr/include/sdformat-4.0/sdf/parser.hh:36:47: error: 'SDFPtr' has not been declared
+   bool initFile(const std::string &_filename, SDFPtr _sdf);
+                                               ^
+/usr/include/sdformat-4.0/sdf/parser.hh:40:47: error: 'ElementPtr' has not been declared
+   bool initFile(const std::string &_filename, ElementPtr _sdf);
+                                               ^
+/usr/include/sdformat-4.0/sdf/parser.hh:44:50: error: 'SDFPtr' has not been declared
+   bool initString(const std::string &_xmlString, SDFPtr _sdf);
+                                                  ^
+/usr/include/sdformat-4.0/sdf/parser.hh:48:40: error: 'SDFPtr' has not been declared
+   bool initDoc(TiXmlDocument *_xmlDoc, SDFPtr _sdf);
+                                        ^
+/usr/include/sdformat-4.0/sdf/parser.hh:52:40: error: 'ElementPtr' has not been declared
+   bool initDoc(TiXmlDocument *_xmlDoc, ElementPtr _sdf);
+                                        ^
+/usr/include/sdformat-4.0/sdf/parser.hh:56:36: error: 'ElementPtr' has not been declared
+   bool initXml(TiXmlElement *_xml, ElementPtr _sdf);
+                                    ^
+/usr/include/sdformat-4.0/sdf/parser.hh:60:47: error: 'SDFPtr' has not been declared
+   bool readFile(const std::string &_filename, SDFPtr _sdf);
+                                               ^
+/usr/include/sdformat-4.0/sdf/parser.hh:64:50: error: 'SDFPtr' has not been declared
+   bool readString(const std::string &_xmlString, SDFPtr _sdf);
+                                                  ^
+/usr/include/sdformat-4.0/sdf/parser.hh:67:50: error: 'ElementPtr' has not been declared
+   bool readString(const std::string &_xmlString, ElementPtr _sdf);
+                                                  ^
+/usr/include/sdformat-4.0/sdf/parser.hh:71:40: error: 'SDFPtr' has not been declared
+   bool readDoc(TiXmlDocument *_xmlDoc, SDFPtr _sdf, const std::string &_source);
+                                        ^
+/usr/include/sdformat-4.0/sdf/parser.hh:74:40: error: 'ElementPtr' has not been declared
+   bool readDoc(TiXmlDocument *_xmlDoc, ElementPtr _sdf,
+                                        ^
+/usr/include/sdformat-4.0/sdf/parser.hh:79:36: error: 'ElementPtr' has not been declared
+   bool readXml(TiXmlElement *_xml, ElementPtr _sdf);
+                                    ^
+/usr/include/sdformat-4.0/sdf/parser.hh:82:21: error: variable or field 'copyChildren' declared void
+   void copyChildren(ElementPtr _sdf, TiXmlElement *_xml);
+                     ^
+/usr/include/sdformat-4.0/sdf/parser.hh:82:21: error: 'ElementPtr' was not declared in this scope
+/usr/include/sdformat-4.0/sdf/parser.hh:82:51: error: expected primary-expression before '*' token
+   void copyChildren(ElementPtr _sdf, TiXmlElement *_xml);
+                                                   ^
+/usr/include/sdformat-4.0/sdf/parser.hh:82:52: error: '_xml' was not declared in this scope
+   void copyChildren(ElementPtr _sdf, TiXmlElement *_xml);
+                                                    ^
+/usr/include/sdformat-4.0/sdf/parser.hh:85:23: error: variable or field 'addNestedModel' declared void
+   void addNestedModel(ElementPtr _sdf, ElementPtr _includeSDF);
+                       ^
+/usr/include/sdformat-4.0/sdf/parser.hh:85:23: error: 'ElementPtr' was not declared in this scope
+/usr/include/sdformat-4.0/sdf/parser.hh:85:40: error: 'ElementPtr' was not declared in this scope
+   void addNestedModel(ElementPtr _sdf, ElementPtr _includeSDF);
+                                        ^
+In file included from /usr/include/gazebo-7/gazebo/common/Battery.hh:26:0,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/CommonTypes.hh:144:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<Battery> BatteryPtr;
+                  ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:8:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Battery.hh:50:42: error: expected template-name before '<' token
+       public std::enable_shared_from_this<Battery>
+                                          ^
+/usr/include/gazebo-7/gazebo/common/Battery.hh:50:42: error: expected '{' before '<' token
+/usr/include/gazebo-7/gazebo/common/Battery.hh:50:42: error: expected unqualified-id before '<' token
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:17:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh: In static member function 'static void gazebo::common::EnumIface<T>::Set(T&, const string&)':
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:86:21: error: 'begin' does not name a type
+         static auto begin = std::begin(names);
+                     ^
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:87:21: error: 'end' does not name a type
+         static auto end = std::end(names);
+                     ^
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:89:14: error: 'find' does not name a type
+         auto find = std::find(begin, end, _str);
+              ^
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:90:13: error: 'find' was not declared in this scope
+         if (find != end)
+             ^
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:90:13: note: suggested alternatives:
+In file included from /usr/include/c++/5/algorithm:62:0,
+                 from /usr/include/boost/iterator/iterator_concepts.hpp:29,
+                 from /usr/include/boost/range/concepts.hpp:20,
+                 from /usr/include/boost/range/size_type.hpp:20,
+                 from /usr/include/boost/range/size.hpp:21,
+                 from /usr/include/boost/range/functions.hpp:20,
+                 from /usr/include/boost/range/iterator_range_core.hpp:38,
+                 from /usr/include/boost/lexical_cast.hpp:30,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/c++/5/bits/stl_algo.h:3782:5: note:   'std::find'
+     find(_InputIterator __first, _InputIterator __last,
+     ^
+In file included from /usr/include/boost/mpl/aux_/contains_impl.hpp:20:0,
+                 from /usr/include/boost/mpl/contains.hpp:20,
+                 from /usr/include/boost/math/policies/policy.hpp:10,
+                 from /usr/include/boost/math/special_functions/math_fwd.hpp:28,
+                 from /usr/include/boost/math/special_functions/sign.hpp:17,
+                 from /usr/include/boost/lexical_cast/detail/inf_nan.hpp:34,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical_streams.hpp:64,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical.hpp:53,
+                 from /usr/include/boost/lexical_cast/try_lexical_convert.hpp:34,
+                 from /usr/include/boost/lexical_cast.hpp:32,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/mpl/find.hpp:28:8: note:   'boost::mpl::find'
+ struct find
+        ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:17:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:90:21: error: 'end' was not declared in this scope
+         if (find != end)
+                     ^
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:90:21: note: suggested alternatives:
+In file included from /usr/include/boost/range/functions.hpp:19:0,
+                 from /usr/include/boost/range/iterator_range_core.hpp:38,
+                 from /usr/include/boost/lexical_cast.hpp:30,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/range/end.hpp:100:61: note:   'boost::range_adl_barrier::end'
+ inline BOOST_DEDUCED_TYPENAME range_iterator<const T>::type end( const T& r )
+                                                             ^
+In file included from /usr/include/boost/mpl/list/aux_/begin_end.hpp:17:0,
+                 from /usr/include/boost/mpl/list/list0.hpp:27,
+                 from /usr/include/boost/mpl/list/list10.hpp:18,
+                 from /usr/include/boost/mpl/list/list20.hpp:18,
+                 from /usr/include/boost/mpl/list.hpp:36,
+                 from /usr/include/boost/math/policies/policy.hpp:9,
+                 from /usr/include/boost/math/special_functions/math_fwd.hpp:28,
+                 from /usr/include/boost/math/special_functions/sign.hpp:17,
+                 from /usr/include/boost/lexical_cast/detail/inf_nan.hpp:34,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical_streams.hpp:64,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical.hpp:53,
+                 from /usr/include/boost/lexical_cast/try_lexical_convert.hpp:34,
+                 from /usr/include/boost/lexical_cast.hpp:32,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/mpl/begin_end_fwd.hpp:23:38: note:   'boost::mpl::end'
+ template< typename Sequence > struct end;
+                                      ^
+In file included from /usr/include/boost/range/functions.hpp:19:0,
+                 from /usr/include/boost/range/iterator_range_core.hpp:38,
+                 from /usr/include/boost/lexical_cast.hpp:30,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/range/end.hpp:100:61: note:   'boost::range_adl_barrier::end'
+ inline BOOST_DEDUCED_TYPENAME range_iterator<const T>::type end( const T& r )
+                                                             ^
+In file included from /usr/include/boost/filesystem.hpp:17:0,
+                 from /usr/include/gazebo-7/gazebo/common/CommonIface.hh:24,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:12,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/filesystem/operations.hpp:1180:32: note:   'boost::filesystem::end'
+   recursive_directory_iterator end(const recursive_directory_iterator&)
+                                ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:17:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:92:45: error: 'begin' was not declared in this scope
+           _e = static_cast<T>(std::distance(begin, find));
+                                             ^
+/usr/include/gazebo-7/gazebo/common/EnumIface.hh:92:45: note: suggested alternatives:
+In file included from /usr/include/boost/range/functions.hpp:18:0,
+                 from /usr/include/boost/range/iterator_range_core.hpp:38,
+                 from /usr/include/boost/lexical_cast.hpp:30,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/range/begin.hpp:106:61: note:   'boost::range_adl_barrier::begin'
+ inline BOOST_DEDUCED_TYPENAME range_iterator<const T>::type begin( const T& r )
+                                                             ^
+In file included from /usr/include/boost/mpl/list/aux_/begin_end.hpp:17:0,
+                 from /usr/include/boost/mpl/list/list0.hpp:27,
+                 from /usr/include/boost/mpl/list/list10.hpp:18,
+                 from /usr/include/boost/mpl/list/list20.hpp:18,
+                 from /usr/include/boost/mpl/list.hpp:36,
+                 from /usr/include/boost/math/policies/policy.hpp:9,
+                 from /usr/include/boost/math/special_functions/math_fwd.hpp:28,
+                 from /usr/include/boost/math/special_functions/sign.hpp:17,
+                 from /usr/include/boost/lexical_cast/detail/inf_nan.hpp:34,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical_streams.hpp:64,
+                 from /usr/include/boost/lexical_cast/detail/converter_lexical.hpp:53,
+                 from /usr/include/boost/lexical_cast/try_lexical_convert.hpp:34,
+                 from /usr/include/boost/lexical_cast.hpp:32,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/mpl/begin_end_fwd.hpp:22:38: note:   'boost::mpl::begin'
+ template< typename Sequence > struct begin;
+                                      ^
+In file included from /usr/include/boost/range/functions.hpp:18:0,
+                 from /usr/include/boost/range/iterator_range_core.hpp:38,
+                 from /usr/include/boost/lexical_cast.hpp:30,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/range/begin.hpp:106:61: note:   'boost::range_adl_barrier::begin'
+ inline BOOST_DEDUCED_TYPENAME range_iterator<const T>::type begin( const T& r )
+                                                             ^
+In file included from /usr/include/boost/filesystem.hpp:17:0,
+                 from /usr/include/gazebo-7/gazebo/common/CommonIface.hh:24,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:12,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/filesystem/operations.hpp:1177:39: note:   'boost::filesystem::begin'
+   const recursive_directory_iterator& begin(const recursive_directory_iterator& iter)
+                                       ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:18:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Event.hh: At global scope:
+/usr/include/gazebo-7/gazebo/common/Event.hh:155:20: error: 'atomic_bool' in namespace 'std' does not name a type
+       public: std::atomic_bool on;
+                    ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:158:20: error: 'shared_ptr' in namespace 'std' does not name a template type
+       public: std::shared_ptr<boost::function<T> > callback;
+                    ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In constructor 'gazebo::event::EventConnection<T>::EventConnection(bool, boost::function<Signature>*)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:147:17: error: class 'gazebo::event::EventConnection<T>' does not have any field named 'callback'
+               : callback(_cb)
+                 ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: At global scope:
+/usr/include/gazebo-7/gazebo/common/Event.hh:168:29: error: 'shared_ptr' is not a member of 'std'
+       typedef std::map<int, std::shared_ptr<EventConnection<T> > >
+                             ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:168:29: note: suggested alternatives:
+In file included from /usr/include/boost/throw_exception.hpp:42:0,
+                 from /usr/include/boost/lexical_cast/bad_lexical_cast.hpp:28,
+                 from /usr/include/boost/lexical_cast.hpp:31,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/exception/exception.hpp:148:11: note:   'boost::shared_ptr'
+     class shared_ptr;
+           ^
+/usr/include/boost/exception/exception.hpp:148:11: note:   'boost::shared_ptr'
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:18:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Event.hh:168:29: error: 'shared_ptr' is not a member of 'std'
+       typedef std::map<int, std::shared_ptr<EventConnection<T> > >
+                             ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:168:29: note: suggested alternatives:
+In file included from /usr/include/boost/throw_exception.hpp:42:0,
+                 from /usr/include/boost/lexical_cast/bad_lexical_cast.hpp:28,
+                 from /usr/include/boost/lexical_cast.hpp:31,
+                 from /usr/include/sdformat-4.0/sdf/Param.hh:23,
+                 from /usr/include/sdformat-4.0/sdf/Element.hh:24,
+                 from /usr/include/sdformat-4.0/sdf/sdf.hh:5,
+                 from /usr/include/gazebo-7/gazebo/common/Battery.hh:25,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:8,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/exception/exception.hpp:148:11: note:   'boost::shared_ptr'
+     class shared_ptr;
+           ^
+/usr/include/boost/exception/exception.hpp:148:11: note:   'boost::shared_ptr'
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:18:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Event.hh:168:64: error: template argument 2 is invalid
+       typedef std::map<int, std::shared_ptr<EventConnection<T> > >
+                                                                ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:168:64: error: template argument 4 is invalid
+/usr/include/gazebo-7/gazebo/common/Event.hh:168:66: error: expected unqualified-id before '>' token
+       typedef std::map<int, std::shared_ptr<EventConnection<T> > >
+                                                                  ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:172:15: error: 'EvtConnectionMap' does not name a type
+       public: EvtConnectionMap connections;
+               ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:175:20: error: 'mutex' in namespace 'std' does not name a type
+       public: std::mutex mutex;
+                    ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:178:66: error: template argument 1 is invalid
+       public: std::list<typename EvtConnectionMap::const_iterator>
+                                                                  ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:178:66: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal()':
+/usr/include/gazebo-7/gazebo/common/Event.hh:367:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:372:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:372:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:372:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:372:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:372:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:372:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:382:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:387:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:387:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:387:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:387:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:387:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:387:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:398:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:403:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:403:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:403:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:403:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:403:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:403:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:415:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:420:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:420:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:420:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:420:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:420:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:420:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&, const P4&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:434:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:439:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:439:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:439:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:439:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:439:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:439:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&, const P4&, const P5&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:455:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:460:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:460:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:460:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:460:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:460:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:460:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&, const P4&, const P5&, const P6&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:477:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:482:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:482:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:482:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:482:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:482:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:482:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&, const P4&, const P5&, const P6&, const P7&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:500:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections.begin())
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:505:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:505:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:505:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:505:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:505:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:505:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&, const P4&, const P5&, const P6&, const P7&, const P8&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:525:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:532:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:532:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:532:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:532:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:532:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:532:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&, const P4&, const P5&, const P6&, const P7&, const P8&, const P9&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:554:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:562:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:562:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:562:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:562:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:562:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:562:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Signal(const P1&, const P2&, const P3&, const P4&, const P5&, const P6&, const P7&, const P8&, const P9&, const P10&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:585:19: error: 'iter' does not name a type
+         for (auto iter: this->myDataPtr->connections)
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:593:7: error: expected ';' before '}' token
+       }
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:593:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:593:7: error: expected ';' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:593:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:593:7: error: expected ')' before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh:593:7: error: expected primary-expression before '}' token
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'gazebo::event::ConnectionPtr gazebo::event::EventT<T>::Connect(const boost::function<Signature>&)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:627:21: error: ISO C++ forbids declaration of 'iter' with no type [-fpermissive]
+         auto const &iter = this->myDataPtr->connections.rbegin();
+                     ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:628:21: error: base operand of '->' is not a pointer
+         index = iter->first + 1;
+                     ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'virtual void gazebo::event::EventT<T>::Disconnect(int)':
+/usr/include/gazebo-7/gazebo/common/Event.hh:662:19: error: ISO C++ forbids declaration of 'it' with no type [-fpermissive]
+       auto const &it = this->myDataPtr->connections.find(_id);
+                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:666:11: error: base operand of '->' is not a pointer
+         it->second->on = false;
+           ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In member function 'void gazebo::event::EventT<T>::Cleanup()':
+/usr/include/gazebo-7/gazebo/common/Event.hh:675:7: error: 'lock_guard' is not a member of 'std'
+       std::lock_guard<std::mutex> lock(this->myDataPtr->mutex);
+       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:675:7: note: suggested alternative:
+In file included from /usr/include/boost/thread/pthread/thread_data.hpp:11:0,
+                 from /usr/include/boost/thread/thread_only.hpp:17,
+                 from /usr/include/boost/thread/thread.hpp:12,
+                 from /usr/include/boost/thread.hpp:13,
+                 from /usr/include/gazebo-7/gazebo/common/Console.hh:27,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:15,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/thread/lock_guard.hpp:26:9: note:   'boost::lock_guard'
+   class lock_guard
+         ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:18:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Event.hh:675:23: error: 'mutex' is not a member of 'std'
+       std::lock_guard<std::mutex> lock(this->myDataPtr->mutex);
+                       ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:675:23: note: suggested alternative:
+In file included from /usr/include/boost/thread/mutex.hpp:16:0,
+                 from /usr/include/boost/thread/pthread/thread_data.hpp:13,
+                 from /usr/include/boost/thread/thread_only.hpp:17,
+                 from /usr/include/boost/thread/thread.hpp:12,
+                 from /usr/include/boost/thread.hpp:13,
+                 from /usr/include/gazebo-7/gazebo/common/Console.hh:27,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:15,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/boost/thread/pthread/mutex.hpp:92:11: note:   'boost::mutex'
+     class mutex
+           ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:18:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Event.hh:677:18: error: ISO C++ forbids declaration of 'conn' with no type [-fpermissive]
+       for (auto &conn : this->myDataPtr->connectionsToRemove)
+                  ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:677:25: warning: range-based 'for' loops only available with -std=c++11 or -std=gnu++11
+       for (auto &conn : this->myDataPtr->connectionsToRemove)
+                         ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:19:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Events.hh: At global scope:
+/usr/include/gazebo-7/gazebo/common/Events.hh:368:35: error: 'ElementPtr' is not a member of 'sdf'
+       public: static EventT<void (sdf::ElementPtr,
+                                   ^
+/usr/include/gazebo-7/gazebo/common/Events.hh:371:33: error: expression list treated as compound expression in functional cast [-fpermissive]
+                   const uint32_t)> createSensor;
+                                 ^
+/usr/include/gazebo-7/gazebo/common/Events.hh:371:34: error: template argument 1 is invalid
+                   const uint32_t)> createSensor;
+                                  ^
+/usr/include/gazebo-7/gazebo/common/Events.hh: In static member function 'static gazebo::event::ConnectionPtr gazebo::event::Events::ConnectCreateSensor(T)':
+/usr/include/gazebo-7/gazebo/common/Events.hh:221:37: error: request for member 'Connect' in 'gazebo::event::Events::createSensor', which is of non-class type 'int'
+               { return createSensor.Connect(_subscriber); }
+                                     ^
+/usr/include/gazebo-7/gazebo/common/Events.hh: In static member function 'static void gazebo::event::Events::DisconnectCreateSensor(gazebo::event::ConnectionPtr)':
+/usr/include/gazebo-7/gazebo/common/Events.hh:226:30: error: request for member 'Disconnect' in 'gazebo::event::Events::createSensor', which is of non-class type 'int'
+               { createSensor.Disconnect(_subscriber); }
+                              ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:33:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/OBJLoader.hh: At global scope:
+/usr/include/gazebo-7/gazebo/common/OBJLoader.hh:54:21: error: 'unique_ptr' in namespace 'std' does not name a template type
+       private: std::unique_ptr<OBJLoaderPrivate> dataPtr;
+                     ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:34:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/PID.hh:213:33: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       private: double cmdMax = -1.0;
+                                 ^
+/usr/include/gazebo-7/gazebo/common/PID.hh:216:32: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+       private: double cmdMin = 0.0;
+                                ^
+In file included from /usr/include/gazebo-7/gazebo/common/Plugin.hh:49:0,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:35,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/physics/PhysicsTypes.hh:124:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<UserCmd> UserCmdPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/physics/PhysicsTypes.hh:128:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<UserCmdManager> UserCmdManagerPtr;
+                  ^
+In file included from /usr/include/gazebo-7/gazebo/common/Plugin.hh:50:0,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:35,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:60:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<AltimeterSensor> AltimeterSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:64:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<Sensor> SensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:68:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<RaySensor> RaySensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:72:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<CameraSensor> CameraSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:76:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<MagnetometerSensor> MagnetometerSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:80:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<MultiCameraSensor> MultiCameraSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:84:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<DepthCameraSensor> DepthCameraSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:88:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<WideAngleCameraSensor> WideAngleCameraSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:92:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<ContactSensor> ContactSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:96:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<ImuSensor> ImuSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:100:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<GpuRaySensor> GpuRaySensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:104:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<RFIDSensor> RFIDSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:108:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<RFIDTag> RFIDTagPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:112:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<SonarSensor> SonarSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:116:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<ForceTorqueSensor> ForceTorqueSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:120:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<GpsSensor> GpsSensorPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:124:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<Noise> NoisePtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:128:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<GaussianNoiseModel> GaussianNoiseModelPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:131:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<ImageGaussianNoiseModel>
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:136:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<WirelessTransceiver> WirelessTransceiverPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:140:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<WirelessTransmitter> WirelessTransmitterPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:144:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<WirelessReceiver> WirelessReceiverPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:152:25: error: 'SensorPtr' was not declared in this scope
+     typedef std::vector<SensorPtr> Sensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:152:34: error: template argument 1 is invalid
+     typedef std::vector<SensorPtr> Sensor_V;
+                                  ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:152:34: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:156:25: error: 'RaySensorPtr' was not declared in this scope
+     typedef std::vector<RaySensorPtr> RaySensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:156:37: error: template argument 1 is invalid
+     typedef std::vector<RaySensorPtr> RaySensor_V;
+                                     ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:156:37: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:160:25: error: 'CameraSensorPtr' was not declared in this scope
+     typedef std::vector<CameraSensorPtr> CameraSensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:160:40: error: template argument 1 is invalid
+     typedef std::vector<CameraSensorPtr> CameraSensor_V;
+                                        ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:160:40: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:164:25: error: 'MultiCameraSensorPtr' was not declared in this scope
+     typedef std::vector<MultiCameraSensorPtr> MultiCameraSensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:164:45: error: template argument 1 is invalid
+     typedef std::vector<MultiCameraSensorPtr> MultiCameraSensor_V;
+                                             ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:164:45: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:168:25: error: 'DepthCameraSensorPtr' was not declared in this scope
+     typedef std::vector<DepthCameraSensorPtr> DepthCameraSensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:168:45: error: template argument 1 is invalid
+     typedef std::vector<DepthCameraSensorPtr> DepthCameraSensor_V;
+                                             ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:168:45: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:172:25: error: 'ContactSensorPtr' was not declared in this scope
+     typedef std::vector<ContactSensorPtr> ContactSensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:172:41: error: template argument 1 is invalid
+     typedef std::vector<ContactSensorPtr> ContactSensor_V;
+                                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:172:41: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:176:25: error: 'ImuSensorPtr' was not declared in this scope
+     typedef std::vector<ImuSensorPtr> ImuSensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:176:37: error: template argument 1 is invalid
+     typedef std::vector<ImuSensorPtr> ImuSensor_V;
+                                     ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:176:37: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:180:25: error: 'GpuRaySensorPtr' was not declared in this scope
+     typedef std::vector<GpuRaySensorPtr> GpuRaySensor_V;
+                         ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:180:40: error: template argument 1 is invalid
+     typedef std::vector<GpuRaySensorPtr> GpuRaySensor_V;
+                                        ^
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:180:40: error: template argument 2 is invalid
+/usr/include/gazebo-7/gazebo/sensors/SensorTypes.hh:204:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<LogicalCameraSensor> LogicalCameraSensorPtr;
+                  ^
+In file included from /usr/include/gazebo-7/gazebo/common/Plugin.hh:51:0,
+                 from /usr/include/gazebo-7/gazebo/common/common.hh:35,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:113:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<Visual> VisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:117:18: error: 'weak_ptr' in namespace 'std' does not name a template type
+     typedef std::weak_ptr<Visual> VisualWeakPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:121:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<LaserVisual> LaserVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:125:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<SonarVisual> SonarVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:129:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<WrenchVisual> WrenchVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:133:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<CameraVisual> CameraVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:137:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<LogicalCameraVisual> LogicalCameraVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:141:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<JointVisual> JointVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:145:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<ContactVisual> ContactVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:149:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<ArrowVisual> ArrowVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:153:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<AxisVisual> AxisVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:157:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<COMVisual> COMVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:161:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<InertiaVisual> InertiaVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:165:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<RFIDVisual> RFIDVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:169:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<RFIDTagVisual> RFIDTagVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:173:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<ApplyWrenchVisual> ApplyWrenchVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:177:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<OriginVisual> OriginVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:181:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<LinkFrameVisual> LinkFrameVisualPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:189:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<SelectionObj> SelectionObjPtr;
+                  ^
+/usr/include/gazebo-7/gazebo/rendering/RenderTypes.hh:201:18: error: 'shared_ptr' in namespace 'std' does not name a template type
+     typedef std::shared_ptr<LensFlare> LensFlarePtr;
+                  ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:35:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:236:36: error: 'sdf::ElementPtr' has not been declared
+                               sdf::ElementPtr _sdf) = 0;
+                                    ^
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:261:36: error: 'sdf::ElementPtr' has not been declared
+                               sdf::ElementPtr _sdf) = 0;
+                                    ^
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:289:40: error: 'gazebo::sensors::SensorPtr' has not been declared
+     public: virtual void Load(sensors::SensorPtr _sensor,
+                                        ^
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:290:36: error: 'sdf::ElementPtr' has not been declared
+                               sdf::ElementPtr _sdf) = 0;
+                                    ^
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:342:42: error: 'gazebo::rendering::VisualPtr' has not been declared
+     public: virtual void Load(rendering::VisualPtr _visual,
+                                          ^
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:343:36: error: 'sdf::ElementPtr' has not been declared
+                               sdf::ElementPtr _sdf) = 0;
+                                    ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:36:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/SemanticVersion.hh:147:21: error: 'unique_ptr' in namespace 'std' does not name a template type
+       private: std::unique_ptr<SemanticVersionPrivate> dataPtr;
+                     ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:43:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/SVGLoader.hh:56:39: warning: defaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+       public: virtual ~SVGCommand() = default;
+                                       ^
+In file included from /usr/local/include/ignition/math/MassMatrix3.hh:27:0,
+                 from /usr/local/include/ignition/math/Inertial.hh:21,
+                 from /usr/include/gazebo-7/gazebo/msgs/msgs.hh:24,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:21,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/local/include/ignition/math/Material.hh:90:33: error: expected ',' or '...' before '&&' token
+       public: Material(Material &&_material);
+                                 ^
+/usr/local/include/ignition/math/Material.hh:90:44: error: invalid constructor; you probably meant 'ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Material (const ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Material&)'
+       public: Material(Material &&_material);
+                                            ^
+/usr/local/include/ignition/math/Material.hh:119:44: error: expected ',' or '...' before '&&' token
+       public: Material &operator=(Material &&_material);
+                                            ^
+/usr/local/include/ignition/math/Material.hh:161:43: error: 'nullptr' was not declared in this scope
+       private: MaterialPrivate *dataPtr = nullptr;
+                                           ^
+In file included from /usr/local/include/ignition/math/Inertial.hh:21:0,
+                 from /usr/include/gazebo-7/gazebo/msgs/msgs.hh:24,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:21,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/local/include/ignition/math/MassMatrix3.hh:477:19: error: 'IGN_MASSMATRIX3_DEFAULT_TOLERANCE' was not declared in this scope
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                   ^
+/usr/local/include/ignition/math/MassMatrix3.hh:477:54: error: expected primary-expression before '>' token
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                                                      ^
+/usr/local/include/ignition/math/MassMatrix3.hh:477:54: error: expected primary-expression at end of input
+/usr/local/include/ignition/math/MassMatrix3.hh:510:19: error: 'IGN_MASSMATRIX3_DEFAULT_TOLERANCE' was not declared in this scope
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                   ^
+/usr/local/include/ignition/math/MassMatrix3.hh:510:54: error: expected primary-expression before '>' token
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                                                      ^
+/usr/local/include/ignition/math/MassMatrix3.hh:510:54: error: expected primary-expression at end of input
+/usr/local/include/ignition/math/MassMatrix3.hh:531:19: error: 'IGN_MASSMATRIX3_DEFAULT_TOLERANCE' was not declared in this scope
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                   ^
+/usr/local/include/ignition/math/MassMatrix3.hh:531:54: error: expected primary-expression before '>' token
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                                                      ^
+/usr/local/include/ignition/math/MassMatrix3.hh:531:54: error: expected primary-expression at end of input
+/usr/local/include/ignition/math/MassMatrix3.hh:559:19: error: 'IGN_MASSMATRIX3_DEFAULT_TOLERANCE' was not declared in this scope
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>)
+                   ^
+/usr/local/include/ignition/math/MassMatrix3.hh:559:54: error: expected primary-expression before '>' token
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>)
+                                                      ^
+/usr/local/include/ignition/math/MassMatrix3.hh:559:54: error: expected primary-expression at end of input
+/usr/local/include/ignition/math/MassMatrix3.hh:597:19: error: 'IGN_MASSMATRIX3_DEFAULT_TOLERANCE' was not declared in this scope
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                   ^
+/usr/local/include/ignition/math/MassMatrix3.hh:597:54: error: expected primary-expression before '>' token
+                   IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>) const
+                                                      ^
+/usr/local/include/ignition/math/MassMatrix3.hh:597:54: error: expected primary-expression at end of input
+/usr/local/include/ignition/math/MassMatrix3.hh:624:40: error: 'IGN_MASSMATRIX3_DEFAULT_TOLERANCE' was not declared in this scope
+                   const T _tolerance = IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>)
+                                        ^
+/usr/local/include/ignition/math/MassMatrix3.hh:624:75: error: expected primary-expression before '>' token
+                   const T _tolerance = IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>)
+                                                                           ^
+/usr/local/include/ignition/math/MassMatrix3.hh:624:75: error: expected primary-expression at end of input
+In file included from /usr/include/gazebo-7/gazebo/msgs/msgs.hh:24:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:21,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/local/include/ignition/math/Inertial.hh:85:40: error: 'IGN_MASSMATRIX3_DEFAULT_TOLERANCE' was not declared in this scope
+                   const T _tolerance = IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>)
+                                        ^
+/usr/local/include/ignition/math/Inertial.hh:85:75: error: expected primary-expression before '>' token
+                   const T _tolerance = IGN_MASSMATRIX3_DEFAULT_TOLERANCE<T>)
+                                                                           ^
+/usr/local/include/ignition/math/Inertial.hh:85:75: error: expected primary-expression at end of input
+/usr/local/include/ignition/math/Inertial.hh: In member function 'ignition::math::Matrix3<T> ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Inertial<T>::Moi() const':
+/usr/local/include/ignition/math/Inertial.hh:131:14: error: 'R' does not name a type
+         auto R = Matrix3<T>(this->pose.Rot());
+              ^
+/usr/local/include/ignition/math/Inertial.hh:132:16: error: 'R' was not declared in this scope
+         return R * this->massMatrix.Moi() * R.Transposed();
+                ^
+/usr/local/include/ignition/math/Inertial.hh: In member function 'bool ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Inertial<T>::SetInertialRotation(const ignition::math::Quaternion<T>&)':
+/usr/local/include/ignition/math/Inertial.hh:141:14: error: 'moi' does not name a type
+         auto moi = this->Moi();
+              ^
+/usr/local/include/ignition/math/Inertial.hh:143:14: error: 'R' does not name a type
+         auto R = Matrix3<T>(_q);
+              ^
+/usr/local/include/ignition/math/Inertial.hh:144:40: error: 'R' was not declared in this scope
+         return this->massMatrix.SetMoi(R.Transposed() * moi * R);
+                                        ^
+/usr/local/include/ignition/math/Inertial.hh:144:57: error: 'moi' was not declared in this scope
+         return this->massMatrix.SetMoi(R.Transposed() * moi * R);
+                                                         ^
+/usr/local/include/ignition/math/Inertial.hh: In member function 'bool ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Inertial<T>::SetMassMatrixRotation(const ignition::math::Quaternion<T>&, T)':
+/usr/local/include/ignition/math/Inertial.hh:164:20: error: 'moments' does not name a type
+         const auto moments = this->MassMatrix().PrincipalMoments(_tol);
+                    ^
+/usr/local/include/ignition/math/Inertial.hh:165:20: error: 'diag' does not name a type
+         const auto diag = Matrix3<T>(
+                    ^
+/usr/local/include/ignition/math/Inertial.hh:169:20: error: 'R' does not name a type
+         const auto R = Matrix3<T>(_q);
+                    ^
+/usr/local/include/ignition/math/Inertial.hh:170:40: error: 'R' was not declared in this scope
+         return this->massMatrix.SetMoi(R * diag * R.Transposed());
+                                        ^
+/usr/local/include/ignition/math/Inertial.hh:170:44: error: 'diag' was not declared in this scope
+         return this->massMatrix.SetMoi(R * diag * R.Transposed());
+                                            ^
+/usr/local/include/ignition/math/Inertial.hh: In member function 'ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Inertial<T>& ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Inertial<T>::operator+=(const ignition::math::IGNITION_MATH_VERSION_NAMESPACE::Inertial<T>&)':
+/usr/local/include/ignition/math/Inertial.hh:221:14: error: 'com1' does not name a type
+         auto com1 = this->Pose().Pos();
+              ^
+/usr/local/include/ignition/math/Inertial.hh:222:14: error: 'com2' does not name a type
+         auto com2 = _inertial.Pose().Pos();
+              ^
+/usr/local/include/ignition/math/Inertial.hh:224:14: error: 'com' does not name a type
+         auto com = (m1*com1 + m2*com2) / mass;
+              ^
+/usr/local/include/ignition/math/Inertial.hh:231:16: error: 'moi' does not name a type
+           auto moi = this->Moi() + _inertial.Moi();
+                ^
+/usr/local/include/ignition/math/Inertial.hh:232:40: error: there are no arguments to 'moi' that depend on a template parameter, so a declaration of 'moi' must be available [-fpermissive]
+           ixxyyzz = Vector3<T>(moi(0, 0), moi(1, 1), moi(2, 2));
+                                        ^
+/usr/local/include/ignition/math/Inertial.hh:232:40: note: (if you use '-fpermissive', G++ will accept your code, but allowing the use of an undeclared name is deprecated)
+/usr/local/include/ignition/math/Inertial.hh:232:51: error: there are no arguments to 'moi' that depend on a template parameter, so a declaration of 'moi' must be available [-fpermissive]
+           ixxyyzz = Vector3<T>(moi(0, 0), moi(1, 1), moi(2, 2));
+                                                   ^
+/usr/local/include/ignition/math/Inertial.hh:232:62: error: there are no arguments to 'moi' that depend on a template parameter, so a declaration of 'moi' must be available [-fpermissive]
+           ixxyyzz = Vector3<T>(moi(0, 0), moi(1, 1), moi(2, 2));
+                                                              ^
+/usr/local/include/ignition/math/Inertial.hh:233:40: error: there are no arguments to 'moi' that depend on a template parameter, so a declaration of 'moi' must be available [-fpermissive]
+           ixyxzyz = Vector3<T>(moi(0, 1), moi(0, 2), moi(1, 2));
+                                        ^
+/usr/local/include/ignition/math/Inertial.hh:233:51: error: there are no arguments to 'moi' that depend on a template parameter, so a declaration of 'moi' must be available [-fpermissive]
+           ixyxzyz = Vector3<T>(moi(0, 1), moi(0, 2), moi(1, 2));
+                                                   ^
+/usr/local/include/ignition/math/Inertial.hh:233:62: error: there are no arguments to 'moi' that depend on a template parameter, so a declaration of 'moi' must be available [-fpermissive]
+           ixyxzyz = Vector3<T>(moi(0, 1), moi(0, 2), moi(1, 2));
+                                                              ^
+/usr/local/include/ignition/math/Inertial.hh:237:16: error: 'dc' does not name a type
+           auto dc = com1 - com;
+                ^
+/usr/local/include/ignition/math/Inertial.hh:238:41: error: 'dc' was not declared in this scope
+           ixxyyzz.X() += m1 * (std::pow(dc[1], 2) + std::pow(dc[2], 2));
+                                         ^
+/usr/local/include/ignition/math/Inertial.hh:246:16: error: 'dc' does not name a type
+           auto dc = com2 - com;
+                ^
+/usr/local/include/ignition/math/Inertial.hh:247:41: error: 'dc' was not declared in this scope
+           ixxyyzz.X() += m2 * (std::pow(dc[1], 2) + std::pow(dc[2], 2));
+                                         ^
+/usr/local/include/ignition/math/Inertial.hh:255:31: error: 'com' was not declared in this scope
+         this->pose = Pose3<T>(com, Quaternion<T>::Identity);
+                               ^
+In file included from /usr/include/gazebo-7/gazebo/gazebo_core.hh:21:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh: At global scope:
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:352:42: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::TrackVisual TrackVisualFromSDF(sdf::ElementPtr _sdf);
+                                          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:358:26: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::GUI GUIFromSDF(sdf::ElementPtr _sdf);
+                          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:364:30: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Light LightFromSDF(sdf::ElementPtr _sdf);
+                              ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:370:32: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::MeshGeom MeshFromSDF(sdf::ElementPtr _sdf);
+                                ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:376:36: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Geometry GeometryFromSDF(sdf::ElementPtr _sdf);
+                                    ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:382:32: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Visual VisualFromSDF(sdf::ElementPtr _sdf);
+                                ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:388:38: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Collision CollisionFromSDF(sdf::ElementPtr _sdf);
+                                      ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:394:34: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Surface SurfaceFromSDF(sdf::ElementPtr _sdf);
+                                  ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:400:36: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Friction FrictionFromSDF(sdf::ElementPtr _sdf);
+                                    ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:406:28: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Axis AxisFromSDF(sdf::ElementPtr _sdf);
+                            ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:412:30: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Joint JointFromSDF(sdf::ElementPtr _sdf);
+                              ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:418:43: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     msgs::Plugin PluginFromSDF(const sdf::ElementPtr _sdf);
+                                           ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:426:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr VisualToSDF(const msgs::Visual &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:437:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr MaterialToSDF(const msgs::Material &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:458:26: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Fog FogFromSDF(sdf::ElementPtr _sdf);
+                          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:464:30: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Scene SceneFromSDF(sdf::ElementPtr _sdf);
+                              ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:473:32: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::Sensor SensorFromSDF(sdf::ElementPtr _sdf);
+                                ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:480:44: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::CameraSensor CameraSensorFromSDF(sdf::ElementPtr _sdf);
+                                            ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:487:38: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::RaySensor RaySensorFromSDF(sdf::ElementPtr _sdf);
+                                      ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:494:46: error: 'ElementPtr' is not a member of 'sdf'
+     msgs::ContactSensor ContactSensorFromSDF(sdf::ElementPtr _sdf);
+                                              ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:502:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr LightToSDF(const msgs::Light &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:511:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr CameraSensorToSDF(const msgs::CameraSensor &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:520:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr PluginToSDF(const msgs::Plugin &_plugin,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:529:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr CollisionToSDF(const msgs::Collision &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:540:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr LinkToSDF(const msgs::Link &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:549:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr InertialToSDF(const msgs::Inertial &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:558:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr SurfaceToSDF(const msgs::Surface &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:570:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr GeometryToSDF(const msgs::Geometry &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:579:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr MeshToSDF(const msgs::MeshGeom &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:633:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr ModelToSDF(const msgs::Model &_msg,
+          ^
+/usr/include/gazebo-7/gazebo/msgs/msgs.hh:642:10: error: 'ElementPtr' in namespace 'sdf' does not name a type
+     sdf::ElementPtr JointToSDF(const msgs::Joint &_msg,
+          ^
+In file included from /usr/include/gazebo-7/gazebo/transport/transport.hh:2:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:22,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/transport/CallbackHelper.hh:95:31: error: 'mutex' in namespace 'std' does not name a type
+       protected: mutable std::mutex latchingMutex;
+                               ^
+In file included from /usr/include/gazebo-7/gazebo/gazebo_core.hh:23:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/Server.hh:94:33: error: 'sdf::ElementPtr' has not been declared
+     private: bool LoadImpl(sdf::ElementPtr _elem,
+                                 ^
+/usr/include/gazebo-7/gazebo/Server.hh:118:19: error: 'unique_ptr' in namespace 'std' does not name a template type
+     private: std::unique_ptr<ServerPrivate> dataPtr;
+                   ^
+In file included from /usr/include/gazebo-7/gazebo/gazebo_core.hh:24:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/Master.hh:133:19: error: 'unique_ptr' in namespace 'std' does not name a template type
+     private: std::unique_ptr<MasterPrivate> dataPtr;
+                   ^
+/home/workspace/myrobot/script/hello.cpp:8:16: error: expected ':' before 'WorldPluginMyRobot'
+         public WorldPluginMyRobot : WorldPlugin()
+                ^
+/home/workspace/myrobot/script/hello.cpp:8:49: error: invalid cast to abstract class type 'gazebo::WorldPlugin'
+         public WorldPluginMyRobot : WorldPlugin()
+                                                 ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:35:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:220:9: note:   because the following virtual functions are pure within 'gazebo::WorldPlugin':
+   class WorldPlugin : public PluginT<WorldPlugin>
+         ^
+/usr/include/gazebo-7/gazebo/common/Plugin.hh:235:26: note: 	virtual void gazebo::WorldPlugin::Load(gazebo::physics::WorldPtr, int)
+     public: virtual void Load(physics::WorldPtr _world,
+                          ^
+/home/workspace/myrobot/script/hello.cpp:8:49: error: name 'gazebo::WorldPluginMyRobot' has incomplete type
+         public WorldPluginMyRobot : WorldPlugin()
+                                                 ^
+/home/workspace/myrobot/script/hello.cpp:8:49: error: expected ';' at end of member declaration
+/home/workspace/myrobot/script/hello.cpp:9:9: error: expected unqualified-id before '{' token
+         {
+         ^
+/home/workspace/myrobot/script/hello.cpp:13:16: error: expected ':' before 'void'
+         public void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)
+                ^
+/home/workspace/myrobot/script/hello.cpp:13:57: error: 'sdf::ElementPtr' has not been declared
+         public void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)
+                                                         ^
+In file included from /usr/include/gazebo-7/gazebo/common/common.hh:18:0,
+                 from /usr/include/gazebo-7/gazebo/gazebo_core.hh:19,
+                 from /usr/include/gazebo-7/gazebo/gazebo.hh:20,
+                 from /home/workspace/myrobot/script/hello.cpp:1:
+/usr/include/gazebo-7/gazebo/common/Event.hh: In instantiation of 'gazebo::event::ConnectionPtr gazebo::event::EventT<T>::Connect(const boost::function<Signature>&) [with T = void(); gazebo::event::ConnectionPtr = boost::shared_ptr<gazebo::event::Connection>]':
+/usr/include/gazebo-7/gazebo/transport/Connection.hh:326:58:   required from here
+/usr/include/gazebo-7/gazebo/common/Event.hh:625:11: error: 'class gazebo::event::EventTPrivate<void()>' has no member named 'connections'
+       if (!this->myDataPtr->connections.empty())
+           ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:627:64: error: 'class gazebo::event::EventTPrivate<void()>' has no member named 'connections'
+         auto const &iter = this->myDataPtr->connections.rbegin();
+                                                                ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:630:35: error: 'class gazebo::event::EventTPrivate<void()>' has no member named 'connections'
+       this->myDataPtr->connections[index].reset(new EventConnection<T>(true,
+                                   ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In instantiation of 'void gazebo::event::EventT<T>::Disconnect(int) [with T = void(bool)]':
+/usr/include/gazebo-7/gazebo/common/Event.hh:643:7:   required from 'void gazebo::event::EventT<T>::Disconnect(gazebo::event::ConnectionPtr) [with T = void(bool); gazebo::event::ConnectionPtr = boost::shared_ptr<gazebo::event::Connection>]'
+/usr/include/gazebo-7/gazebo/common/Events.hh:50:45:   required from here
+/usr/include/gazebo-7/gazebo/common/Event.hh:662:61: error: 'class gazebo::event::EventTPrivate<void(bool)>' has no member named 'connections'
+       auto const &it = this->myDataPtr->connections.find(_id);
+                                                             ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:664:14: error: 'class gazebo::event::EventTPrivate<void(bool)>' has no member named 'connections'
+       if (it != this->myDataPtr->connections.end())
+              ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:667:9: error: request for member 'push_back' in '((gazebo::event::EventT<void(bool)>*)this)->gazebo::event::EventT<void(bool)>::myDataPtr->gazebo::event::EventTPrivate<void(bool)>::connectionsToRemove', which is of non-class type 'int'
+         this->myDataPtr->connectionsToRemove.push_back(it);
+         ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In instantiation of 'void gazebo::event::EventT<T>::Disconnect(int) [with T = void()]':
+/usr/include/gazebo-7/gazebo/common/Event.hh:643:7:   required from 'void gazebo::event::EventT<T>::Disconnect(gazebo::event::ConnectionPtr) [with T = void(); gazebo::event::ConnectionPtr = boost::shared_ptr<gazebo::event::Connection>]'
+/usr/include/gazebo-7/gazebo/common/Events.hh:62:44:   required from here
+/usr/include/gazebo-7/gazebo/common/Event.hh:662:61: error: 'class gazebo::event::EventTPrivate<void()>' has no member named 'connections'
+       auto const &it = this->myDataPtr->connections.find(_id);
+                                                             ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:664:14: error: 'class gazebo::event::EventTPrivate<void()>' has no member named 'connections'
+       if (it != this->myDataPtr->connections.end())
+              ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:667:9: error: request for member 'push_back' in '((gazebo::event::EventT<void()>*)this)->gazebo::event::EventT<void()>::myDataPtr->gazebo::event::EventTPrivate<void()>::connectionsToRemove', which is of non-class type 'int'
+         this->myDataPtr->connectionsToRemove.push_back(it);
+         ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In instantiation of 'void gazebo::event::EventT<T>::Disconnect(int) [with T = void(std::__cxx11::basic_string<char>)]':
+/usr/include/gazebo-7/gazebo/common/Event.hh:643:7:   required from 'void gazebo::event::EventT<T>::Disconnect(gazebo::event::ConnectionPtr) [with T = void(std::__cxx11::basic_string<char>); gazebo::event::ConnectionPtr = boost::shared_ptr<gazebo::event::Connection>]'
+/usr/include/gazebo-7/gazebo/common/Events.hh:85:52:   required from here
+/usr/include/gazebo-7/gazebo/common/Event.hh:662:61: error: 'class gazebo::event::EventTPrivate<void(std::__cxx11::basic_string<char>)>' has no member named 'connections'
+       auto const &it = this->myDataPtr->connections.find(_id);
+                                                             ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:664:14: error: 'class gazebo::event::EventTPrivate<void(std::__cxx11::basic_string<char>)>' has no member named 'connections'
+       if (it != this->myDataPtr->connections.end())
+              ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:667:9: error: request for member 'push_back' in '((gazebo::event::EventT<void(std::__cxx11::basic_string<char>)>*)this)->gazebo::event::EventT<void(std::__cxx11::basic_string<char>)>::myDataPtr->gazebo::event::EventTPrivate<void(std::__cxx11::basic_string<char>)>::connectionsToRemove', which is of non-class type 'int'
+         this->myDataPtr->connectionsToRemove.push_back(it);
+         ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In instantiation of 'void gazebo::event::EventT<T>::Disconnect(int) [with T = void(std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>)]':
+/usr/include/gazebo-7/gazebo/common/Event.hh:643:7:   required from 'void gazebo::event::EventT<T>::Disconnect(gazebo::event::ConnectionPtr) [with T = void(std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>); gazebo::event::ConnectionPtr = boost::shared_ptr<gazebo::event::Connection>]'
+/usr/include/gazebo-7/gazebo/common/Events.hh:109:57:   required from here
+/usr/include/gazebo-7/gazebo/common/Event.hh:662:61: error: 'class gazebo::event::EventTPrivate<void(std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>)>' has no member named 'connections'
+       auto const &it = this->myDataPtr->connections.find(_id);
+                                                             ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:664:14: error: 'class gazebo::event::EventTPrivate<void(std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>)>' has no member named 'connections'
+       if (it != this->myDataPtr->connections.end())
+              ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:667:9: error: request for member 'push_back' in '((gazebo::event::EventT<void(std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>)>*)this)->gazebo::event::EventT<void(std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>)>::myDataPtr->gazebo::event::EventTPrivate<void(std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char>)>::connectionsToRemove', which is of non-class type 'int'
+         this->myDataPtr->connectionsToRemove.push_back(it);
+         ^
+/usr/include/gazebo-7/gazebo/common/Event.hh: In instantiation of 'void gazebo::event::EventT<T>::Disconnect(int) [with T = void(const gazebo::common::UpdateInfo&)]':
+/usr/include/gazebo-7/gazebo/common/Event.hh:643:7:   required from 'void gazebo::event::EventT<T>::Disconnect(gazebo::event::ConnectionPtr) [with T = void(const gazebo::common::UpdateInfo&); gazebo::event::ConnectionPtr = boost::shared_ptr<gazebo::event::Connection>]'
+/usr/include/gazebo-7/gazebo/common/Events.hh:162:59:   required from here
+/usr/include/gazebo-7/gazebo/common/Event.hh:662:61: error: 'class gazebo::event::EventTPrivate<void(const gazebo::common::UpdateInfo&)>' has no member named 'connections'
+       auto const &it = this->myDataPtr->connections.find(_id);
+                                                             ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:664:14: error: 'class gazebo::event::EventTPrivate<void(const gazebo::common::UpdateInfo&)>' has no member named 'connections'
+       if (it != this->myDataPtr->connections.end())
+              ^
+/usr/include/gazebo-7/gazebo/common/Event.hh:667:9: error: request for member 'push_back' in '((gazebo::event::EventT<void(const gazebo::common::UpdateInfo&)>*)this)->gazebo::event::EventT<void(const gazebo::common::UpdateInfo&)>::myDataPtr->gazebo::event::EventTPrivate<void(const gazebo::common::UpdateInfo&)>::connectionsToRemove', which is of non-class type 'int'
+         this->myDataPtr->connectionsToRemove.push_back(it);
+         ^
+CMakeFiles/hello.dir/build.make:62: recipe for target 'CMakeFiles/hello.dir/script/hello.cpp.o' failed
+make[2]: *** [CMakeFiles/hello.dir/script/hello.cpp.o] Error 1
+CMakeFiles/Makefile2:67: recipe for target 'CMakeFiles/hello.dir/all' failed
+make[1]: *** [CMakeFiles/hello.dir/all] Error 2
+Makefile:83: recipe for target 'all' failed
+make: *** [all] Error 2
