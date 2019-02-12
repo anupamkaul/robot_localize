@@ -1,0 +1,6 @@
+cd myrobot/world
+gazebo myworld
+
+
+cd mybuilding/building-robot
+gazebo world.sdf
