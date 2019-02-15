@@ -1,0 +1,8 @@
+prefix=/home/anupam/ROBOGIT/robond/practice/catkin_ws/install
+
+Name: simple_arm
+Description: Description of simple_arm
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/anupam/ROBOGIT/robond/practice/catkin_ws/install/lib 
+Requires: 
