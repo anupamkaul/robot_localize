@@ -1,0 +1,25 @@
+1. when cmaking the simple_arm package, if controller_manager package is not found ..
+its a ROS package and can be installed by:
+sudo apt-get install ros-kinetic-controller-manager
+
+2. to install rospkg:
+sudo apt-get install python-rospk
+or:
+sudo pip install -U rospkg (I did pip install)
+
+3. pip install defusedxml
+
+4. different gazebo_ros version:
+gazebosim.org/tutorials/?tut=ros_wrapper_versions
+
+5. A useful site:
+www.ros.org/browse/list.php?package_type=package&distro=kinetic
+
+http://gazebosim.org/tutorials?tut=ros_installing
+
+
+
+
+
+
+
