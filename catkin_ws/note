@@ -17,6 +17,26 @@ www.ros.org/browse/list.php?package_type=package&distro=kinetic
 
 http://gazebosim.org/tutorials?tut=ros_installing
 
+NOTE: How to replace gazebo 9 (kinetic) with gazebo 7:
+------------------------------------------------------
+
+--> the problem I had was roslaunch was saying resource not found: gazebo_ros
+this is because ros-kinetic (ubuntu xenial 16.04) had gazebo v9 (which actually was useful to me because it had the option to specify the PATH for a model to be imported into the robotic simulation world) ..
+
+anyways, when I tried sudo apt-get install ros-kinetic-gazebo-ros-pkgs
+
+I met unmet dependecies messages.
+
+The *only* way I could get around it, is I picked up 1 thread ... like gazebo7, tried sudo-apt install .. got unmet libgazebo7 ..
+tried sudo apt installing that, got unmet libformatsd4 ... tried sudo installing THAT, and THAT worked ! (it stopped whining)
+
+after that I just did sudo apt-get install ros-kinetic-gazebo-ros-pkgs again and it worked like a charm.
+Now I have gazebo 7 instead of gazebo 9.
+
+----------------------------------------------------
+
+
+
 
 
 
