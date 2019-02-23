@@ -35,6 +35,26 @@ Now I have gazebo 7 instead of gazebo 9.
 
 ----------------------------------------------------
 
+NOTE: Robot arm wasnt showing
+-----------------------------
+
+A couple of packages like PyQT5 etc were missing, so I pip installed them ..
+
+Also Ros Kinetic needs python 2 and not python 3 (tft error) so I just commented out my anaconda/miniconda python3 in my .bashrc
+
+Finally I had the robotic arm show up with these commands:
+
+1. source devel/setup.bash
+2. roslaunch simple-arm(package name) ros_launch_file(whatever that is, I just tabbed)
+
+-----------------------------
+
+
+
+
+
+
+
 
 
 
