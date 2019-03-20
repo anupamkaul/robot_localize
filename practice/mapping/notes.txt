@@ -1,0 +1,1 @@
+notes for mapping (with unknown and known poses) .. before slam ..
