@@ -1,2 +1,2 @@
-
--DCATKIN_DEVEL_PREFIX=/home/anupam/ROBOGIT/robond/practice/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/anupam/ROBOGIT/robond/practice/catkin_ws/install -G Unix Makefiles
+simple_arm
+-DCATKIN_DEVEL_PREFIX=/home/anupam/github/robond/practice/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/anupam/github/robond/practice/catkin_ws/install -G Unix Makefiles

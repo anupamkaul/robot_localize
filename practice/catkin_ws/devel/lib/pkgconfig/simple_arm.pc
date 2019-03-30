@@ -1,8 +1,8 @@
-prefix=/home/anupam/ROBOGIT/robond/practice/catkin_ws/devel
+prefix=/home/anupam/github/robond/practice/catkin_ws/devel
 
 Name: simple_arm
 Description: Description of simple_arm
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/anupam/ROBOGIT/robond/practice/catkin_ws/devel/lib 
+Libs: -L/home/anupam/github/robond/practice/catkin_ws/devel/lib 
 Requires: 
