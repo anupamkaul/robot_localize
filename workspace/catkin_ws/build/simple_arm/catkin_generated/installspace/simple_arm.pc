@@ -1,8 +1,8 @@
-prefix=/home/anupam/workspace/catkin_ws/install
+prefix=/home/anupam/github/robond/workspace/catkin_ws/install
 
 Name: simple_arm
 Description: Description of simple_arm
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/anupam/workspace/catkin_ws/install/lib 
+Libs: -L/home/anupam/github/robond/workspace/catkin_ws/install/lib 
 Requires: 

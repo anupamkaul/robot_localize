@@ -1,0 +1,158 @@
+after multiple attempts, the robot finally started moving. It was able to load the controller_manager interfaces, and simple_move issues commands succesfully. (The joints started moving)
+
+rosservice list
+/gazebo/apply_body_wrench
+/gazebo/apply_joint_effort
+/gazebo/clear_body_wrenches
+/gazebo/clear_joint_forces
+/gazebo/delete_light
+/gazebo/delete_model
+/gazebo/get_joint_properties
+/gazebo/get_light_properties
+/gazebo/get_link_properties
+/gazebo/get_link_state
+/gazebo/get_loggers
+/gazebo/get_model_properties
+/gazebo/get_model_state
+/gazebo/get_physics_properties
+/gazebo/get_world_properties
+/gazebo/pause_physics
+/gazebo/reset_simulation
+/gazebo/reset_world
+/gazebo/set_joint_properties
+/gazebo/set_light_properties
+/gazebo/set_link_properties
+/gazebo/set_link_state
+/gazebo/set_logger_level
+/gazebo/set_model_configuration
+/gazebo/set_model_state
+/gazebo/set_parameters
+/gazebo/set_physics_properties
+/gazebo/spawn_sdf_model
+/gazebo/spawn_urdf_model
+/gazebo/unpause_physics
+/gazebo_gui/get_loggers
+/gazebo_gui/set_logger_level
+/gazebo_gui/set_parameters
+/joint_state_publisher/get_loggers
+/joint_state_publisher/set_logger_level
+/rgb_camera/set_camera_info
+/rgb_camera/set_parameters
+/robot_state_publisher/get_loggers
+/robot_state_publisher/set_logger_level
+/rosout/get_loggers
+/rosout/set_logger_level
+/simple_arm/controller_manager/list_controller_types
+/simple_arm/controller_manager/list_controllers
+/simple_arm/controller_manager/load_controller
+/simple_arm/controller_manager/reload_controller_libraries
+/simple_arm/controller_manager/switch_controller
+/simple_arm/controller_manager/unload_controller
+/simple_arm/joint_1_position_controller/pid/set_parameters
+/simple_arm/joint_2_position_controller/pid/set_parameters
+/simple_arm/spawner/get_loggers
+/simple_arm/spawner/set_logger_level
+
+
+-- the only thing I can think of is, I installed the reference simple_arm, compiled it, that started whining (same error), then I went back to the old github code and saw I was getting an error with multiple launch file paths defined. So I built it again (rm devel and build), and *then* after a couple of unsuccessful tries, it just started working. Not sure why. Also just before it started working, I noticed that one of the terminals had a zombie gazebo session and I killed it ....
+
+Here is the one warning I was still getting from roslaunch (but it wasn't about Controller Manager not finding the correct ROS interface) ...
+
+anupam@anupam-HP-Z800-Workstation:~/github/robond/workspace/catkin_ws$ roslaunch simple_arm robot_spawn.launch 
+... logging to /home/anupam/.ros/log/f27b62da-55a0-11e9-ae46-78acc03d67ea/roslaunch-anupam-HP-Z800-Workstation-28548.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+
+started roslaunch server http://anupam-HP-Z800-Workstation:42833/
+
+SUMMARY
+========
+
+PARAMETERS
+ * /joint_state_publisher/use_gui: False
+ * /robot_description: <?xml version="1....
+ * /rosdistro: kinetic
+ * /rosversion: 1.12.14
+ * /simple_arm/joint_1_position_controller/joint: joint_1
+ * /simple_arm/joint_1_position_controller/pid/d: 10.0
+ * /simple_arm/joint_1_position_controller/pid/i: 0.01
+ * /simple_arm/joint_1_position_controller/pid/p: 100.0
+ * /simple_arm/joint_1_position_controller/type: effort_controller...
+ * /simple_arm/joint_2_position_controller/joint: joint_2
+ * /simple_arm/joint_2_position_controller/pid/d: 10.0
+ * /simple_arm/joint_2_position_controller/pid/i: 0.01
+ * /simple_arm/joint_2_position_controller/pid/p: 100.0
+ * /simple_arm/joint_2_position_controller/type: effort_controller...
+ * /simple_arm/joint_state_controller/publish_rate: 50
+ * /simple_arm/joint_state_controller/type: joint_state_contr...
+ * /use_sim_time: True
+
+NODES
+  /simple_arm/
+    spawner (controller_manager/spawner)
+  /
+    gazebo (gazebo_ros/gzserver)
+    gazebo_gui (gazebo_ros/gzclient)
+    joint_state_publisher (joint_state_publisher/joint_state_publisher)
+    robot_state_publisher (robot_state_publisher/robot_state_publisher)
+    urdf_spawner (gazebo_ros/spawn_model)
+
+auto-starting new master
+process[master]: started with pid [28561]
+ROS_MASTER_URI=http://localhost:11311
+
+setting /run_id to f27b62da-55a0-11e9-ae46-78acc03d67ea
+process[rosout-1]: started with pid [28574]
+started core service [/rosout]
+process[joint_state_publisher-2]: started with pid [28592]
+process[robot_state_publisher-3]: started with pid [28599]
+process[simple_arm/spawner-4]: started with pid [28600]
+process[gazebo-5]: started with pid [28601]
+process[gazebo_gui-6]: started with pid [28611]
+process[urdf_spawner-7]: started with pid [28626]
+[INFO] [1554248537.846055, 0.000000]: Controller Spawner: Waiting for service controller_manager/load_controller
+[ INFO] [1554248537.848225151]: Finished loading Gazebo ROS API Plugin.
+[ INFO] [1554248537.849010527]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
+[ INFO] [1554248537.898842514]: Finished loading Gazebo ROS API Plugin.
+[ INFO] [1554248537.899670824]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
+SpawnModel script started
+[INFO] [1554248538.285736, 0.000000]: Loading model XML from ros parameter
+[INFO] [1554248538.288969, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
+[INFO] [1554248539.802159, 0.000000]: Calling service /gazebo/spawn_urdf_model
+[INFO] [1554248539.879724, 261.179000]: Spawn status: SpawnModel: Entity pushed to spawn queue, but spawn service timed out waiting for entity to appear in simulation under the name simple_arm
+[urdf_spawner-7] process has finished cleanly
+log file: /home/anupam/.ros/log/f27b62da-55a0-11e9-ae46-78acc03d67ea/urdf_spawner-7*.log
+[ INFO] [1554248540.375586937, 261.179000000]: Camera Plugin: Using the 'robotNamespace' param: '/'
+[ INFO] [1554248540.381402449, 261.179000000]: Camera Plugin (ns = /)  <tf_prefix_>, set to ""
+[ INFO] [1554248540.489492223, 261.179000000]: Loading gazebo_ros_control plugin
+[ERROR] [1554248540.489602125, 261.179000000]: GazeboRosControlPlugin missing <legacyModeNS> while using DefaultRobotHWSim, defaults to true.
+This setting assumes you have an old package with an old implementation of DefaultRobotHWSim, where the robotNamespace is disregarded and absolute paths are used instead.
+If you do not want to fix this issue in an old package just set <legacyModeNS> to true.
+
+[ INFO] [1554248540.489685641, 261.179000000]: Starting gazebo_ros_control plugin in namespace: /simple_arm
+[ INFO] [1554248540.491077746, 261.179000000]: gazebo_ros_control plugin is waiting for model URDF in parameter [/robot_description] on the ROS param server.
+[ INFO] [1554248540.618500080, 261.179000000]: Loaded gazebo_ros_control.
+[ INFO] [1554248540.641040459, 261.200000000]: waitForService: Service [/gazebo/set_physics_properties] is now available.
+[ INFO] [1554248540.641603020, 261.201000000]: waitForService: Service [/gazebo/set_physics_properties] is now available.
+[ INFO] [1554248540.723508065, 261.279000000]: Physics dynamic reconfigure ready.
+[ INFO] [1554248540.724401944, 261.280000000]: Physics dynamic reconfigure ready.
+[INFO] [1554248540.868283, 261.420000]: Controller Spawner: Waiting for service controller_manager/switch_controller
+[INFO] [1554248540.869816, 261.420000]: Controller Spawner: Waiting for service controller_manager/unload_controller
+[INFO] [1554248540.871459, 261.420000]: Loading controller: joint_state_controller
+[INFO] [1554248540.900922, 261.447000]: Loading controller: joint_1_position_controller
+[INFO] [1554248540.962772, 261.507000]: Loading controller: joint_2_position_controller
+[INFO] [1554248541.006621, 261.553000]: Controller Spawner: Loaded controllers: joint_state_controller, joint_1_position_controller, joint_2_position_controller
+[INFO] [1554248541.010220, 261.557000]: Started controllers: joint_state_controller, joint_1_position_controller, joint_2_position_controller
+
+
+--> repeated and it works now, so will check-in whatever I have now ..
+
+--> oh, and I also basically followed all the steps from the reference simple_arm readme
+https://github.com/udacity/RoboND-simple_arm/tree/simple_mover
+(notably the rosdep install command installed a few additional packages for me...)
+
+
+--> btw this below was good reading although I did not use it:
+http://catherineh.github.io/programming/2017/10/20/debugging-ros-control
+

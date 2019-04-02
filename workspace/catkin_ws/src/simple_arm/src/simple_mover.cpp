@@ -1,6 +1,10 @@
 #include "ros/ros.h" 
 #include "std_msgs/Float64.h"
 
+/* The goal of the simple_mover node is to command each joint in the simple_arm node
+ *  and make it swing between -pi/2 to pi/2 over time.
+ */
+
 int main(int argc, char** argv)
 {
 
