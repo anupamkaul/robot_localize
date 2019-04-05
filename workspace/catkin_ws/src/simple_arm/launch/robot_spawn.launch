@@ -28,6 +28,6 @@
   </node>
 
   <!-- The look away code -->
-  <node name = "look away" type = "look away" pkg="simple arm">
+  <node name="look_away" type="look_away" pkg="simple_arm"/>
 
 </launch>
