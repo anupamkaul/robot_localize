@@ -1,0 +1,21 @@
+We expect you to be able to run intermediate Python programs. You do not need to be a Python master, but you should have at least two years of Python experience (ideally as a full-time data scientist or software engineer). Example tasks include:
+
+Being able to start your own Conda environment
+
+Installing and using packages
+
+Using context and decorators
+
+You should understand Object Oriented Programming, how to work with objects and now to figure out their attributes and methods. You need to be able to understand fairly typical (e.g., Pandas DataFrames) as well as atypical Python objects (e.g., Tensors, Keras Layer object).
+
+You should understand basics of delayed computation in TensorFlow / Python settings and the basics of distributed computation.
+
+You should understand basics of Machine Learning theory such as train / test split, overfitting, weights, hyper-parameters, as well as the basics of supervised, unsupervised and reinforcement learning. Also metrics such as accuracy and Mean Squared Error.
+
+You should understand basic statistics and calculus, such as probability, density functions, probability distributions, differentiation, and convex optimization.
+
+You should understand elementary linear algebra, such as matrices, high dimensional spaces and ideally also Principal Component Analysis.
+
+You should understand basics of Deep Learning—things such as feedforward networks, weights & biases, activation functions, regularization, stochastic gradient descent. and backpropagation.
+
+You should also have some elementary familiarity with or willingness to independently learn the Python-based machine learning libraries, Keras and TensorFlow.
