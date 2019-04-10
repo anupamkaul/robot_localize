@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot name="two_link_robot">
+  <!--Links-->
+  <link name="link_1">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.2"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="link_2">
+    <visual>
+      <geometry>
+        <box size="0.6 0.1 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+  <!--Joints-->
+  <joint name="joint_1" type="continuous">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+  </joint>
+</robot>
