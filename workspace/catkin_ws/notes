@@ -156,3 +156,16 @@ https://github.com/udacity/RoboND-simple_arm/tree/simple_mover
 --> btw this below was good reading although I did not use it:
 http://catherineh.github.io/programming/2017/10/20/debugging-ros-control
 
+
+-->>
+
+on my laptop, I did rosdep install -i simple_arm (from the REF pdf file) but got stuck with load_controller waiting (resulting from errors in py__tf2init or something like that) and then I realized my python was still version 3, so downgrading to 2 ..
+
+# added by Miniconda3 4.3.21 installer
+#export PATH="/home/anupam/miniconda3/bin:$PATH"
+
+--> so this was how the problem had been addressed. Robotic arms move and work on laptop now too.
+
+------
+
+
