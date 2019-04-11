@@ -1,0 +1,11 @@
+We have a single link, with the name defined as "chassis", encompassing the base as well as the caster wheels. Every link has specific elements, such as the inertial or the collision elements. Review the details of these elements covered in the previous section. The chassis is a cube, whereas the casters are spherical, as denoted by their <geometry> tags. Each link (or joint) has an origin (or pose), as well. Every element of that link or joint will have its own origin, which will be relative to the link's frame of reference.
+
+For this base, the casters are included as part of the link for stability. There is no need for any additional links to define the casters, and therefore no joints to connect them. The casters do, however, have friction coefficients defined for them. These friction coefficients are set to 0, to allow for free motion while moving.
+
+---
+
+To generate the URDF file from the Xacro file, you must first define a parameter, robot_description. This parameter will set a single command to use the xacro package to generate the URDF from the xacro file.
+
+The gazebo_ros package spawns the model from the URDF that robot_description helps generate.
+
+
