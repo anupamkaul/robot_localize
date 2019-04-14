@@ -36,6 +36,33 @@ http://wiki.ros.org/urdf/Tutorials/Building%20a%20Visual%20Robot%20Model%20with%
 
 ---
 
+src code for differential drive module (gazebo plugin used in this example):
+https://bitbucket.org/osrf/gazebo/src/afe08834571835008fa7419f1feba5b7f89b9d62/plugins/DiffDrivePlugin.cc?at=gazebo7&fileviewer=file-view-default
+
+looks like source code of gazebo 7.0 is also on bitbucket here:
+https://bitbucket.org/osrf/gazebo/overview
+
+---
+
+You need to define the topics to which each sensor publishes.
+
+For the wheel joints, it's the cmd_vel topic.
+
+<commandTopic>cmd_vel</commandTopic>
+
+For the camera, it's the rgb/image_raw topic.
+
+<imageTopicName>rgb/image_raw</imageTopicName>
+
+And for the lidar, it's the scan topic
+
+<topicName>/scan</topicName>a
+
+---
+
+
+
+
 
 
 
