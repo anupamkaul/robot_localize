@@ -8,4 +8,38 @@ To generate the URDF file from the Xacro file, you must first define a parameter
 
 The gazebo_ros package spawns the model from the URDF that robot_description helps generate.
 
+---
+
+List of ROS sensors:
+
+http://wiki.ros.org/Sensors#A2D_range_finders
+
+---
+
+Basic intro to ros gazebo links, joints etc (urdf):
+
+http://wiki.ros.org/urdf/Tutorials/Adding%20Physical%20and%20Collision%20Properties%20to%20a%20URDF%20Model
+
+---
+
+List of gazebo's models, meshes etc:
+
+http://models.gazebosim.org/
+
+---
+
+good example of a fresh robot:
+
+http://wiki.ros.org/urdf/Tutorials/Building%20a%20Visual%20Robot%20Model%20with%20URDF%20from%20Scratch
+
+(mesh filename tag example)
+
+---
+
+
+
+
+
+
+
 
