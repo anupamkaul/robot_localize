@@ -60,9 +60,32 @@ And for the lidar, it's the scan topic
 
 ---
 
+For rviz integration and fake data: (see robot_descriptor<..>.launch)
+
+Those elements add two nodes - the joint_state_publisher and the robot_state_publisher.
+
+joint_state_publisher: Publishes joint state messages for the robot, such as the angles for the non-fixed joints.
+
+robot_state_publisher: Publishes the robot's state to tf (transform tree). Your robot model has several frames corresponding to each link/joint. The robot_state_publisher publishes the 3D poses of all of these links. This offers a convenient and efficient advantage, especially for more complicated robots.
 
 
+---
 
+
+send the following commands to move the robot in a circle (tested, works):
+
+cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rostopic pub /cmd_vel geometry_msgs/Twist  "linear:
+  x: 0.1
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.1" 
+
+Also saw camera images on rviz, but no lidar data.
 
 
 
