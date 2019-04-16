@@ -1,0 +1,187 @@
+Setting up ball_chaser
+
+The second major task in this project is to create the ball_chaser ROS package. Within this package, you'll analyze the image captured by the camera to determine the position of a white ball. Then you’ll drive the robot toward the ball. The nodes in ball_chaser will communicate with the my_robot package by subscribing to the robot camera sensor and publishing to the robot’s wheel joints.
+
+Package Nodes
+
+The ball_chaser package will have two C++ nodes: the drive_bot and process_image
+
+drive_bot: This server node will provide a ball_chaser/command_robot service to drive the robot around by controlling its linear x and angular z velocities. The service will publish a message containing the velocities to the wheel joints.
+
+process_image: This client node will subscribe to the robot’s camera images and analyze each image to determine the position of the white ball. Once ball position is determined, the client node will request a service to drive the robot either left, right or forward.
+Now, follow along with the steps to set up ball_chaser.
+
+Create the ball_chaser Package
+1- Navigate to the src directory of your catkin_ws and create the ball_chaser package:
+
+We will be writing nodes in C++. Since we already know in advance that this package will contain C++ source code and messages, let’s create the package with those dependencies:
+
+$ cd /home/workspace/catkin_ws/src/
+$ catkin_create_pkg ball_chaser roscpp std_msgs message_generation
+2- Next, create an srv and a launch folder, which will further define the structure of your package:
+
+$ cd /home/workspace/catkin_ws/src/ball_chaser/
+$ mkdir srv
+$ mkdir launch
+
+Remember, srv is the directory where you store service files and launch is the directory where you store launch files. The src directory where you will store C++ programs is created by default.
+
+Build the Package
+$ cd /home/workspace/catkin_ws/
+$ catkin_make
+
+Now you should be ready to write some code!
+
+-----------
+-----------
+
+ROS Node: drive_bot
+
+This server node provides a ball_chaser/command_robot service to drive the robot around by setting its linear x and angular z velocities. The service server publishes messages containing the velocities for the wheel joints.
+
+After writing this node, you will be able to request the ball_chaser/command_robot service, either from the terminal or from a client node, to drive the robot by controlling its linear x and angular z velocities.
+
+Reference
+
+The drive_bot.cpp node is similar to the arm_mover.cpp node that you already wrote. Both nodes contain a ROS publisher and service. But this time, instead of publishing messages to the arm joint angles, you have to publish messages to the wheels joint angles. Please refer to the arm_mover.cpp node before you begin coding the drive_bot.cpp node.
+
+ROS Service File
+1- Write the DriveToTarget.srv file
+
+Create a DriveToTarget.srv file under the srv directory of ball_chaser. Then, define the DriveToTarget.srv file as follows:
+
+Request:
+
+linear_x type float64
+angular_z type float64
+Response:
+
+msg_feedback type string
+2- Test DriveToTarget.srv
+
+After writing the service file, test it with ROS. Open a new terminal and execute the following:
+
+$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rossrv show DriveToTarget
+You should receive this response:
+
+[ball_chaser/DriveToTarget]:
+float64 linear_x
+float64 angular_z
+---
+string msg_feedback
+drive_bot.cpp Node
+
+Now it’s time to write the drive_bot.cpp server node that will provide the ball_chaser/command_robot service. Create the script under the src directory of your ball_chaser package. It might be a bit challenging to write this script from scratch, thus I am providing you with some hints.
+
+Attached below is a program that will continuously publish to the robot /cmd_vel topic. This code will drive your robot forward:
+
+#include "ros/ros.h"
+#include "geometry_msgs/Twist.h"
+//TODO: Include the ball_chaser "DriveToTarget" header file
+
+// ROS::Publisher motor commands;
+ros::Publisher motor_command_publisher;
+
+// TODO: Create a handle_drive_request callback function that executes whenever a drive_bot service is requested
+// This function should publish the requested linear x and angular velocities to the robot wheel joints
+// After publishing the requested velocities, a message feedback should be returned with the requested wheel velocities
+
+int main(int argc, char** argv)
+{
+    // Initialize a ROS node
+    ros::init(argc, argv, "drive_bot");
+
+    // Create a ROS NodeHandle object
+    ros::NodeHandle n;
+
+    // Inform ROS master that we will be publishing a message of type geometry_msgs::Twist on the robot actuation topic with a publishing queue size of 10
+    motor_command_publisher = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
+
+    // TODO: Define a drive /ball_chaser/command_robot service with a handle_drive_request callback function
+
+    // TODO: Delete the loop, move the code to the inside of the callback function and make the necessary changes to publish the requested velocities instead of constant values
+    while (ros::ok()) {
+        // Create a motor_command object of type geometry_msgs::Twist
+        geometry_msgs::Twist motor_command;
+        // Set wheel velocities, forward [0.5, 0.0]
+        motor_command.linear.x = 0.5;
+        motor_command.angular.z = 0.0;
+        // Publish angles to drive the robot
+        motor_command_publisher.publish(motor_command);
+    }
+
+    // TODO: Handle ROS communication events
+    //ros::spin();
+
+    return 0;
+}
+
+Take a look at this program and try to understand what is happening. Then, copy it to drive_bot.cpp, and make the necessary changes to define a ball_chaser/command_robot service.
+
+Edit CMakeLists.txt
+After you write the server node in C++, you’ll have to add the following dependencies:
+
+Add the add_compile_options for C++ 11 dependency, this step is optional and depends on your code
+Add the add_service_files dependency which defines the DriveToTarget.srv file
+Add the generate_messages dependency
+Add include_directories dependency
+Add the add_executable, target_link_libraries, and add_dependencies dependency for your drive_bot.cppscript
+Build Package
+Now that you’ve included specific instructions for your drive_bot.cpp code in CMakeLists.txt file, compile it with:
+
+$ cd /home/workspace/catkin_ws/
+$ catkin_make
+Test drive_bot.cpp
+To test if the service you wrote is working, first launch the robot inside your world. Then call the /ball_chaser/command_robot service to drive the robot forward, left, and then right.
+
+1- Launch the robot inside your world
+
+$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch my_robot world.launch
+2- Run the drive_bot node
+
+$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ rosrun ball_chaser drive_bot
+3- Request a ball_chaser/command_robot service
+
+Test the service by requesting different sets of velocities from the terminal.
+
+Open a new terminal while all the nodes are running and type:
+
+$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.5
+angular_z: 0.0"  # This request should drive your robot forward
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.0
+angular_z: 0.5"  # This request should drive your robot left
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.0
+angular_z: -0.5"  # This request should drive your robot right
+
+$ rosservice call /ball_chaser/command_robot "linear_x: 0.0
+angular_z: 0.0"  # This request should bring your robot to a complete stop
+
+Launch Files
+Let’s add the drive_bot node to a launch file. Create a ball_chaser.launch file under the launch directory of your ball_chaser package and then copy this code to it:
+
+<launch>
+
+ <!-- The drive_bot node -->
+  <node name="drive_bot" type="drive_bot" pkg="ball_chaser" output="screen">
+  </node>
+
+</launch>
+This code will launch your drive_bot node, which is contained in the ball_chaser package. The server node outputs all the logs to the terminal window.
+
+--------------------
+--------------------
+
+
+
+
