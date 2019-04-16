@@ -1,0 +1,8 @@
+prefix=/home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/install
+
+Name: ball_chaser
+Description: Description of ball_chaser
+Version: 0.0.0
+Cflags: -I/home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/install/include
+Libs: -L/home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/install/lib 
+Requires: 
