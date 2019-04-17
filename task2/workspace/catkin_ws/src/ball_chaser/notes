@@ -188,11 +188,51 @@ angular_z: 0.5"
 
 The values are still hardcoded, so the bot always moves ahead. It stops when it collides with a wall.
 
- 
-
-
 --------------------
 --------------------
+
+Model a White Ball
+
+Before you proceed to code the process_image client node, you have to model a white ball and place it in your Gazebo World scene.
+
+After modeling the white ball, you'll control its position in Gazebo by placing it at different positions in front of the robot’s camera. The process_image client node will be responsible for analyzing the robot’s image and requesting services from the server drive_bot node to drive the robot towards it.
+
+Now, let’s go ahead and model the white ball using the Model Editor tool in Gazebo!
+
+Model Editor
+Here’s a reminder of how to open the model editor:
+
+$ gazebo # then Edit-> Model Editor
+Insert Sphere
+Under the simple shapes menu of the Model Editor tool, click on a sphere and insert it anywhere in the scene.
+
+Edit Size
+Double click on the sphere, and change its radius to 0.1 both in Visual and Collision.
+
+Change Color
+To change the ball’s color to white, set its Visual Ambient, Diffuse, Specular, and Emissive RGBA values to 1.
+
+
+Save
+Save the white ball model as my_ball under the /home/workspace directory. Then exit the Model Editor tool and go back to the Gazebo main world.
+
+Insert Ball
+Now that you are back in the Gazebo main world, you can click on “Insert” and drop the white ball anywhere in the scene.
+
+
+Relaunch Nodes
+Now that you modeled the white ball, relaunch the nodes inside world.launch. Then verify that you can insert a my_ball anywhere inside your world.
+
+Save
+Place the white ball anywhere outside of your building structure, so that the robot would not see it. Then, save a copy of this new world under /home/workspace/catkin_ws/src/my_robot/worlds by replacing your old <yourname>.world file. Whenever you launch this newly saved world you should be able to see your building environment, in addition, the white ball.
+
+------------------
+------------------
+
+
+
+
+
 
 
 
