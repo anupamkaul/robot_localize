@@ -179,6 +179,18 @@ Let’s add the drive_bot node to a launch file. Create a ball_chaser.launch fil
 </launch>
 This code will launch your drive_bot node, which is contained in the ball_chaser package. The server node outputs all the logs to the terminal window.
 
+==> just 2 caveats .. I named my service "drive_bot" instead of ball_chaser, so I call it like:
+
+1. I dont know why, but I have to invoke rosrun like: rosrun ball_chaser ball_chaser
+2. From (1), I renamed my service to drive_bot instead of ball_chaser, so I call it like:
+rosservice call /drive_bot/command_robot "linear_x: 0.0
+angular_z: 0.5"
+
+The values are still hardcoded, so the bot always moves ahead. It stops when it collides with a wall.
+
+ 
+
+
 --------------------
 --------------------
 
