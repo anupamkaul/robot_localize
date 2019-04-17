@@ -166,19 +166,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-ball_chaser/CMakeFiles/ball_chaser.dir/rule:
-	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ball_chaser/CMakeFiles/ball_chaser.dir/rule
-.PHONY : ball_chaser/CMakeFiles/ball_chaser.dir/rule
+ball_chaser/CMakeFiles/drive_bot.dir/rule:
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ball_chaser/CMakeFiles/drive_bot.dir/rule
+.PHONY : ball_chaser/CMakeFiles/drive_bot.dir/rule
 
 # Convenience name for target.
-ball_chaser: ball_chaser/CMakeFiles/ball_chaser.dir/rule
+drive_bot: ball_chaser/CMakeFiles/drive_bot.dir/rule
 
-.PHONY : ball_chaser
+.PHONY : drive_bot
 
 # fast build rule for target.
-ball_chaser/fast:
-	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/ball_chaser.dir/build.make ball_chaser/CMakeFiles/ball_chaser.dir/build
-.PHONY : ball_chaser/fast
+drive_bot/fast:
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/drive_bot.dir/build.make ball_chaser/CMakeFiles/drive_bot.dir/build
+.PHONY : drive_bot/fast
 
 # Convenience name for target.
 ball_chaser/CMakeFiles/ball_chaser_gennodejs.dir/rule:
@@ -496,6 +496,21 @@ std_msgs_generate_messages_lisp/fast:
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+ball_chaser/CMakeFiles/process_image.dir/rule:
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ball_chaser/CMakeFiles/process_image.dir/rule
+.PHONY : ball_chaser/CMakeFiles/process_image.dir/rule
+
+# Convenience name for target.
+process_image: ball_chaser/CMakeFiles/process_image.dir/rule
+
+.PHONY : process_image
+
+# fast build rule for target.
+process_image/fast:
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/process_image.dir/build.make ball_chaser/CMakeFiles/process_image.dir/build
+.PHONY : process_image/fast
+
+# Convenience name for target.
 ball_chaser/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
 	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ball_chaser/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 .PHONY : ball_chaser/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
@@ -591,7 +606,8 @@ src/drive_bot.o: src/drive_bot.cpp.o
 
 # target to build an object file
 src/drive_bot.cpp.o:
-	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/ball_chaser.dir/build.make ball_chaser/CMakeFiles/ball_chaser.dir/src/drive_bot.cpp.o
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/drive_bot.dir/build.make ball_chaser/CMakeFiles/drive_bot.dir/src/drive_bot.cpp.o
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/process_image.dir/build.make ball_chaser/CMakeFiles/process_image.dir/src/drive_bot.cpp.o
 .PHONY : src/drive_bot.cpp.o
 
 src/drive_bot.i: src/drive_bot.cpp.i
@@ -600,7 +616,8 @@ src/drive_bot.i: src/drive_bot.cpp.i
 
 # target to preprocess a source file
 src/drive_bot.cpp.i:
-	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/ball_chaser.dir/build.make ball_chaser/CMakeFiles/ball_chaser.dir/src/drive_bot.cpp.i
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/drive_bot.dir/build.make ball_chaser/CMakeFiles/drive_bot.dir/src/drive_bot.cpp.i
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/process_image.dir/build.make ball_chaser/CMakeFiles/process_image.dir/src/drive_bot.cpp.i
 .PHONY : src/drive_bot.cpp.i
 
 src/drive_bot.s: src/drive_bot.cpp.s
@@ -609,7 +626,8 @@ src/drive_bot.s: src/drive_bot.cpp.s
 
 # target to generate assembly for a file
 src/drive_bot.cpp.s:
-	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/ball_chaser.dir/build.make ball_chaser/CMakeFiles/ball_chaser.dir/src/drive_bot.cpp.s
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/drive_bot.dir/build.make ball_chaser/CMakeFiles/drive_bot.dir/src/drive_bot.cpp.s
+	cd /home/anupam/ROBOGIT/robond/task2/workspace/catkin_ws/build && $(MAKE) -f ball_chaser/CMakeFiles/process_image.dir/build.make ball_chaser/CMakeFiles/process_image.dir/src/drive_bot.cpp.s
 .PHONY : src/drive_bot.cpp.s
 
 # Help Target
@@ -623,7 +641,7 @@ help:
 	@echo "... test"
 	@echo "... install/local"
 	@echo "... install/strip"
-	@echo "... ball_chaser"
+	@echo "... drive_bot"
 	@echo "... ball_chaser_gennodejs"
 	@echo "... install"
 	@echo "... ball_chaser_genlisp"
@@ -646,6 +664,7 @@ help:
 	@echo "... ball_chaser_generate_messages"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... process_image"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... _ball_chaser_generate_messages_check_deps_DriveToTarget"

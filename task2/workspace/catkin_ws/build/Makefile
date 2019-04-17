@@ -296,17 +296,17 @@ _catkin_empty_exported_target/fast:
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================
-# Target rules for targets named ball_chaser
+# Target rules for targets named drive_bot
 
 # Build rule for target.
-ball_chaser: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ball_chaser
-.PHONY : ball_chaser
+drive_bot: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 drive_bot
+.PHONY : drive_bot
 
 # fast build rule for target.
-ball_chaser/fast:
-	$(MAKE) -f ball_chaser/CMakeFiles/ball_chaser.dir/build.make ball_chaser/CMakeFiles/ball_chaser.dir/build
-.PHONY : ball_chaser/fast
+drive_bot/fast:
+	$(MAKE) -f ball_chaser/CMakeFiles/drive_bot.dir/build.make ball_chaser/CMakeFiles/drive_bot.dir/build
+.PHONY : drive_bot/fast
 
 #=============================================================================
 # Target rules for targets named ball_chaser_gennodejs
@@ -582,6 +582,19 @@ std_msgs_generate_messages_lisp/fast:
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named process_image
+
+# Build rule for target.
+process_image: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 process_image
+.PHONY : process_image
+
+# fast build rule for target.
+process_image/fast:
+	$(MAKE) -f ball_chaser/CMakeFiles/process_image.dir/build.make ball_chaser/CMakeFiles/process_image.dir/build
+.PHONY : process_image/fast
+
+#=============================================================================
 # Target rules for targets named roscpp_generate_messages_lisp
 
 # Build rule for target.
@@ -682,7 +695,7 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... _catkin_empty_exported_target"
-	@echo "... ball_chaser"
+	@echo "... drive_bot"
 	@echo "... ball_chaser_gennodejs"
 	@echo "... ball_chaser_genlisp"
 	@echo "... std_msgs_generate_messages_py"
@@ -704,6 +717,7 @@ help:
 	@echo "... ball_chaser_generate_messages"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... process_image"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... _ball_chaser_generate_messages_check_deps_DriveToTarget"
