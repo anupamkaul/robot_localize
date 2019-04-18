@@ -42,13 +42,14 @@ void process_image_callback(const sensor_msgs::Image img)
             ROS_INFO("White ball detected ..");
             drive_robot(0.3, 0.2);
             moving_state = true;
-            break;
+            return; // exit and recalculate on next camera image
         }
     }
 
     // If bot is moving then stop it if it sees no ball..
     if (moving_state) 
     {
+        ROS_INFO("No White ball .. Don't move");
         drive_robot(0, 0);
         moving_state = false;
     } 
@@ -66,6 +67,7 @@ int main(int argc, char** argv)
 
     // Subscribe to /camera/rgb/image_raw topic to read the image data inside the process_image_callback function
     ros::Subscriber sub1 = n.subscribe("/camera/rgb/image_raw", 10, process_image_callback);
+    ROS_INFO("Process Image ..2 ");
 
     // Handle ROS communication events
     ros::spin();
