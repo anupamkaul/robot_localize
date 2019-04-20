@@ -12,45 +12,6 @@
     <child link="chassis" />
   </joint>
 
-  
-  <link name='mid_body'>
-
-      <collision name='mid_body_collision'>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <box size=".08 .08 .1"/>
-        </geometry>
-      </collision>
-
-      <visual name='mid_body_visual'>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <box size=".08 .08 .1"/>
-        </geometry>
-      </visual>
-
-      <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="1e-5"/>
-        <inertia
-          ixx="1e-6" ixy="0" ixz="0"
-          iyy="1e-6" iyz="0"
-          izz="1e-6"
-        />
-      </inertial>
-
-  </link>
-
-
-  <joint type="fixed" name="mid_body_hinge">
-
-    <origin xyz="-0.1 0 0.1" rpy=" 0 0 0"/>
-    <axis xyz="0 1 0"/>
-    <child link="mid_body"/>
-    <parent link="chassis"/>
-
-  </joint>
-
   <link name='left_wheel'>
 
       <collision name='lw_collision'>
