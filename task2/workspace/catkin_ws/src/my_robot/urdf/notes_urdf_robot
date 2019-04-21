@@ -103,4 +103,19 @@ https://answers.ros.org/question/271978/error-while-launching-robot-model/
 
 ---
 
+conversion tips from urdf to sdf are explained here, including how to use gazebo tags for link color:
+
+http://gazebosim.org/tutorials/?tut=ros_urdf
+
+unless using OGRE definitions for my own colors, the standard gazebo colors available under material, are defined here:
+
+https://bitbucket.org/osrf/gazebo/src/default/media/materials/scripts/gazebo.material?fileviewer=file-view-default
+
+other material properties (SDF) are defined here:
+
+http://sdformat.org/spec?ver=1.5&elem=visual
+
+
+---
+
 
