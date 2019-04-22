@@ -53,14 +53,14 @@
 
   <link name='left_wheel'>
 
-      <collision name='lw_collision'>
+      <collision name='left_wheel_collision'>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
         <geometry>
           <cylinder radius="0.1" length="0.05"/>
         </geometry>
       </collision>
 
-      <visual name='lw_visual'>
+      <visual name='left_wheel_visual'>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
         <geometry>
           <cylinder radius="0.1" length="0.05"/>
@@ -92,14 +92,14 @@
 
   <link name='right_wheel'>
 
-      <collision name='rw_collision'>
+      <collision name='right_wheel_collision'>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
         <geometry>
           <cylinder radius="0.1" length="0.05"/>
         </geometry>
       </collision>
 
-      <visual name='rw_visual'>
+      <visual name='right_wheel_visual'>
         <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
         <geometry>
           <cylinder radius="0.1" length="0.05"/>
@@ -131,14 +131,14 @@
 
   <link name='camera'>
 
-    <collision name='cam_collision'>
+    <collision name='camera_collision'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <box size=".05 .05 .05"/>
       </geometry>
     </collision>
 
-    <visual name='cam_visual'>
+    <visual name='camera_visual'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <box size=".05 .05 .05"/>
@@ -210,31 +210,31 @@
   </joint>
 
   <gazebo reference="chassis">
-    <material> Gazebo/Orange</material>">
+    <material> Gazebo/Orange</material>
   </gazebo>
 
   <gazebo reference="camera">
-    <material> Gazebo/Red</material>">
+    <material> Gazebo/Red</material>
   </gazebo>
 
   <gazebo reference="left_wheel">
-    <material> Gazebo/Green</material>">
+    <material> Gazebo/Yellow</material>
   </gazebo>
 
   <gazebo reference="right_wheel">
-    <material> Gazebo/Green</material>">
+    <material> Gazebo/Yellow</material>
   </gazebo>
 
   <gazebo reference="mid_body">
-    <material> Gazebo/Turquoise</material>">
+    <material> Gazebo/Turquoise</material>
   </gazebo>
 
-  <gazebo reference="chassis/back_caster_visual">
-    <material> Gazebo/Yellow</material>">
+  <gazebo reference="back_caster_visual">
+    <material> Gazebo/Green</material>
   </gazebo>
 
-  <gazebo reference="chassis/front_caster_visual">
-    <material> Gazebo/Yellow</material>">
+  <gazebo reference="front_caster_visual">
+    <material> Gazebo/Green</material>
   </gazebo>
 
 
@@ -252,7 +252,7 @@
 
     </inertial>
 
-    <collision name='collision'>
+    <collision name='chassis_collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
         <box size=".4 .4 .1"/>
