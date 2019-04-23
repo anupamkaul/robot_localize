@@ -56,11 +56,33 @@ tuple<double, double> state_prediction(double mean1, double var1, double mean2, 
 
 int main()
 {
-   tie(new_mean, new_var) = measurement_update(10, 8, 13, 2);
-   printf("[%f, %f]\n", new_mean, new_var);
+   // Measurements and measurement variances
 
-   tie(new_mean, new_var) = state_prediction(10, 4, 12, 4);
-   printf("[%f, %f]\n", new_mean, new_var);
+   // Let's assume data for 5 time cycles, and further assume that the 
+   // measurement variance is constant to start with.
+
+   double measurements[5] = { 5, 6, 7, 9, 10 };
+   double measurement_sig = 4;
+
+   // Motions and motion variances (for 5 time cycles again)
+   double motion[5] = { 1, 1, 2, 1, 1 };
+   double motion_sig = 2;
+
+   // Kalman needs an initial state (a random guess) so here it is:
+   double mu = 0;
+   double sig = 1000;
+
+   // Loop through all the measurements
+   for (int i = 0; i < sizeof(measurements) / sizeof(measurements[0]); i++) {
+
+       // Apply a measurement update
+       tie(mu, sig) = measurement_update(mu, sig, measurements[i], measurement_sig);
+       printf("iteration %i measurement update: [%f, %f]\n", i, mu, sig);
+
+       // Apply a state prediction
+       tie(mu, sig) = state_prediction(mu, sig, motion[i], motion_sig);
+       printf("iteration %i state estimate: [%f, %f]\n\n", i, mu, sig);
+   }
 
    return 0;
 }
