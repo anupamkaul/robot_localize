@@ -35,14 +35,3 @@ The state transtion function is denoted by F and the formula can be written as s
 
 In reality, the equation should also account for process noise, as its own term in the equation. However, process noise is a Gaussian with a mean of 0, so the update equation for the mean need not include it.
 
-
-
-
- 
-
-
-
-
-
-
-
