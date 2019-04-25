@@ -14,19 +14,19 @@ Background:
 
 --
 
-1. Multi dim kalman comes into play as the state gets more complicated and has variables in multiple dimensions. For example, for Robot Localization, position (x) and velocity (∂x/∂t) may be important. Velocity depends on x, so its a hidden variable. (i.e. let vel = ∘x) 
+1. Multi dim kalman comes into play as the state gets more complicated and has variables in multiple dimensions. For example, for Robot Localization, position (x) and velocity (∂x/∂t) may be important. Velocity depends on x, so its a hidden variable. (i.e. let vel = ẋ) 
 
-Thus:  if ∘x = ∂x/∂t then
+Thus:  if ẋ = ∂x/∂t then
 
-     x′ = x + Δt∘x   (posterior x)
-    ∘x′ = ∘x         (posterior vel)
+     x ′ = x + Δtẋ   (posterior x)
+     ẋ ′ = ẋ         (posterior vel)
 
 In matrix form:
 
     ┌   ┐ ′     ┌         ┐┌   ┐ 
     │ x │    =  │  1  ∆t  ││ x │    
     │   │       │         ││   │
-    │∘x │       │  0  ∘x  ││∘x │
+    │ ẋ │       │  0  ẋ   ││ ẋ │
     └   ┘       └         ┘└   ┘
 
 The state transtion function is denoted by F and the formula can be written as so,
@@ -35,3 +35,100 @@ The state transtion function is denoted by F and the formula can be written as s
 
 In reality, the equation should also account for process noise, as its own term in the equation. However, process noise is a Gaussian with a mean of 0, so the update equation for the mean need not include it.
 
+    x′ = F x + noise
+ 
+    where noise ∼  N(0, Q)  # mean is 0 for noise
+
+Now, what happens to the covariance? How does it change in this process?
+
+Sidenote: While it is common to use Σ to represent the covariance of a Gaussian distribution in mathematics, it is more common to use the letter P to represent the state covariance in localization.
+
+If you multiply the state, x, by F , then the covariance will be affected by the square of F. In matrix form, this will look like so:
+
+   P′ = FPF⁺      (where F⁺ is F-transpose)
+
+
+However, your intuition may suggest that it should be affected by more than just the state transition function. For instance, additional uncertainty may arise from the prediction itself. If so, you’re correct!
+
+To calculate the posterior covariance, the prior covariance is multiplied by the state transition function squared, and Q added as an increase of uncertainty due to process noise. Q can account for a robot slowing down unexpectedly, or being drawn off course by an external influence.
+
+
+   P′ = FPF⁺ + Q 
+
+Now we’ve updated the mean and the covariance as part of the state prediction.
+
+-----
+
+Measurement Update:
+
+Next, we move onto the measurement update step. If we return to our original example, where we were tracking the position and velocity of a robot in the x-dimension, the robot was taking measurements of the location only (the velocity is a hidden state variable). Therefore the measurement function is very simple - a matrix containing a one and a zero. This matrix demonstrates how to map the state to the observation, z
+
+  if z is the observation,
+
+               ┌   ┐
+       ┌     ┐ │ x │
+  z =  │ 1 0 │ │   │
+       └     ┘ │ ẋ │
+               └   ┘
+
+This matrix, called the Measurement Function, is denoted H.
+
+For the measurement update step, there are a few formulas. First, we calculate the measurement residual, y. The measurement residual is the difference between the measurement and the expected measurement based on the prediction (ie. we are comparing where the measurement tells us we are vs. where we think we are). The measurement residual will be used later on in a formula.
+
+  If y is the measurement residual,
+
+  y = z - H x′
+
+Next, it's time to consider the measurement noise, denoted RR. This formula maps the state prediction covariance into the measurement space and adds the measurement noise. The result, S, will be used in a subsequent equation to calculate the Kalman Gain.
+
+
+ S = H P′H⁺  +  R
+
+These equations need not be memorized, instead they can be referred to in text or implemented in code for use and reuse.
+
+Kalman Gain:
+
+Next, we calculate the Kalman Gain, K. As you will see in the next equation, the Kalman Gain determines how much weight should be placed on the state prediction, and how much on the measurement update. It is an averaging factor that changes depending on the uncertainty of the state prediction and measurement update.
+
+ If K is the Kalman Gain,
+
+ K = P′H⁺ S⁻¹   (the kalman gain calculation)
+
+ x = x′ + Ky    (the new predicted state based on kalman gain) 
+
+The last step in the Kalman Filter is to update the new state’s covariance using the Kalman Gain.
+
+ P = (I - KH) P′
+
+------
+
+RECAP of Kalman Filter Equations for multiple dimensions:
+
+1. State Prediction:
+
+    x′ = Fx 
+    P′ = FPF⁺ + Q 
+
+2. Measurement Udpate:
+
+  y = z - H x′
+  S = H P′H⁺  +  R
+
+3. Calculation of Kalman Gain:
+
+ K = P′H⁺ S⁻¹  
+
+4. Calculation of Posterior State and Covariance: 
+
+ x = x′ + Ky     
+ P = (I - KH)P′ 
+
+-------
+
+
+
+
+
+
+
+ 

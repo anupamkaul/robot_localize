@@ -48,6 +48,10 @@ ctl-k ur
 ctl-k dl
 ctl-k ul
 
+For transpose I am using Superscript Plus Sign (Ctl-k +S) 
+
+Superscript -1 is made up of superscript-minus + superscript-1..
+
  --------------------------------------------------------------------------------------
 
 symbol description	symbol	unicode (decimal)	vim digraph (first type <ctrl>k)
