@@ -1,0 +1,48 @@
+Notes for a multi dimensional kalman filter.
+
+Background:
+
+1. Gaussian curves (unimodal) are great at representing noise to the extent of converging quickly to accurate predictions.
+
+2. Gaussian curves have a mean and variance
+
+3. Kalman filter (single dimensional) is a 2 step process - the measurement update step, and the state prediction steo, both which feed off each other. There is an initial state guess made, which quickly converges to an accurate prediction of the state.
+
+4. Good examples of states for a robot are its position (still x - single dim) and lets say its velocity (x-derivative) which relates to x.
+
+5. Single dim kalman filter measurement and state prediction steps basically mean updating the mean and variance of the prior gaussian PDFs + the measurement PDFs to result into the posterior Gaussian PDF (for the measurement update step). Then this posterior Gaussian PDF becomes the prior for state estimation, where we also have a motion gaussian (control action) and again we mix the means and covariances (different formula for state prediction vs measurement updates). Ok, easy!
+
+--
+
+1. Multi dim kalman comes into play as the state gets more complicated and has variables in multiple dimensions. For example, for Robot Localization, position (x) and velocity (∂x/∂t) may be important. Velocity depends on x, so its a hidden variable. (i.e. let vel = ∘x) 
+
+Thus:  if ∘x = ∂x/∂t then
+
+     x′ = x + Δt∘x   (posterior x)
+    ∘x′ = ∘x         (posterior vel)
+
+In matrix form:
+
+    ┌   ┐ ′     ┌         ┐┌   ┐ 
+    │ x │    =  │  1  ∆t  ││ x │    
+    │   │       │         ││   │
+    │∘x │       │  0  ∘x  ││∘x │
+    └   ┘       └         ┘└   ┘
+
+The state transtion function is denoted by F and the formula can be written as so,
+    
+    x′ = F x 
+
+In reality, the equation should also account for process noise, as its own term in the equation. However, process noise is a Gaussian with a mean of 0, so the update equation for the mean need not include it.
+
+
+
+
+ 
+
+
+
+
+
+
+

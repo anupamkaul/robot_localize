@@ -1,0 +1,140 @@
+Or, a note on vim di-graphs:
+
+unicodes for digraphs cover most of the math / greek symbols
+vim has a layer for digraphs, starting with control-k and then codes that generate those unicodes that prints that symbol..
+
+examples: 
+
+ delta is ∆   (control-k DE)  
+ also Δ       (control-k D*)
+
+ n-squared is  n²   (control-k 2S) 
+ sigma is Σ(a, b)   (control-k S*) --- traditional greek alphabets are more like english alphabet eqv/phonetics with a star ...
+ big, tall sigma is ∑(a, b) (control-k +Z) 
+ square-root is √(2rx)  -- (obviously limited but b-t-n) (control-k RT) 
+
+ Integral is ∫x.dx !! (control-k In)
+ Partial Der is ∂x/∂y ...   (control-k dP) 
+
+ mean (mu) is μ    (thus control-k m*)
+
+ The full table is given below:
+
+ ⌠    this large integral was made in 2 lines (ctl-K Iu for top half and ctl-K Il for bottom half) 
+ ⌡
+ (taken from http://vimdoc.sourceforge.net/htmldoc/digraph.html)
+
+another link: https://github.com/vim/vim/blob/master/runtime/doc/digraph.txt
+
+
+The dot I am using for derivative of a variable shorthand notation, i.e. ∘x is (ctl-K Ob) 
+
+x-prime is x′ (ctl-k 1')
+
+For matrices:
+
+⌈	<7	2308	8968	LEFT CEILING
+⌉	>7	2309	8969	RIGHT CEILING
+⌊	7<	230A	8970	LEFT FLOOR
+⌋	7>	230B	8971	RIGHT FLOOR
+
+Better:
+
+https://github.com/vim/vim/blob/master/runtime/doc/digraph.txt
+
+ctl-k vv for light vertical bar
+ctl-k dr for light vertical and right
+ctl-k ur
+ctl-k dl
+ctl-k ul
+
+ --------------------------------------------------------------------------------------
+
+symbol description	symbol	unicode (decimal)	vim digraph (first type <ctrl>k)
+
+plus minus	        ±	177	                +-
+squared (superscript 2)	²	178	2S
+coproduct (big, tall Pi)	∏	8719	*P
+summation (big, tall Sigma)	∑	8721	+Z
+bullet operator (dot product)	∙	8729	Sb
+(square) root	√	8730	RT
+infinity	∞	8734	00
+
+Greek Letters
+Gamma	Γ	915	G*
+Delta	Δ	916	D*
+Theta	Θ	920	H*
+Pi	Π	928	P*
+Sigma	Σ	931	S*
+Phi	Φ	934	F*
+Psi	Ψ	936	Q*
+Omega	Ω	937	W*
+alpha	α	945	a*
+beta	β	946	b*
+gamma	γ	947	g*
+delta	δ	948	d*
+epsilon	ε	949	e*
+eta	η	951	y*
+theta	θ	952	h*
+kappa	κ	954	k*
+lambda	λ	955	l*
+mu	μ	956	m*
+pi	π	960	p*
+rho	ρ	961	r*
+sigma	σ	963	s*
+sigma (alternative)	ς	962	*s
+tau	τ	964	t*
+phi*	φ	966	f*
+psi*	ψ	968	q*
+omega*	ω	969	w*
+dagger (sword)	†	8224	/-
+double dagger (double sword)	‡	8225	/=
+left arrow*	←	8592	<-
+up arrow	↑	8593	-!
+right arrow	→	8594	->
+down arrow	↓	8595	-v
+
+Logic
+for all (for any)	∀	8704	FA
+partial differential (curled little d)	∂	8706	dP
+there exists (backwards capital E)	∃	8707	TE
+logical and	∧	8743	AN
+logical or	∨	8744	OR
+therefore (triangle of dots)	∴	8756	.:
+because (upside-down triangle of dots)	∵	8757	:.
+
+Sets
+Null set, empty set, var nothing, capital O slash	∅	8709	/0
+Null set, empty set, var nothing, capital O slash	Ø	216	O/
+element of	∈	8712	(-
+contains as member	∋	8715	-)
+set intersect	∩	8745	(U
+set union	∪	8746	U)
+subset of (contained in)	⊂	8834	(C
+superset of (contains)	⊃	8835	)C
+subset of or equal to	⊆	8838	(_
+superset of or equal to	⊇	8839	)_
+concatenation, centered dot	∘	8728	Ob
+
+Calculus
+integral S	∫	8747	In
+double integral S	∬	8748	DI
+line integral S with circle	∮	8750	Io
+Delta	∆	8710	DE
+Nabla	∇	8711	NB
+
+Equalities, inequalities, et al.
+tilde operator (centered tilde, proportional)	∼	8764	?1
+approximately equal to	≅	8773	?=
+almost equal to	≈	8776	?2
+not equal to	≠	8800	!=
+less than or equal to	≤	8804	=<
+greater than or equal to	≥	8805	>=
+
+
+-------------------------------------------------
+
+A more complete set is here : http://vimdoc.sourceforge.net/htmldoc/digraph.html:
+
+
+

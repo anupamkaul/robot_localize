@@ -1,3 +1,5 @@
+// A single dimension kalman filter
+
 // The Measurement Update step:
 
 // 2 Gaussians w.r.t measurements (of position) - one represents the prior belief, and the second represents the actual measurements from sensors.
