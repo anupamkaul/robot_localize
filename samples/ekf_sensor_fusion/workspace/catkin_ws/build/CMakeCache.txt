@@ -302,6 +302,30 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//Value Computed by CMake
+turtlebot_gazebo_BINARY_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_gazebo
+
+//Value Computed by CMake
+turtlebot_gazebo_SOURCE_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/src/turtlebot_simulator/turtlebot_gazebo
+
+//Value Computed by CMake
+turtlebot_simulator_BINARY_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_simulator
+
+//Value Computed by CMake
+turtlebot_simulator_SOURCE_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/src/turtlebot_simulator/turtlebot_simulator
+
+//Value Computed by CMake
+turtlebot_stage_BINARY_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_stage
+
+//Value Computed by CMake
+turtlebot_stage_SOURCE_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/src/turtlebot_simulator/turtlebot_stage
+
+//Value Computed by CMake
+turtlebot_stdr_BINARY_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_stdr
+
+//Value Computed by CMake
+turtlebot_stdr_SOURCE_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/src/turtlebot_simulator/turtlebot_stdr
+
 
 ########################
 # INTERNAL cache entries
@@ -404,7 +428,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -117,6 +117,10 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_gazebo/cmake_install.cmake")
+  include("/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_simulator/cmake_install.cmake")
+  include("/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_stage/cmake_install.cmake")
+  include("/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/turtlebot_simulator/turtlebot_stdr/cmake_install.cmake")
 
 endif()
 

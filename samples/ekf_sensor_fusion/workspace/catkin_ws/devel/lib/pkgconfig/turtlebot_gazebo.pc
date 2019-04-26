@@ -1,0 +1,8 @@
+prefix=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/devel
+
+Name: turtlebot_gazebo
+Description: Description of turtlebot_gazebo
+Version: 2.2.3
+Cflags: 
+Libs: -L/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/devel/lib 
+Requires: 
