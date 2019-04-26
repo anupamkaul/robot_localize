@@ -1,0 +1,8 @@
+prefix=/home/anupam/robond/samples/simple_arm/workspace/catkin_ws/install
+
+Name: simple_arm
+Description: Description of simple_arm
+Version: 0.0.0
+Cflags: -I/home/anupam/robond/samples/simple_arm/workspace/catkin_ws/install/include
+Libs: -L/home/anupam/robond/samples/simple_arm/workspace/catkin_ws/install/lib 
+Requires: 

@@ -1,2 +1,0 @@
-simple_arm
--DCATKIN_DEVEL_PREFIX=/home/anupam/robond/workspace/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/anupam/robond/workspace/catkin_ws/install -G Unix Makefiles

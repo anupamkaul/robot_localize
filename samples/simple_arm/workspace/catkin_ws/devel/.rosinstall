@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/anupam/robond/samples/simple_arm/workspace/catkin_ws/devel/setup.sh
