@@ -1,0 +1,116 @@
+When either the state transformation function, measure function, or any other function used in kalman filter turns out to be non-linear 
+(not expressable as y = ax + b form) then the posterior is NOT a gaussian (they are wierd representations that will need 1000..s of data points to start
+prediction. Not exactly the speed and responsiveness that kalman is known for)
+
+Ekf brings in 'local linearization' to a non-linear function, by expressing a non-linear function as a taylor series expansion, and retaining the first 2 terms
+of the taylor series (const and x1) for an aproximation (same concepts as a tangent at multiple points of a curve, the common area between the tangent and the curve making up for the general shape of the curve, applied continuously). 
+
+By applying this local linearization to the non-linear function, EKF guarantees that the posterior is again a gaussian distribution, thus bringing it back to the realm of solvable kalman. What we lose in approximation, we make back up in terms of speed of the final convergence.
+
+This is the principle of EKF.
+
+One more thing: This local linearization can only be applied to the covariance. The mean must still be updated non-linearly, otherwise the resulting function will still be non-gaussian. 
+
+---
+
+Thus if the non-linearity of any of the state variables is represented by: f(x)
+
+and if F is its linear approximation,
+
+then μ -- f(x) --> μ′
+     P -- F -----> P′
+
+F is approximated using the first 2 terms of the taylor's series:
+
+    F = f(μ) + (δf(μ)/δx)(x - μ)q
+                
+---
+
+For MultiDimensional EKF, the basic non-lin -> lin concept and equation remains the same. Since there are derivatives, and multi-dim derivatives of taylor now (even for the 2 term equation), therefore Jacobians (matrices of partial derivatives of an entity across multiple dims) come into play.
+
+Read about taylor series at https://en.wikipedia.org/wiki/Taylor_series
+
+---
+
+A very good and simple example where EKF may be applied is for a robot whose state consists of (x, y) in cartesian coordinates, but the sensors only measure the distance r and angle Θ between an object and the robot (polar cordinates). So the state transition function requires conversion between cartesian and polar, and thesese relationships are non-linear ... (basically anything that's not y = ax + b is non-linear)
+
+          ──────── 
+i.e. r = √ x² + y²
+
+     Θ = tan⁻¹(y/x) 
+
+ 
+In the original Kalman equations, the measurement residual was y = z - H(x′) 
+Now H must be replaced with its non linear equivalent
+
+ 
+          ┌             ┐
+          │   ────────  │ 
+h(x′)   = │  √ x² + y²  │  
+          │  tan⁻¹(y/x) │ 
+          └             ┘
+
+Our measurement residual equation becomes y = z - h(x′) 
+
+Remember that to preserve the gaussianess of the posterior, a strict linearization must be applied to the (co)variance.
+
+Using taylor's series first 2 terms, a linear equiv function for h() centered around the mean μ is defined as:
+
+h(x) ~ h(μ) + (x - μ)⁺ Df(μ)
+
+And here, Df(μ) is a jacobian 
+
+Lets say H is the jacobian, since we are basically linearizing our measurement funciton h(x)
+
+                ┌              ┐
+So jacobian H = │ ∂r/∂x  ∂r/y  │
+                │              │
+                │ ∂Θ/∂x  ∂Θ/∂y │    
+                └              ┘
+
+(matrix of partial derivatives applied across different dimensions) 
+
+The computation gives the matrix:
+
+
+                ┌             ┐
+            H = │ x/√a   y/√a │
+                │             │
+                │ -y/a   x/a  │ 
+                └             ┘
+
+
+            where a = x² + y²
+
+-----
+
+Here is a summary of the EKF equations, where F (state transition function) is replaced with f (a non-linear eqv), and H (measurement update function) is replaced with h (its non-linear equivalent).
+
+Also, for the EKF equations below, F and H stand now for jacobians that have replaced the measurement and state transition functions:
+
+
+1. State Prediction:
+
+    x′ = f(x) 
+    P′ = FPF⁺ + Q 
+
+2. Measurement Udpate:
+
+  y = z - h(x′)
+  S = H P′H⁺  +  R
+
+3. Calculation of Kalman Gain:
+
+ K = P′H⁺ S⁻¹  
+
+4. Calculation of Posterior State and Covariance: 
+
+ x = x′ + Ky     
+ P = (I - KH)P′ 
+
+----
+
+ 
+
+
+
