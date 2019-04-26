@@ -1,0 +1,21 @@
+Check from rostopic list:
+
+Of interest:
+
+1. Subscribers:
+
+TB2 subscribes to /cmd_vel_mux/input/teleop
+
+
+2. Publishers:
+
+TB2 publishes to:
+
+- camera:
+/camera/depth/image_raw
+
+- rotatary encoders :
+/odom  (position, velocity)
+
+- IMU:
+/mobile_base/sensors/imu_data  (sensors like gyro, accel, etc).
