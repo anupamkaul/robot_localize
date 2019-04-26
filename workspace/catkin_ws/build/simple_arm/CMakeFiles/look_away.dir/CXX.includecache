@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/anupam/github/robond/workspace/catkin_ws/devel/include/simple_arm/GoToPosition.h
+/home/anupam/robond/workspace/catkin_ws/devel/include/simple_arm/GoToPosition.h
 ros/service_traits.h
 -
 simple_arm/GoToPositionRequest.h
@@ -14,7 +14,7 @@ simple_arm/GoToPositionRequest.h
 simple_arm/GoToPositionResponse.h
 -
 
-/home/anupam/github/robond/workspace/catkin_ws/devel/include/simple_arm/GoToPositionRequest.h
+/home/anupam/robond/workspace/catkin_ws/devel/include/simple_arm/GoToPositionRequest.h
 string
 -
 vector
@@ -30,7 +30,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/anupam/github/robond/workspace/catkin_ws/devel/include/simple_arm/GoToPositionResponse.h
+/home/anupam/robond/workspace/catkin_ws/devel/include/simple_arm/GoToPositionResponse.h
 string
 -
 vector
@@ -46,11 +46,11 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/anupam/github/robond/workspace/catkin_ws/src/simple_arm/src/look_away.cpp
+/home/anupam/robond/workspace/catkin_ws/src/simple_arm/src/look_away.cpp
 ros/ros.h
-/home/anupam/github/robond/workspace/catkin_ws/src/simple_arm/src/ros/ros.h
+/home/anupam/robond/workspace/catkin_ws/src/simple_arm/src/ros/ros.h
 simple_arm/GoToPosition.h
-/home/anupam/github/robond/workspace/catkin_ws/src/simple_arm/src/simple_arm/GoToPosition.h
+/home/anupam/robond/workspace/catkin_ws/src/simple_arm/src/simple_arm/GoToPosition.h
 sensor_msgs/JointState.h
 -
 sensor_msgs/Image.h

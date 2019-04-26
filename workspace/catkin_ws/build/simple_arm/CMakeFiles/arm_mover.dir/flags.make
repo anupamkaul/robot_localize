@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"simple_arm\"
 
-CXX_INCLUDES = -I/home/anupam/github/robond/workspace/catkin_ws/devel/include -I/home/anupam/github/robond/workspace/catkin_ws/src/simple_arm/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/anupam/robond/workspace/catkin_ws/devel/include -I/home/anupam/robond/workspace/catkin_ws/src/simple_arm/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 

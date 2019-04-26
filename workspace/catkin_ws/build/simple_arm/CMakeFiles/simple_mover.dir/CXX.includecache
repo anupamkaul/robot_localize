@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/anupam/github/robond/workspace/catkin_ws/src/simple_arm/src/simple_mover.cpp
+/home/anupam/robond/workspace/catkin_ws/src/simple_arm/src/simple_mover.cpp
 ros/ros.h
-/home/anupam/github/robond/workspace/catkin_ws/src/simple_arm/src/ros/ros.h
+/home/anupam/robond/workspace/catkin_ws/src/simple_arm/src/ros/ros.h
 std_msgs/Float64.h
-/home/anupam/github/robond/workspace/catkin_ws/src/simple_arm/src/std_msgs/Float64.h
+/home/anupam/robond/workspace/catkin_ws/src/simple_arm/src/std_msgs/Float64.h
 
 /opt/ros/kinetic/include/ros/advertise_options.h
 ros/forwards.h

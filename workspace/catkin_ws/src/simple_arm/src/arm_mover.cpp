@@ -55,7 +55,7 @@ std::vector <float> clamp_at_boundaries(float requested_j1, float requested_j2)
 bool handle_safe_move_request(simple_arm::GoToPosition::Request& req, simple_arm::GoToPosition::Response& res)
 {
 
-    ROS_INFO("GoToPositionRequest received - j1:%1.2f, j2:%1.2f", (float)req.linear_x, (float)angular_z);
+    ROS_INFO("GoToPositionRequest received - j1:%1.2f, j2:%1.2f", (float)req.joint_1, (float)req.joint_2);
 
     // Check if requested joint angles are in the safe zone, otherwise clamp them
     std::vector<float> joints_angles = clamp_at_boundaries(req.joint_1, req.joint_2);

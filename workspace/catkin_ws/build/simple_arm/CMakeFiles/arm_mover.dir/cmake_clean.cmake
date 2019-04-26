@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/arm_mover.dir/src/arm_mover.cpp.o"
-  "/home/anupam/github/robond/workspace/catkin_ws/devel/lib/simple_arm/arm_mover.pdb"
-  "/home/anupam/github/robond/workspace/catkin_ws/devel/lib/simple_arm/arm_mover"
+  "/home/anupam/robond/workspace/catkin_ws/devel/lib/simple_arm/arm_mover.pdb"
+  "/home/anupam/robond/workspace/catkin_ws/devel/lib/simple_arm/arm_mover"
 )
 
 # Per-language clean rules from dependency scanning.
