@@ -1,8 +1,0 @@
-prefix=/home/anupam/github/robond/catkin_ws/devel
-
-Name: simple_arm
-Description: Description of simple_arm
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/anupam/github/robond/catkin_ws/devel/lib 
-Requires: 
