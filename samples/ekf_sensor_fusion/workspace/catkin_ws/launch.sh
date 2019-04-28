@@ -9,10 +9,14 @@ sleep 5
 xterm -e "source devel/setup.bash; roslaunch odom_to_trajectory create_trajectory.launch" &
 sleep 5
 
-xterm -e "source devel/setup.back; roslaunch turtlebot_teleop keyboard_teleop.launch" &
+xterm -e "source devel/setup.bash; roslaunch turtlebot_teleop keyboard_teleop.launch" &
 sleep 5
 
 xterm -e "source devel/setup.bash; rosrun rqt_graph rqt_graph" &
+sleep 5
+
+xterm -e "source devel/setup.bash; rosrun rviz rviz -d src/EKFLab.rviz" &
+sleep 5
 
 
 

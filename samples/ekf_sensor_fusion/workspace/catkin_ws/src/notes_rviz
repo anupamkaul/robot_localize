@@ -1,0 +1,8 @@
+Edit the rviz configuration:
+Change the Fixed Frame to base_footprint
+Change the Reference Frame to odom
+Add a RobotModel
+Add a camera and select the /camera/rgb/image_raw topic
+Add a /ekfpath topic and change the display name to EKFPath
+Add a /odompath topic and change the display name to OdomPath
+Change the OdomPath color to red:255;0;0
