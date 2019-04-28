@@ -1,2 +1,2 @@
-robot_pose_ekf:turtlebot_simulator/turtlebot_gazebo:turtlebot_simulator/turtlebot_simulator:turtlebot_simulator/turtlebot_stage:turtlebot_simulator/turtlebot_stdr
+odom_to_trajectory:robot_pose_ekf:turtlebot_simulator/turtlebot_gazebo:turtlebot_simulator/turtlebot_simulator:turtlebot_simulator/turtlebot_stage:turtlebot_simulator/turtlebot_stdr
 -DCATKIN_DEVEL_PREFIX=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/install -G Unix Makefiles

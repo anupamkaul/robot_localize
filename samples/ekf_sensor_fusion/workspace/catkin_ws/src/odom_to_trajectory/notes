@@ -1,0 +1,45 @@
+git clone https://github.com/udacity/odom_to_trajectory
+
+----
+
+Up until now, turtlebot2 and ekf_pose_estimate have both been working on instantaneous data and results (filtered and unfiltered)
+Sometimes we need to compare filtered/(un) long time accumulated values.
+
+This package subscribes to odometry data over time and builds up a trajectory.
+
+odom-values --> odom-to-trajectory --> Trajectories
+
+----
+
+This package contains 2 nodes.
+
+The 1st node subscribes to the robot's unfiltered odometry, appends the robot's last 1000 poses, and publishes the robot's unfiltered trajectory. (/odompath)
+
+The 2nd nodes subscribes to the robot's filtered 3D odometry, and also appends the robot's last 1000 poses, and publishes the filtered trajectory. (/ekfpath)
+
+----
+
+Integration with Turtlebot and Robot_Ekf_Pose ...
+
+
+Looks like the odom and IMU topic names are the same.
+
+Build the package:
+$ cd /home/workspace/catkin_ws
+$ catkin_make
+$ source devel/setup.bash
+Launch the nodes:
+$ roslaunch odom_to_trajectory create_trajectory.launch 
+
+Now that you’ve launched the nodes, open a new terminal and run the rqt graph. In the active nodes and topics, you’ll now see the estimated 3D pose since one of the nodes in the odom to trajectory package is subscribing to it. You’ll also notice that the trajectories are still invisible since we are not yet subscribed to them!
+
+Visualize the topics:
+
+$ rosrun rqt_graph rqt_graph
+
+
+
+
+
+
+

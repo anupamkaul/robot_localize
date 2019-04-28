@@ -396,6 +396,12 @@ message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
 nav_msgs_DIR:PATH=/opt/ros/kinetic/share/nav_msgs/cmake
 
 //Value Computed by CMake
+odom_to_trajectory_BINARY_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/odom_to_trajectory
+
+//Value Computed by CMake
+odom_to_trajectory_SOURCE_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/src/odom_to_trajectory
+
+//Value Computed by CMake
 robot_pose_ekf_BINARY_DIR:STATIC=/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build/robot_pose_ekf
 
 //Value Computed by CMake
@@ -640,7 +646,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
