@@ -1,0 +1,88 @@
+Teleop package:
+Access this link and go through the turtlebot_teleop documentation.
+
+Clone the Package:
+$ cd /home/workspace/catkin_ws/src
+$ git clone https://github.com/turtlebot/turtlebot
+
+Install the Dependencies:
+$ cd /home/workspace/catkin_ws
+$ source devel/setup.bash
+$ rosdep -i install turtlebot_teleop
+
+Build the Package:
+$ catkin_make
+$ source devel/setup.bash
+
+Launch the Nodes:
+$ roslaunch turtlebot_teleop keyboard_teleop.launch
+
+-
+This package has no subscribing, it only publishes to cmd_mux_vel, exactly the same one that turtlebot2 sim subscribes to, so no renaming is necessary
+
+Trick : Increase the vel first (q vs z) and then try out the movement commands.
+
+---From the doc ---
+
+
+Contents
+Use
+Nodes
+Keyboard Teleop
+Published Topics
+Parameters
+PS3/XBox Teleop
+Subscribed Topics
+Published Topics
+Parameters
+ 
+
+Use
+The turtlebot_teleop package provides launch files for teleoperation with different input devices.
+
+For a keyboard teleoperation use:
+roslaunch turtlebot_teleop keyboard_teleop.launch
+For a ps3 joystick use:
+roslaunch turtlebot_teleop ps3_teleop.launch
+For a xbox360 joystick use:
+roslaunch turtlebot_teleop xbox360_teleop.launch
+Nodes
+
+Keyboard Teleop
+The turtlebot_teleop_key provides a generic keyboard teleop node.
+Published Topics
+
+turtlebot_telop_keyboard/cmd_vel (geometry_msgs/Twist)
+Outputs command velocity
+Parameters
+
+~scale_linear (double, default: 0.5)
+The amount to scale the joystick input for the command velocity output.
+~scale_angular (double, default: 1.5)
+The amount to scale the joystick input for the command velocity output.
+PS3/XBox Teleop
+The turtlebot_teleop_joy provides a generic joystick teleop node.
+Subscribed Topics
+
+joy (sensor_msgs/Joy)
+Listens to a joystick commands
+Published Topics
+
+turtlebot_telop_joystick/cmd_vel (geometry_msgs/Twist)
+Outputs command velocity
+Parameters
+
+~scale_linear (double, default: 0.5)
+The amount to scale the joystick input for the command velocity output.
+~scale_angular (double, default: 1.5)
+The amount to scale the joystick input for the command velocity output.
+~axis_deadman (int, default: 10)
+The joystick index to disables/enables the output cmd_vel message.
+~axis_linear (int, default: 1)
+The joystick button index to control linear speed
+~axis_angular (int, default: 0)
+The joystick button index to control angular speed
+
+-----
+
+
