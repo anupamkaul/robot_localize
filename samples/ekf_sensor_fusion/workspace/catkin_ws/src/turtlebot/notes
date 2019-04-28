@@ -1,9 +1,6 @@
-Teleop package:
-Access this link and go through the turtlebot_teleop documentation.
+This package provides the input handling to move the turtlebot simulator (which is a different package)
 
-Clone the Package:
-$ cd /home/workspace/catkin_ws/src
-$ git clone https://github.com/turtlebot/turtlebot
+doc: http://wiki.ros.org/turtlebot_teleop
 
 Install the Dependencies:
 $ cd /home/workspace/catkin_ws
@@ -17,13 +14,7 @@ $ source devel/setup.bash
 Launch the Nodes:
 $ roslaunch turtlebot_teleop keyboard_teleop.launch
 
--
-This package has no subscribing, it only publishes to cmd_mux_vel, exactly the same one that turtlebot2 sim subscribes to, so no renaming is necessary
-
-Trick : Increase the vel first (q vs z) and then try out the movement commands.
-
----From the doc ---
-
+--- From the doc ---
 
 Contents
 Use
@@ -42,10 +33,13 @@ The turtlebot_teleop package provides launch files for teleoperation with differ
 
 For a keyboard teleoperation use:
 roslaunch turtlebot_teleop keyboard_teleop.launch
+
 For a ps3 joystick use:
 roslaunch turtlebot_teleop ps3_teleop.launch
+
 For a xbox360 joystick use:
 roslaunch turtlebot_teleop xbox360_teleop.launch
+
 Nodes
 
 Keyboard Teleop
@@ -54,12 +48,15 @@ Published Topics
 
 turtlebot_telop_keyboard/cmd_vel (geometry_msgs/Twist)
 Outputs command velocity
+
 Parameters
 
 ~scale_linear (double, default: 0.5)
 The amount to scale the joystick input for the command velocity output.
+
 ~scale_angular (double, default: 1.5)
 The amount to scale the joystick input for the command velocity output.
+
 PS3/XBox Teleop
 The turtlebot_teleop_joy provides a generic joystick teleop node.
 Subscribed Topics
@@ -83,6 +80,11 @@ The joystick button index to control linear speed
 ~axis_angular (int, default: 0)
 The joystick button index to control angular speed
 
------
+------
+
+
+This pkg has no subscribers and only publishes control commands:
+
+turtlebot_teleop --> /cmd_vel_mux/input/teleop
 
 
