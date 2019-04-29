@@ -22,5 +22,7 @@ xterm -e "source devel/setup.bash; rosrun rviz rviz -d src/EKFLab.rviz" &
 #xterm -e "source devel/setup.bash; roslaunch src/RvizLaunch.launch" &
 sleep 5
 
+xterm -e "source devel/setup.bash; rosrun rqt_multiplot rqt_multiplot" 
+
 
 

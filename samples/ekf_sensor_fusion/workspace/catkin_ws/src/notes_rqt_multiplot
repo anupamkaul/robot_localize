@@ -1,0 +1,16 @@
+Instructions for Installing and Running the rqt_multiplot ROS plugin:
+
+GitHub documentation:
+Access this link and go through the rqt_multiplot ROS plugin documentation:
+
+https://github.com/ANYbotics/rqt_multiplot_plugin
+
+Open a new terminal and install the rqt_multiplot:
+
+apt-get install ros-kinetic-rqt -y
+apt-get install ros-kinetic-rqt-multiplot -y
+apt-get install libqwt-dev -y
+rm -rf ~/.config/ros.org/rqt_gui.ini
+
+Run the rqt_plot package node:
+rosrun rqt_multiplot rqt_multiplot
