@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# my preferred way of launching because every process gets its own terminal
+# hence easier to debug if required. (put a -hold before -e to persist error logs) 
+
 xterm -e "source devel/setup.bash; roslaunch turtlebot_gazebo turtlebot_world.launch" &
 sleep 10
 

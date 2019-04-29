@@ -8,3 +8,4 @@
 
 # modified environment variables
 export PWD="/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/build"
+export PYTHONPATH="/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"

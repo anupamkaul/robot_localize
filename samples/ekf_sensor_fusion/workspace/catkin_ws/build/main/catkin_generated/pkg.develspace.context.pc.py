@@ -1,8 +1,8 @@
 # generated from catkin/cmake/template/pkg.context.pc.in
 CATKIN_PACKAGE_PREFIX = ""
 PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
-PROJECT_CATKIN_DEPENDS = "roscpp;geometry_msgs".replace(';', ' ')
+PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
-PROJECT_NAME = "turtlebot_teleop"
+PROJECT_NAME = "main"
 PROJECT_SPACE_DIR = "/home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/devel"
-PROJECT_VERSION = "2.4.2"
+PROJECT_VERSION = "0.0.0"

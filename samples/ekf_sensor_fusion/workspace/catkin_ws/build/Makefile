@@ -292,7 +292,7 @@ _catkin_empty_exported_target: cmake_check_build_system
 
 # fast build rule for target.
 _catkin_empty_exported_target/fast:
-	$(MAKE) -f turtlebot/turtlebot/CMakeFiles/_catkin_empty_exported_target.dir/build.make turtlebot/turtlebot/CMakeFiles/_catkin_empty_exported_target.dir/build
+	$(MAKE) -f main/CMakeFiles/_catkin_empty_exported_target.dir/build.make main/CMakeFiles/_catkin_empty_exported_target.dir/build
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================
@@ -1284,84 +1284,6 @@ robot_pose_ekf_generate_messages_py/fast:
 .PHONY : robot_pose_ekf_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_nodejs
-
-# Build rule for target.
-diagnostic_msgs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_nodejs
-.PHONY : diagnostic_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/build
-.PHONY : diagnostic_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_eus
-
-# Build rule for target.
-diagnostic_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_eus
-.PHONY : diagnostic_msgs_generate_messages_eus
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_eus/fast:
-	$(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
-.PHONY : diagnostic_msgs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_cpp
-
-# Build rule for target.
-diagnostic_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_cpp
-.PHONY : diagnostic_msgs_generate_messages_cpp
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_py
-
-# Build rule for target.
-diagnostic_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_py
-.PHONY : diagnostic_msgs_generate_messages_py
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_py/fast:
-	$(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/build
-.PHONY : diagnostic_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_lisp
-
-# Build rule for target.
-diagnostic_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_lisp
-.PHONY : diagnostic_msgs_generate_messages_lisp
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named turtlebot_teleop_joy
-
-# Build rule for target.
-turtlebot_teleop_joy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 turtlebot_teleop_joy
-.PHONY : turtlebot_teleop_joy
-
-# fast build rule for target.
-turtlebot_teleop_joy/fast:
-	$(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_joy.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_joy.dir/build
-.PHONY : turtlebot_teleop_joy/fast
-
-#=============================================================================
 # Target rules for targets named _run_tests_turtlebot_description
 
 # Build rule for target.
@@ -1577,12 +1499,6 @@ help:
 	@echo "... tf_generate_messages_lisp"
 	@echo "... robot_pose_ekf_generate_messages"
 	@echo "... robot_pose_ekf_generate_messages_py"
-	@echo "... diagnostic_msgs_generate_messages_nodejs"
-	@echo "... diagnostic_msgs_generate_messages_eus"
-	@echo "... diagnostic_msgs_generate_messages_cpp"
-	@echo "... diagnostic_msgs_generate_messages_py"
-	@echo "... diagnostic_msgs_generate_messages_lisp"
-	@echo "... turtlebot_teleop_joy"
 	@echo "... _run_tests_turtlebot_description"
 	@echo "... run_tests_turtlebot_description_gtest_turtlebot_description_test_urdf"
 	@echo "... run_tests_turtlebot_description"

@@ -1,4 +1,4 @@
 <launch>
   <!--RVIZ-->
-  <node pkg="rviz" type="rviz" name="rviz" args="-d src/EKFLab.rviz"/>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d /home/anupam/robond/samples/ekf_sensor_fusion/workspace/catkin_ws/src/EKFLab.rviz"/>
 </launch>
