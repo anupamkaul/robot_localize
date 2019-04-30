@@ -14,3 +14,28 @@ rm -rf ~/.config/ros.org/rqt_gui.ini
 
 Run the rqt_plot package node:
 rosrun rqt_multiplot rqt_multiplot
+
+
+----
+
+
+Loading a saved configuration file:
+
+The saved config file is saved as ./src/rqt_multiplot.xml. 
+When I use --multiplot-config option (check ros_multiplot -h) with rosrun, it seems to search
+for config files under /opt/share/kinetic/ros... etc.
+
+Not sure if the support for auto-launching config file is supported completely:
+
+https://github.com/ANYbotics/rqt_multiplot_plugin/issues/12
+https://github.com/ANYbotics/rqt_multiplot_plugin/issues/30
+
+https://github.com/ANYbotics/rqt_multiplot_plugin/pull/10
+
+- For the moment, I load the config file from the "open config" option, hit the "play" button
+and am able to see Robot's Y vs X position plots.
+
+Another way is to write a launch file for rqt_multiplot, and have all node topics auto-loaded
+from there ...
+
+-----
