@@ -1,3 +1,4 @@
+
 //#include "src/matplotlibcpp.h"//Graph Library
 #include <iostream>
 #include <string>
@@ -226,8 +227,27 @@ void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
 
 //####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
 int main()
-{
-    cout << "I am ready for coding the MCL algo!\n";
+{ 
+    // Instantiate a robot object from the Robot class
+    Robot myrobot;
+
+    // Set robot new position to x=10.0, y=10.0 and orientation=0
+    // Fill in the position and orientation values in myrobot.set() function
+    myrobot.set(10.0,  10.0, 0);
+
+    // Printing out the new robot position and orientation
+    cout << "Initial robot pose: " << myrobot.show_pose() << endl;
+
+    // Rotate the robot by PI/2.0 and then move him forward by 10.0
+    // Use M_PI for the pi value
+    cout << "Turn him by PI/2, then move him forward by 10\n"; 
+    myrobot.move(M_PI / 2.0, 10.0);
+
+    // Print out the new robot position and orientation
+    cout << "New pose: " << myrobot.show_pose() << endl;
+
+    // Printing the distance from the robot toward the eight landmarks
+    cout << "Robot's distance from landmarks: " << myrobot.read_sensors() << endl;
 
     return 0;
 }
