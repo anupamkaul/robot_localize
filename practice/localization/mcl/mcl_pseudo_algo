@@ -1,0 +1,14 @@
+
+1. Motion and Sensing
+
+2. Noise (generate for simulation, and handle)
+
+3. Particle Filters (Distribute particles randomly and uniformly initially) - particles represent the robot itself, where it could be ...
+
+4. Importance Weight - These determine how fat the particle is ... fatter particles will survive a resampling, and as the robot moves, these fat particles will start to converge over time, thereby localizing the robot's ppose (position and orientation w.r.t to a map - and will handle both local and globalization cases)
+
+5. Resampling
+
+6. Error 
+
+---- 
