@@ -21,7 +21,8 @@ NOTES for Robot_MCL.cpp :
 3. Use the Move function to rotate the robot, or to move it forward (only actions allowed). Additional functions to ask the robot to show its pose, or its distance to the 8 landmarks.
 4. Simulate noise
 5. Generate particles uniformly and randomly (in a 100 * 100 2D area, generate about 1000 particles) - then simulate motion for them (as they represent different points where the robot might be)
-6. 
+6. Resampling - Normalize the weights, put them in a bag, and run a resampling iteration where particles are picked from this bag. (The new normalized wts actually are the probabilities of picking them up). Even though the resampling happens randomly, particles with higher probabilities (of being near the localization) have a greater likelihood of getting picked up and surviving the cut.
+ 
 
 
 
