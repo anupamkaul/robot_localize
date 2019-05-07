@@ -261,13 +261,25 @@ int main()
     for (int i = 0; i < n; i++) {
 
         // For each particle, add random noise (the same random noise to every particle)
+        // (i.e. configure "equally bad and noisy" sensor on every fake robot particle ...
         p[i].set_noise(0.05, 0.05, 5.0);
         
         // Print each particle's pose on a single line
         // cout << "MCL Particle " << i << " Pose data: " << p[i].show_pose() << endl;
     }
 
-    // Simulate motion for each particle:
+    //Re-initialize myrobot object and Initialize a measurment vector
+    myrobot = Robot();
+    vector<double> z;
+
+    //Move the robot and sense the environment afterwards
+    //These are the actual measurements of landmarks made by the "real" robot..
+
+    myrobot = myrobot.move(0.1, 5.0);
+    z = myrobot.sense();  // collect the actual measurement in a vector
+
+    // Now, simulate exact same motion for each 'fake' robot particle:
+
     // Create a new particle set 'p2'
     // Rotate each particle by 0.1 and move it forward by 5.0
     // Assign p2 to p and print the particle poses, each on a single line
@@ -280,6 +292,11 @@ int main()
         cout << "MCL Particle (post move) " << i << " Pose data: " << p[i].show_pose() << endl;
     }
 
+    // Now Generate particle weights depending on robot's measurement
+    // Print particle weights, each on a single line
+
+    double w[n];  // shouldn't weight be private data / character of each fake robot particle?
+ 
 
     return 0;
 }
