@@ -9,19 +9,12 @@
 //namespace plt = matplotlibcpp;
 using namespace std;
 
-// We assume a square Map available to the robot that is 100 * 100
-// The Map contains 8 landmarks percievable & measurable by its on-board sensors
-
-// The sensors will be noisy, and we will simulate that noise for the purposes
-// of this program
-
 // Landmarks
 double landmarks[8][2] = { { 20.0, 20.0 }, { 20.0, 80.0 }, { 20.0, 50.0 },
     { 50.0, 20.0 }, { 50.0, 80.0 }, { 80.0, 80.0 },
     { 80.0, 20.0 }, { 80.0, 50.0 } };
 
-// Map size in meters 
-
+// Map size in meters
 double world_size = 100.0;
 
 // Random Generators
@@ -101,7 +94,7 @@ public:
         x = mod(x, world_size);
         y = mod(y, world_size);
 
-        // set particle <---- Note Carefully !!
+        // set particle
         Robot res;
         res.set(x, y, orient);
         res.set_noise(forward_noise, turn_noise, sense_noise);
@@ -232,50 +225,23 @@ void visualization(int n, Robot robot, int step, Robot p[], Robot pr[])
 */
 
 int main()
-{ 
-    // Instantiate a robot object from the Robot class
+{
+    //Practice Interfacing with Robot Class
     Robot myrobot;
-
-    // Simulate sensor noise..
     myrobot.set_noise(5.0, 0.1, 5.0);
-    
-    myrobot.set(30.0,  50.0, M_PI/2.0);
-    cout << "Initial robot pose: " << myrobot.show_pose() << endl;
-
+    myrobot.set(30.0, 50.0, M_PI / 2.0);
     myrobot.move(-M_PI / 2.0, 15.0);
-    // show distance from landmarks
-    cout << myrobot.read_sensors() << endl; 
-
+    //cout << myrobot.read_sensors() << endl;
     myrobot.move(-M_PI / 2.0, 10.0);
-    // show distance from landmarks
-    cout << myrobot.read_sensors() << endl; 
+    //cout << myrobot.read_sensors() << endl;
 
-    // Print out the new robot position and orientation
-    cout << "New pose: " << myrobot.show_pose() << endl;
+    // Create a set of particles
+    int n = 1000;
+    Robot p[n];
 
-    // Printing the distance from the robot toward the eight landmarks
-    cout << "Robot's distance from landmarks: " << myrobot.read_sensors() << endl;
-
-    // MCL Algo: 
-
-    // A clever implementation of a recursive bayes estimation algo,
-    // where the Bel(x)s (PDFs) are represented by samples, to which "importance weights"
-    // are attached. Using bayes markovian character, new updates are calculated based on
-    // weights (1 state diff only) and the "new samples" basically represent new belief ...
-
-    // Instantiate 1000 Particles each with random position and orientation
-    int n = 1000; // maxParticles
-    Robot p[n]; //robotParticles assigned random values via constructor
-
-    // Loop over the set of particles. For each particle, add random noise
     for (int i = 0; i < n; i++) {
-
-        // For each particle, add random noise (the same random noise to every particle)
-        // (i.e. configure "equally bad and noisy" sensor on every fake robot particle ...
         p[i].set_noise(0.05, 0.05, 5.0);
-        
-        // Print each particle's pose on a single line
-        // cout << "MCL Particle " << i << " Pose data: " << p[i].show_pose() << endl;
+        //cout << p[i].show_pose() << endl;
     }
 
     //Re-initialize myrobot object and Initialize a measurment vector
@@ -283,52 +249,24 @@ int main()
     vector<double> z;
 
     //Move the robot and sense the environment afterwards
-    //These are the actual measurements of landmarks made by the "real" robot..
+    myrobot = myrobot.move(0.1, 5.0);
+    z = myrobot.sense();
 
-    myrobot = myrobot.move(0.1, 5.0); // <-- Note Carefully, a new particle is created!
-    z = myrobot.sense();  // collect the actual measurement in a vector
-
-    // Now, simulate exact same motion for each 'fake' robot particle:
-
-    // Create a new particle set 'p2'
-    // Rotate each particle by 0.1 and move it forward by 5.0
-    // Assign p2 to p and print the particle poses, each on a single line
-
-    Robot p2[n]; 
-
+    // Simulate a robot motion for each of these particles
+    Robot p2[n];
     for (int i = 0; i < n; i++) {
-        p2[i] = p[i].move(0.1, 5.0); // <-- Note carefully, a default copy constructor is avoided since move creates a new particle everytime !!
-        p[i] =  p2[i];  
-        cout << "MCL Particle (post move) " << i << " Pose data: " << p[i].show_pose() << endl;
+        p2[i] = p[i].move(0.1, 5.0);
+        p[i] = p2[i];
     }
 
-    // Now Generate particle weights depending on robot's measurement
-    // Print particle weights, each on a single line
+    //####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
 
-    // Here is a wieght-vector that holds the importance-weight values of the 1000 particles
-    double w[n];  // shouldn't weight be private data / character of each fake robot particle?
-
-    // to calculat the weight of each particle, we will compare the robot's actual measurements (in z)
-    // to the predicted measurements (of landmarks) of that particle. The magnitude of the difference of measurement
-    // will signify the wieght. (The closer the measurements are, the larger the weights, thereby increasing the 
-    // probability that those particles will likely be picked-up on the next time-stamp)
-
-    cout << " Wieght of Actual robot: " << myrobot.measurement_prob(z);
-
+    //Generate particle weights depending on robot's measurement
+    //Print particle weights, each on a single line
+    double w[n];
     for (int i = 0; i < n; i++) {
-
-        //vector<double> pz = p[i].sense(); // measure landmark distances that this fake particle sees
-
-        // since the sensor measurements now contain 8 distinct values of landmarks that this fake-one sees,
-        // how does one compare these set of 8 values to the "real" 8 values observed by the actual robot?
-
-        // For this, look at 'measurement_prob' function defined above. This generates a likelihood probability
-        // of the goodness of a measurement by again comparing it to the actual landmarks and returns a gaussian-noise
-        // based single value probability
-
-        w[i] = p[i].measurement_prob(z); 
+        w[i] = p[i].measurement_prob(z);
         cout << w[i] << endl;
-        cout << "MCL Particle " << i << " Weight: " << w[i] << endl;
     }
 
     return 0;
