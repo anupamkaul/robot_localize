@@ -17,11 +17,55 @@ NOTES for Robot_MCL.cpp :
 -----------------------
 
 1. The instantiated robot will have a random pose (x, y, Θ) based on a gaussian distribution. The forward, turn, and sensor noise & params are set to zero.
+
 2. Use the set function to update the pose of the robot. Use the set_noise function to simulate noise. Use the Sense function to measure the robot's distance to the 8 landmarks.
+
 3. Use the Move function to rotate the robot, or to move it forward (only actions allowed). Additional functions to ask the robot to show its pose, or its distance to the 8 landmarks.
+
 4. Simulate noise
-5. Generate particles uniformly and randomly (in a 100 * 100 2D area, generate about 1000 particles) - then simulate motion for them (as they represent different points where the robot might be)
+
+[A] - Motion and Sensor Weights..
+
+5. Generate particles uniformly and randomly (in a 100 * 100 2D area, generate about 1000 particles) - then simulate motion for them (as they represent different points where the robot might be) - but make the motion and sensor noise an exact copy of the actual robot's motion and noise. These are fake robots, where the only difference is their pose (x,y,theta). 
+
+5.1 Now calculate their weights, by using a goodness probability function that compares the landmark distances (as observed by the real robot) with the pose measurements of the fake robots, and converts the 8 values to a probability value suitable messed up with guassian variance. This probability serves as the wieght of every fake particle.
+
 6. Resampling - Normalize the weights, put them in a bag, and run a resampling iteration where particles are picked from this bag. (The new normalized wts actually are the probabilities of picking them up). Even though the resampling happens randomly, particles with higher probabilities (of being near the localization) have a greater likelihood of getting picked up and surviving the cut.
+
+7. Resampling (contd): Based on "resampling wheel algo": This weird algo assumes there is a "wheel" with pie cuts based on the sizes of the weights. (Thus a 1000 sample large wheel with pie cuts for every fake particle, and the size of these pizza slices indicating how "important" a particle is. Now a Beta variable starting the resampling algorithm on this wheel. Pick an index (a particle's slice) randomly to start. Initialize beta to 0.
+
+- Suppose we have 8 particles, hence 8 slices on the wheel
+- Let's say we randomly pick index 6  (from index = U[1..n]) - where U means uniformly picked up (no bias)
+- Initialize beta = 0
+- Iterate over the set of indices. For each index, compute a new beta as beta = beta + U{0..2*Wmax}  (ranging from 0 to 2 times the largest weight of the wheel)  - where U means uniformly randomly picking up ... (Thus every index has a new compute beta now)
+- Now, iteration continues : while Windex is smaller than beta (its beta?) subtract the wIndex from beta, and then increment the index
+- now check the above condition on the new index. If beta now becomes smaller than Windex, then pick the particle in this index ! 
+- continue to iterate and pick a new Beta (for the index)
+
+sometimes the same particle will be picked up more than once because of its 'small' (now recomputed in the wheel) value.
+
+Resampling psuedo code is:
+
+-do-
+index = u[1..N]
+β = 0
+
+for i = 1..N
+  β = β + U{0..2*wmax}
+  while windex < β
+     β = β - windex
+     index = index + 1
+
+  select p-index
+-done-
+
+(ps - Digraphs from https://github.com/vim/vim/blob/master/runtime/doc/digraph.txt)
+
+
+
+
+
+
  
 
 
