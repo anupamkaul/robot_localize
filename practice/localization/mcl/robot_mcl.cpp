@@ -251,5 +251,35 @@ int main()
     // Printing the distance from the robot toward the eight landmarks
     cout << "Robot's distance from landmarks: " << myrobot.read_sensors() << endl;
 
+    // MCL Algo: 
+
+    // Instantiate 1000 Particles each with random position and orientation
+    int n = 1000; // maxParticles
+    Robot p[n]; //robotParticles assigned random values via constructor
+
+    // Loop over the set of particles. For each particle, add random noise
+    for (int i = 0; i < n; i++) {
+
+        // For each particle, add random noise (the same random noise to every particle)
+        p[i].set_noise(0.05, 0.05, 5.0);
+        
+        // Print each particle's pose on a single line
+        // cout << "MCL Particle " << i << " Pose data: " << p[i].show_pose() << endl;
+    }
+
+    // Simulate motion for each particle:
+    // Create a new particle set 'p2'
+    // Rotate each particle by 0.1 and move it forward by 5.0
+    // Assign p2 to p and print the particle poses, each on a single line
+
+    Robot p2[n]; 
+
+    for (int i = 0; i < n; i++) {
+        p2[i].move( 0.1, 5.0);
+        p[i] = p2[i];  // default copy constructor?
+        cout << "MCL Particle (post move) " << i << " Pose data: " << p[i].show_pose() << endl;
+    }
+
+
     return 0;
 }

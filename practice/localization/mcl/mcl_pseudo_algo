@@ -19,6 +19,9 @@ NOTES for Robot_MCL.cpp :
 1. The instantiated robot will have a random pose (x, y, Θ) based on a gaussian distribution. The forward, turn, and sensor noise & params are set to zero.
 2. Use the set function to update the pose of the robot. Use the set_noise function to simulate noise. Use the Sense function to measure the robot's distance to the 8 landmarks.
 3. Use the Move function to rotate the robot, or to move it forward (only actions allowed). Additional functions to ask the robot to show its pose, or its distance to the 8 landmarks.
+4. Simulate noise
+5. Generate particles uniformly and randomly (in a 100 * 100 2D area, generate about 1000 particles) - then simulate motion for them (as they represent different points where the robot might be)
+6. 
 
 
 
