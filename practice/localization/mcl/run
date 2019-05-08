@@ -1,2 +1,13 @@
-g++ -std=c++11 robot_mcl.cpp
-./a.out
+# first version of basic blocks, without steps or timestamps
+#g++ -std=c++11 robot_mcl.cpp
+#./a.out
+
+# finished version (no visualization) but everything else
+#g++ -std=c++11 final_robot_mcl.cpp
+#./a.out
+
+# the version with the visualization relying on python's matplotlib...
+rm -rf ./Images/*.png
+g++ solution.cpp -o app -std=c++11 -I/usr/include/python2.7 -lpython2.7
+./app
+
