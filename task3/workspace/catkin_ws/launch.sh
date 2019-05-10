@@ -21,6 +21,14 @@ sleep 10
 xterm -e "source devel/setup.bash; roslaunch my_robot amcl.launch" & 
 sleep 5
 
+# Launch the optional teleop keyboard package to move the robot via keyboard 
+# instead of via nav move_base in rviz..
+
+xterm -e "source devel/setup.bash; rosrun teleop_twist_keyboard teleop_twist_keyboard.py" &
+sleep 5
+
+
+
 
 
 
