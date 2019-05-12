@@ -1,7 +1,7 @@
 # note that map generation does not need the simulation in gazebo to be running
 
 # Create a map of the environment: (run map generation server)
-xterm -hold -e "source devel/setup.bash; gzserver src/pgm_map_creator/world/anupam.world" &
+xterm -e "source devel/setup.bash; gzserver src/pgm_map_creator/world/anupam.world" &
 sleep 5
 
 # Create a map of the environment: (run map client)
