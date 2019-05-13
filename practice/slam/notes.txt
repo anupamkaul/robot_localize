@@ -1,3 +1,53 @@
-slam notes ..
+Mapping: 
+--------
+
+Produce a map of the environment given the Robot's pose
+(robot has access to its movement and sensor data)
+
+(Localization is the opposite)
+
+1 Mapping Algorithm:
+
+1. Occupancy Grid Mapping - Map any arbitrary enviroment by dividing it into a finite number of grid cells. By estimating the 'sets' of each individual cell, one can end up with an estimated map of the environment.
+
+SLAM
+----
+
+In SLAM, nether is known. With access to its own movement and sensory data, a robot must estimate both accurately: the map and its pose.
+
+5 Slam Algorithms:
+
+1. EKF: EKF Slam
+2. SEIF: Sparse Extended Information Filter SLAM
+3. EIF:  Extended Information Form SLAM
+4. FastSLAM
+5. GraphSLAM
+
+---
+
+In the first module, study FastSLAM which uses particle filter and low-dim EKF to solve the SLAM problem.
+
+This will be adapted to Grid Maps, which will result in Grid Base FastSLAM algorithm.
+
+Finally - GraphSLAM. GraphSLAM uses constraints to represent relnsps between robot poses and environment. Then tries to resolve all these constraints to create the most likely map with the given data. An implementation of Graph SLAM is Real Time Appearance Based Mapping or RTAB, that we will use/integrate.
+
+---
+
+Back to mapping: from known poses, the way it works is: 
+
+SLAM (unknown poses) -> poses -> Mapping from known poses
+
+Mapping with known poses problem  is P( M | Z[1:t], X[1:t] )
+(no controls U are needed as that is provided by SLAM)
+
+Thus: 
+
+1. Localization  =  P ( X[1:t] | U[1:t], M, Z[1:t] )
+2. Mapping       =  P ( M      | Z[1:t], X[1:t] )
+3. SLAM          =  P ( X[1:t], M | Z[1:t], U[1:t] )
+
+---
+
+
 
 
