@@ -1,0 +1,25 @@
+Problem Statement:
+-----------------
+
+Now that you've learned the Occupancy Grid Mapping algorithm, you will get a chance to code it in C++!
+
+In this quiz, a robot equipped with eight sonar rangefinder sensors circulates in an environment to map it. This robot is provided with its exact poses at each timestamp. The code structure is as follows:
+
+Data Files
+
+measurement.txt: The measurements from the sonar rangefinder sensors attached to the robot at each time stamp recorded over a period of 413 seconds. (timestamp, measurement 1:8).
+poses.txt: The exact robot poses at each timestamp recorded over a period of 413 seconds. (timestamp, x, y, ϴ).
+Global Functions
+
+inverseSensorModel(): You'll code this function as part of your second quiz after learning the inverse sensor model for sonar rangefinder sensors.
+occupancyGridMapping(): You'll code this function as part of your first quiz.
+Main Function
+
+File Scan: Scanning both the measurement and poses files to retrieve the values. At each time stamp, the values are passed to the occupancy grid mapping function.
+Display Map: After processing all the measurements and poses, the map is displayed.
+
+Now, code the occupancyGridMapping() function:
+
+----------
+
+
