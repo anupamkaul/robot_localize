@@ -22,6 +22,11 @@ double inverseSensorModel(double x, double y, double theta, double xi, double yi
     return 0.4;
 }
 
+// The occupancy grid takes a precise Localized Pose, and sensorData as its inputs
+
+// It generates a Grid, center-masses every cell, and checks what area falls under the 
+// perceptual field of measurements.
+
 void occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])
 {
     //1 - TODO: Generate a grid (size 300x150) and then loop through all the cells
@@ -61,7 +66,9 @@ int main()
             cout << l[x][y] << " ";
         }
     }
-    
+  
+    cout << endl;
+  
     return 0;
 }
 
