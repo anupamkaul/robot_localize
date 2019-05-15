@@ -29,18 +29,14 @@ double inverseSensorModel(double x, double y, double theta, double xi, double yi
 
 void occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])
 {
-    //1 - TODO: Generate a grid (size 300x150) and then loop through all the cells
-            //2- TODO: Compute the center of mass of each cell xi and yi 
-            //double xi = x * gridWidth + gridWidth / 2 - robotXOffset;
-            //double yi = -(y * gridHeight + gridHeight / 2) + robotYOffset;
-            //3- TODO: Check if each cell falls under the perceptual field of the measurements
-    
- 
      //******************Code the Occupancy Grid Mapping Algorithm**********************//
     for (int x = 0; x < mapWidth / gridWidth; x++) {
         for (int y = 0; y < mapHeight / gridHeight; y++) {
+
             double xi = x * gridWidth + gridWidth / 2 - robotXOffset;
             double yi = -(y * gridHeight + gridHeight / 2) + robotYOffset;
+
+            // Check if in perceptive range, by just comparing hyp. distance to a limit
             if (sqrt(pow(xi - Robotx, 2) + pow(yi - Roboty, 2)) <= Zmax) {
                 l[x][y] = l[x][y] + inverseSensorModel(Robotx, Roboty, Robottheta, xi, yi, sensorData) - l0;
             }
