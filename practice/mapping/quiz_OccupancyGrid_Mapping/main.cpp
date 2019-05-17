@@ -3,10 +3,12 @@
 #include <vector>
 using namespace std;
 
+// There are 8 sonar range-finder sensors in this project.
+
 // Sensor characteristic: Min and Max ranges of the beams
 double Zmax = 5000, Zmin = 170; // sensor range limits, assumed for our calculations
 
-// Defining free cells(lfree), occupied cells(locc), unknown cells(l0) log odds values
+// Defining free cells(lfree), occupied cells(locc), unknown cells(l0) Log Odds Values
 double l0 = 0, locc = 0.4, lfree = -0.4;
 
 // Grid unit dimensions - or cell dimensions
@@ -25,7 +27,46 @@ vector< vector<double> > l(mapWidth/gridWidth, vector<double>(mapHeight/gridHeig
 
 double inverseSensorModel(double x, double y, double theta, double xi, double yi, double sensorData[])
 {
-    // You will be coding this section in the upcoming concept! 
+    // Defining Sensor Characteristics
+    double Zk, thetaK, sensorTheta;
+    double minDelta = -1;
+    double alpha = 200, beta = 20;
+
+    //******************TODO: Compute r and phi**********************//
+   
+
+    //Scaling Measurement to [-90 -37.5 -22.5 -7.5 7.5 22.5 37.5 90]
+    for (int i = 0; i < 8; i++) {
+        if (i == 0) {
+            sensorTheta = -90 * (M_PI / 180);
+        }
+        else if (i == 1) {
+            sensorTheta = -37.5 * (M_PI / 180);
+        }
+        else if (i == 6) {
+            sensorTheta = 37.5 * (M_PI / 180);
+        }
+        else if (i == 7) {
+            sensorTheta = 90 * (M_PI / 180);
+        }
+        else {
+            sensorTheta = (-37.5 + (i - 1) * 15) * (M_PI / 180);
+        }
+
+        if (fabs(phi - sensorTheta) < minDelta || minDelta == -1) {
+            Zk = sensorData[i];
+            thetaK = sensorTheta;
+            minDelta = fabs(phi - sensorTheta);
+        }
+    }
+
+    //******************TODO: Evaluate the three cases**********************//
+    // You also have to consider the cells with Zk > Zmax or Zk < Zmin as unkown states
+    
+    
+    
+    
+    
     return 0.4;
 }
 
@@ -52,6 +93,8 @@ void occupancyGridMapping(double Robotx, double Roboty, double Robottheta, doubl
             // Do that by just comparing hyp. distance to a limit
 
             if (sqrt(pow(xi - Robotx, 2) + pow(yi - Roboty, 2)) <= Zmax) {
+
+                // if it falls under perception of sensors, then update its map inclusion (occupied, empty or unknown? - with shades)
                 l[x][y] = l[x][y] + inverseSensorModel(Robotx, Roboty, Robottheta, xi, yi, sensorData) - l0;
             }
         }

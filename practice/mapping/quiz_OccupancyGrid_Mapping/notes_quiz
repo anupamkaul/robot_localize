@@ -22,4 +22,35 @@ Now, code the occupancyGridMapping() function:
 
 ----------
 
+Sensors normally use Cones to detect field of views and hence cells, from the OcGrMap context.
+Now ambiguous cases will arise on cells at the border of the cone. At the border of the cells, robot will sense only a PORTION of the cell, and thus, probabilities are weak. Due to this, it is hard to compute the state of the cell at the border. (3 cases arise for cells - Within, At the border, and Outside of the border of the cone beams of the sensor)
+
+To solve this border cell problem, the Inverse Sense Model is used.
+
+3 states can be output for a cell: it is 'free', or part of an 'obstacle', or 'unknown'.
+
+sidenote: The log odds ratio is used to compare two curves. Log = bring the exponential down, and products become additions .....
+(Read up Bayesian Statistics book). Products come from marginal / factorization requirements. Log odds also prevents divide by zero etc.
+
+Basically, the Inverse Sensor Model is:
+
+Inverse_Sensor_Model(mi, xt, zt) = log (p(mi | zt, xt) / 1 - p(mi | zt, xt))
+
+thus, giving out a map-part per cell, given the measurements (z) and poses (x), in a log odds representation.
+
+Look at the diagram of Inverse_Sense_Model (attached to the code as a png file):
+
+where: (from the png of inverse_sensor_model):
+
+mi = map at instant i, or current cell that is being processed
+xi, yi = center of mass of current cell mi
+r: Range of center of mass computed w.r.t. robot pose and center of mass
+k: The sonar range-finder cone that best aligns with the cell being considered computed with respect to the robot pose (x,y,θ), center of mass (xi, yi), and sensor angle.
+β: opening angle of the conical region formed out of the measurement beams
+α: Width of the obstacles (which is almost equal to the size of a cell) (it is NOT the width of the conical region)
+
+(INSIGHT: Obstacles to the sensor in question, ACTUALLY make up the map !! )
+
+----------
+
 
