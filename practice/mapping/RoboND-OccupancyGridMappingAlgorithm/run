@@ -1,0 +1,10 @@
+# fiddle with colors for the plot at:
+# https://www.mathworks.com/help/matlab/ref/plot.html?ue#btzitot-LineSpec
+
+# or https://www.mathworks.com/help/matlab/ref/plot.html
+
+rm -f ./app
+g++ main.cpp -o app -std=c++11 -I/usr/include/python2.7 -lpython2.7
+#g++ solution.cpp -o app -std=c++11 -I/usr/include/python2.7 -lpython2.7
+./app
+

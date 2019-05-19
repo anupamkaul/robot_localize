@@ -53,4 +53,9 @@ k: The sonar range-finder cone that best aligns with the cell being considered c
 
 ----------
 
+At this point, we leave this code and grab the github code ..
+
+Mapping :
+
+So far, you’ve coded the Occupancy Grid Mapping algorithm in C++ and generated an occupancy grid map 2D vector. Now, you'll code a visualization function that will loop through each cell. Then, you'll differentiate between occupied, free, and unknown cells depending on their log odds value. And, finally, you'll plot each cell on a graph to generate the map.
 
