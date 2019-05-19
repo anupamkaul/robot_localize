@@ -27,15 +27,21 @@ vector< vector<double> > l(mapWidth/gridWidth, vector<double>(mapHeight/gridHeig
 
 double inverseSensorModel(double x, double y, double theta, double xi, double yi, double sensorData[])
 {
+    // (see InverseSensor.png)
+
     // Defining Sensor Characteristics
     double Zk, thetaK, sensorTheta;
     double minDelta = -1;
-    double alpha = 200, beta = 20;
+    double alpha = 200, beta = 20; // beta - opening cone angle, alpha = obstacle width ~ cell width
 
     //******************TODO: Compute r and phi**********************//
    
 
-    //Scaling Measurement to [-90 -37.5 -22.5 -7.5 7.5 22.5 37.5 90]
+    //Scaling Measurement to [-90 -37.5 -22.5 -7.5 7.5 22.5 37.5 90] (8 sonar range-finders)
+
+    double r = sqrt(pow(xi - x , 2) + pow(yi -y, 2));
+    double phi = atan2(yi - y, xi -x) - theta;
+    
     for (int i = 0; i < 8; i++) {
         if (i == 0) {
             sensorTheta = -90 * (M_PI / 180);
@@ -63,11 +69,15 @@ double inverseSensorModel(double x, double y, double theta, double xi, double yi
     //******************TODO: Evaluate the three cases**********************//
     // You also have to consider the cells with Zk > Zmax or Zk < Zmin as unkown states
     
-    
-    
-    
-    
-    return 0.4;
+    if ((r > min(Zmax, Zk + alpha/2)) || ( fabs(phi - thetaK) > beta/2) || (Zk > Zmax) || (Zk < Zmin) ) {
+        return l0;
+    }
+    else if ((Zk < Zmax) && ((r - Zk) < alpha/2)) {
+        return locc; 
+    }
+    else if (r <= Zk) {
+        return lfree;  
+    } 
 }
 
 // The occupancy grid takes a precise Localized Pose, and sensorData as its inputs
