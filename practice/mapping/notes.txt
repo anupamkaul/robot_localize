@@ -1,1 +1,158 @@
 notes for mapping (with unknown and known poses) .. before slam ..
+
+Problem Statement:
+-----------------
+
+Now that you've learned the Occupancy Grid Mapping algorithm, you will get a chance to code it in C++!
+
+In this quiz, a robot equipped with eight sonar rangefinder sensors circulates in an environment to map it. This robot is provided with its exact poses at each timestamp. The code structure is as follows:
+
+Data Files
+
+measurement.txt: The measurements from the sonar rangefinder sensors attached to the robot at each time stamp recorded over a period of 413 seconds. (timestamp, measurement 1:8).
+poses.txt: The exact robot poses at each timestamp recorded over a period of 413 seconds. (timestamp, x, y, ϴ).
+Global Functions
+
+inverseSensorModel(): You'll code this function as part of your second quiz after learning the inverse sensor model for sonar rangefinder sensors.
+occupancyGridMapping(): You'll code this function as part of your first quiz.
+Main Function
+
+File Scan: Scanning both the measurement and poses files to retrieve the values. At each time stamp, the values are passed to the occupancy grid mapping function.
+Display Map: After processing all the measurements and poses, the map is displayed.
+
+Now, code the occupancyGridMapping() function:
+
+----------
+---------
+
+Sensors normally use Cones to detect field of views and hence cells, from the OcGrMap context.
+Now ambiguous cases will arise on cells at the border of the cone. At the border of the cells, robot will sense only a PORTION of the cell, and thus, probabilities are weak. Due to this, it is hard to compute the state of the cell at the border. (3 cases arise for cells - Within, At the border, and Outside of the border of the cone beams of the sensor)
+
+To solve this border cell problem, the Inverse Sense Model is used.
+
+3 states can be output for a cell: it is 'free', or part of an 'obstacle', or 'unknown'.
+
+sidenote: The log odds ratio is used to compare two curves. Log = bring the exponential down, and products become additions .....
+(Read up Bayesian Statistics book). Products come from marginal / factorization requirements. Log odds also prevents divide by zero etc.
+
+Basically, the Inverse Sensor Model is:
+
+Inverse_Sensor_Model(mi, xt, zt) = log (p(mi | zt, xt) / 1 - p(mi | zt, xt))
+
+thus, giving out a map-part per cell, given the measurements (z) and poses (x), in a log odds representation.
+
+Look at the diagram of Inverse_Sense_Model (attached to the code as a png file):
+
+where: (from the png of inverse_sensor_model):
+
+mi = map at instant i, or current cell that is being processed
+xi, yi = center of mass of current cell mi
+r: Range of center of mass computed w.r.t. robot pose and center of mass
+k: The sonar range-finder cone that best aligns with the cell being considered computed with respect to the robot pose (x,y,θ), center of mass (xi, yi), and sensor angle.
+β: opening angle of the conical region formed out of the measurement beams
+α: Width of the obstacles (which is almost equal to the size of a cell) (it is NOT the width of the conical region)
+
+(INSIGHT: Obstacles to the sensor in question, ACTUALLY make up the map !! )
+
+
+----------
+----------
+
+At this point, we leave this code and grab the github code ..
+
+Mapping :
+
+So far, you’ve coded the Occupancy Grid Mapping algorithm in C++ and generated an occupancy grid map 2D vector. Now, you'll code a visualization function that will loop through each cell. Then, you'll differentiate between occupied, free, and unknown cells depending on their log odds value. And, finally, you'll plot each cell on a graph to generate the map.
+
+
+
+-----------
+-----------
+
+General note about 3D mapping using sensors:
+
+So far, you’ve heard about two dimensional maps, describing a slice of the 3D world. In resource constrained systems, it can be very computationally expensive to build and maintain these maps. 3D representations are even more costly. That being said, robots live in the 3D world, and we want to represent that world and the 3D structures within it as accurately and reliably as possible. 3D mapping would give us the most reliable collision avoidance, and motion and path planning, especially for flying robots or mobile robots with manipulators.
+
+First, let’s talk briefly about how we collect this 3D data, then we will move on to how it is represented. To create 3D maps, robots sense the environment by taking 3D range measurements. This can be done using numerous technologies.
+
+3D lidar can be used, which is a single sensor with an array of laser beams stacked horizontally. Alternatively, a 2D lidar can be tilted (horizontally moving up and down) or rotated (360 degrees) to obtain 3D coverage.
+
+An RGBD camera is a single visual camera combined with a laser rangefinder or infrared depth sensor, and allows for the determination of the depth of the image, and ultimately the distance from an object. A stereo camera is a pair of offset cameras, and can be used to directly infer the distance of close objects, in the same way as humans do with their two eyes.
+
+A single camera system is cheaper and smaller, but the software algorithms needed for monocular SLAM are much more complex. Depth cannot be directly inferred from the sensor data of a single image from a single camera. Instead, it is calculated by analysing data from a sequence of frames in a video.
+
+
+
+--------
+--------
+
+Note on 3D data representations in the limited memory of a robot:
+
+- Point Clouds --- a set of data points corresponding to range measurements, each at defined x, y, z coordinates. Cons: Cannot distinguish between unoccupied and unknown states (?) .. also point clouds store a large amt of measurement points, and with each scan more mem has to be allocated. Thus not mem efficient.
+
+- Voxels --- a 3d voxel grid is a volumetric data representation using a grid of cubic volumes of equal size. This is a probabilistic representation. To estimate if a voxel grid cell is free, occupied, or unknown. Cons: the size of the area must be known prior to measurement. Also, complete map must be allocated to memory.
+
+- Octrees - A memory efficient tree based data representation for 3D maps. Can rep multiple resolutions, can map to voxels. (every voxel can be sub-divided into 8 voxels recusively) The size of the map does not need to be known beforehand, as map volumes arn't initialized unless we need to add measurements. Octrees adapt occupance grid mapping from 2D to 3D (!), introducing probabilistic representations of occupied and free spaces.
+
+- Elevation Maps
+- Multi-level surface mapsa
+
+-------
+-------
+
+More notes from class:
+
+Some of the desired characteristics of an optimal representation:
+
+* Probabilistic data representations can be used to accommodate for sensor noise and dynamic environments.
+
+* It is important to be able to distinguish data that represents an area that is free space versus an area that is unknown or not yet mapped. This will enable the robot to plan an unobstructed path and build a complete map.
+
+* Memory on a mobile robot is typically a limited resource, so memory efficiency is very important. The map should also be accessible in the robot’s main memory, while mapping a large area over a long period of time. To accomplish this, we need a data representation that is compact and allows for efficient updates and queries.
+
+
+2.5D maps :: also known as height maps, store the surface of the entire environment as the maximum height measured at every point. They are memory efficient, with constant access time. This type of mapping is not very useful if you have terrain with trees or overhang structures, where the robot could move underneath. Also, height maps are non-probabilistic. Similar to point clouds, there is also no distinction between free and unknown space.
+
+Elevation maps :: are 2D grids that store an estimated height, or elevation, for each cell. A Kalman filter is used to estimate the height, and can also incorporate the uncertainty of the measurement process itself, which typically increases with the measured distance. One problem with elevation maps is the vertical wall - you can tell there is a vertical object but don’t know exactly how tall it is.
+
+Extended elevation maps :: store a set of estimated heights for every cell, and include cells that contain gaps. You can check whether the variance of the height of all data points within each cell is large. If so, you can investigate whether the corresponding set of points contains a gap exceeding the height of the robot (known as a “gap cell”), and ultimately use gap cells to determine traversability.
+
+In multi-level surface (MLS) :: map representations, each 2D cell stores “patches”, of which there can be multiple per cell. Each patch contains 3 key pieces of information - the height mean, the height variance, and the depth value. The height mean is the estimated height of the individual vertical area, also referred to as an interval. The uncertainty of the height is stored as the height variance, with the assumption that the error is represented by a Gaussian distribution. The depth value is defined by the difference between height of the surface patch and the height of the lowest measurement that is considered as belonging to that vertical object (ex the depth of the floor would be 0). Individual surfaces can be directly calculated, allowing the robot to deal with vertical and overhanging objects. This method also works very well with multi-level traversable surfaces, such as a bridge that you could travel over top of, or underneath, or a structure like a parking garage. An MLS map isn’t a volumetric representation, but a discretization in the vertical dimension. Unknown areas are not represented, and localization for this method is not straightforward.
+
+---------
+--------
+
+Octomaps: Open source implementation based on octrees, has ROS implementation, requires pose data etc .... 
+
+https://octomap.github.io/
+
+http://wiki.ros.org/octomap
+
+octomap:
+1. takes a point cloud as input
+2. does probablistic occupancy estimation
+3. uses recursive binary bayes filter
+4. efficient updates are achieved using log odds notation
+
+
+occupancy is represented volumetrically, with modelling of free, occupied, and unmapped areas. Upper and lower vals are placed on the log odds value of the occupance estimate. This policy limits the number of updates required to change the state of the voxel.
+
+Octomap supports multi-resolution map queries, where the min voxel size determines the resolution
+
+Tree Pruning is also used to reduce redundant information between discrete occupancy states. Pruning is defined by a threshold probability of occupancy or free.
+Identical children in the parent tree can be pruned. 
+
+Memory optimization is achieved by using a compression method that produces compact map files.
+
+Coherent map volumes are locally combined, including both mapped-free areas and occupied space.
+
+-------
+-------
+
+
+
+---------
+---------
+
+
+
