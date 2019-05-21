@@ -48,6 +48,24 @@ Thus:
 
 ---
 
+Other notes from lectures:
 
+Forms
+
+You’ve just learned the first key feature of the SLAM problem which has to do with its two forms. The online SLAM problem computes a posterior over the current pose along with the map and the full SLAM problem computes a posterior over the entire path along with the map.
+
+Nature
+
+Now, the second key feature of the SLAM problem relates to its nature. SLAM problems generally have a continuous and a discrete element.
+
+Nature - Continuous
+
+Let’s start with the continuous component of the SLAM problem. During SLAM, a robot continuously collects odometry information to estimate the robot poses and continuously senses the environment to estimate the location of the object or landmark. Thus, both robots poses and object location are continuous aspects of the SLAM problem.
+
+Nature - Discrete
+
+Now, moving to the second component of the SLAM problem. As I mentioned earlier, robots continuously sense the environment to estimate the location of the objects, when doing so SLAM algorithms have to identify if a relation exists between any newly detected objects and previously detected ones. This helps the robot understand if it has been in this same location before. At each moment, the robot has to answer the question, “Have I been here before?”. The answer to this question is binary - either yes or no - and that’s what makes the relation between objects a discrete component of the SLAM problem.This discrete relation between objects is known by correspondence.
+
+------
 
 
