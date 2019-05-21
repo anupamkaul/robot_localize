@@ -68,4 +68,109 @@ Now, moving to the second component of the SLAM problem. As I mentioned earlier,
 
 ------
 
+SLAM Challenges
+
+Computing the full posterior composed of the robot pose, the map and the correspondence under SLAM poses a big challenge in robotics mainly due to the continuous and discrete portion.
+
+Continuous
+
+The continuous parameter space composed of the robot poses and the location of the objects is highly dimensional. While mapping the environment and localizing itself, the robot will encounter many objects and have to keep track of each one of them. Thus, the number of variables will increase with time, and this makes the problem highly dimensional and challenging to compute the posterior.
+
+Discrete
+
+Next, the discrete parameter space is composed out of the correspondence values, and is also highly dimensional due to the large number of correspondence variables. Not only that, the correspondence values increase exponentially over time since the robot will keep sensing the environment and relating the newly detected objects to the previously detected ones. Even if you assume known correspondence values, the posterior over maps is still highly dimensional as we saw in the mapping lessons.
+
+You can now see why it’s infeasible to compute the posterior under unknown correspondence. Thus, SLAM algorithms will have to rely on approximation while estimating a posterior in order to conserve computational memory.
+
+-------
+-------
+
+Does adding another dimension to particle filter (MCL)'s particle, help SLAM, if the additional dimension (x, y, theta, importance-weight) was a map? (thus if map was added to every particle?)
+
+We just saw that adding another dimension to a particle so that it will hold the robot pose, weight, and the map and then solving through MCL in its current form will fail. This is because the map is modeled with many variables resulting in high dimensionality. Thus, the particle filter approach to SLAM in this current form will scale exponentially and is doomed to fail.
+
+Next, you'll be introduced to FastSLAM and you'll learn how SLAM problems can be solved under a custom particle filter approach.
+
+------
+------
+
+My notes::
+
+So the FastSLAM algorithm uses a Custom particle filter (because of constraints above) and works with known correspondences. (FastSLAM solves the Full SLAM problem with known correspondences)
+
+Each of the particles holds the robot trajectory, which will give an advantage to SLAM to solve the problem of mapping with known poses.
+
+In addition to the robot trajectory, each particle holds a map, and each feature of the map is represented by a local gaussian (because of constraints above).
+
+Thus FastSLAM divides the problem into seperate independent problems, each of which aims to solve the problem of estimating features of the map.
+
+To solve these independent mini problems, FastSLAM will use the low dimensional Extended Kalman Filter. (features were represented by gaussians..)
+
+Map features are thus treated independently, which means, dependency exists only between robot pose uncertainty.
+
+This custom approach of representing the Posterior with a custom particle filter and gaussian, is known as the Rao-Blackwellized Particle filter one.
+
+---
+
+From the course::
+
+The FastSLAM algorithm solves the Full SLAM problem with known correspondences.
+
+Estimating the Trajectory: FastSLAM estimates a posterior over the trajectory using a particle filter approach. This will give an advantage to SLAM to solve the problem of mapping with known poses.
+
+Estimating the Map: FastSLAM uses a low dimensional Extended Kalman Filter to solve independent features of the map which are modeled with local Gaussian.
+
+The custom approach of representing the posterior with particle filter and Gaussian is known by the Rao-Blackwellized particle filter approach.
+
+----
+
+
+We’ve seen that the FastSLAM algorithm can solve the full SLAM problem with known correspondences. Since FastSLAM uses a particle filter approach to solve SLAM problems, some roboticists consider it a powerful algorithm capable of solving both the Full SLAM and Online SLAM problems.
+
+(Full SLAM means knowing x and m for all t, not just the instaneous t)
+
+FastSLAM estimates the full robot path, and hence it solves the Full SLAM problem.
+On the other hand, each particle in FastSLAM estimates instantaneous poses, and thus FastSLAM also solves the Online SLAM problem.
+
+
+----
+
+Now, three different instances of the FastSLAM algorithm exist.
+
+FastSLAM 1.0
+
+The FastSLAM 1.0 algorithm is simple and easy to implement, but this algorithm is known to be inefficient since particle filters generate sample inefficiency.
+
+FastSLAM 2.0
+
+The FastSLAM 2.0 algorithm overcomes the inefficiency of FastSLAM 1.0 by imposing a different distribution, which results in a low number of particles. Keep in mind that both of the FastSLAM 1.0 and 2.0 algorithms use a low dimensional Extended Kalman filter to estimate the posterior over the map features.
+
+Grid-based FastSLAM
+
+The third instance of FastSLAM is really an extension to FastSLAM known as the grid-based FastSLAM algorithm, which adapts FastSLAM to grid maps. In this lesson, you will learn grid-based FastSLAM. For more information on the fastSLAM 1.0 and 2.0 algorithms refer to the probabilistic robotics book.
+
+
+-----
+
+
+FastSLAM 1.0 & 2.0
+
+The main advantage of the FastSLAM algorithm is that it uses a particle filter approach to solve the SLAM problem. Each particle will hold a guess of the robot trajectory, and by doing so, the SLAM problem is reduced to mapping with known poses. But, in fact, this algorithm presents a big disadvantage since it must always assume that there are known landmark positions, and thus with FastSLAM we are not able to model an arbitrary environment. Now, what if landmark positions are unavailable to us? Are we still able to solve the SLAM problem?
+
+Grid-based FastSLAM
+
+Yes, with the grid mapping algorithm you can model the environment using grid maps without predefining any landmark position. So by extending the FastSLAM algorithm to occupancy grid maps, you can now solve the SLAM problem in an arbitrary environment. While mapping a real-world environment, you will mostly be using mobile robots equipped with range sensors. You’ll then extend the FastSLAM algorithm and solve the SLAM problem in term of grid maps.
+
+
+Robot Trajectory
+
+Just as in the FastSLAM algorithm, with the grid-based FastSLAM each particle holds a guess of the robot trajectory.
+
+Map
+
+In addition, each particle maintains its own map. The grid-based FastSLAM algorithm will update each particle by solving the mapping with known poses problem using the occupancy grid mapping algorithm.
+
+-----
+
+Note :: Sampling motion and importance weight will be both solved with the MCL algorithm whereas the map estimation technique will be solved with the occupancy grid mapping algorithm.
 
