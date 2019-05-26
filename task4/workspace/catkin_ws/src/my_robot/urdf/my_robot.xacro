@@ -170,6 +170,19 @@
 
   </joint>
 
+  <joint name="camera_optical_joint" type="fixed">
+
+    <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/>
+    <child link="camera_link_optical"/>
+    <parent link="camera"/>
+
+  </joint>
+
+  <link name="camera_link_optical">
+
+  </link>
+
+
   <link name='hokuyo'>
 
     <collision name='lidar_collision'>
@@ -214,7 +227,7 @@
   </gazebo>
 
   <gazebo reference="camera">
-    <material> Gazebo/Red</material>
+    <material> Gazebo/Blue</material>
   </gazebo>
 
   <gazebo reference="left_wheel">
