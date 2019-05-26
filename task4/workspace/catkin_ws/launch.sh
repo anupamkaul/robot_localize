@@ -18,7 +18,8 @@ sleep 10
 #xterm -e "source devel/setup.bash; roslaunch pgm_map_creator request_publisher.launch" &
 #sleep 5
 
-xterm -e "source devel/setup.bash; roslaunch my_robot amcl.launch" & 
+#xterm -e "source devel/setup.bash; roslaunch my_robot amcl.launch" & 
+xterm -e "source devel/setup.bash; roslaunch my_robot mapping.launch" & 
 sleep 5
 
 # Launch the optional teleop keyboard package to move the robot via keyboard 

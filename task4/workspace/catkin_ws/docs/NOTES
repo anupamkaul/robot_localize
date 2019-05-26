@@ -1,5 +1,14 @@
 https://github.com/introlab/rtabmap/
 
+https://github.com/introlab/rtabmap/wiki/Installation
+
+Instead of installing from source (as explained above) I used:
+sudo apt-get install ros-kinetic-rtabmap-ros
+
+(as mentioned in https://github.com/introlab/rtabmap_ros#rtabmap_ros- )
+
+
+
 
 Notes from the course:
 
