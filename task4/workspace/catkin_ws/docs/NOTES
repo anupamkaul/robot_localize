@@ -7,7 +7,16 @@ sudo apt-get install ros-kinetic-rtabmap-ros
 
 (as mentioned in https://github.com/introlab/rtabmap_ros#rtabmap_ros- )
 
+Readups to check RTABMAP warnings:
 
+http://official-rtab-map-forum.67519.x6.nabble.com/Could-not-get-transform-from-odom-to-camera-depth-optical-frame-RTAB-Realsense-R200-Issue-td1616.html
+
+--> What first helped..
+
+1. roslaunch my_robot world ..
+2. rosrun tf view_frames
+
+this generated a pdf file that showed that the base transmitter (robot_state_publisher) is robot_footprint, not base_footprint...
 
 
 Notes from the course:

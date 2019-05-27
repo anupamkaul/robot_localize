@@ -29,8 +29,8 @@ sleep 5
 #xterm -e "source devel/setup.bash; roslaunch my_robot amcl.launch" & 
 #sleep 5
 
-xterm -e "source devel/setup.bash; roslaunch my_robot mapping.launch" & 
-sleep 5
+#xterm -e "source devel/setup.bash; roslaunch my_robot mapping.launch" & 
+#sleep 5
 
 # rtabmap-databaseViewer ~/.ros/rtabmap.db
 

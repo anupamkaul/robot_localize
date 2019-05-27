@@ -1,10 +1,11 @@
-roslaunch my_robot mapping.launch 
-... logging to /home/anupam/.ros/log/2ad23b56-7fed-11e9-867d-7c67a21201fb/roslaunch-anupam-Inspiron-15-7000-Gaming-15554.log
+
+slaunch my_robot mapping.launch 
+... logging to /home/anupam/.ros/log/fdf4654e-801b-11e9-867d-7c67a21201fb/roslaunch-anupam-Inspiron-15-7000-Gaming-30656.log
 Checking log directory for disk usage. This may take awhile.
 Press Ctrl-C to interrupt
 Done checking log file disk usage. Usage is <1GB.
 
-started roslaunch server http://anupam-Inspiron-15-7000-Gaming:38597/
+started roslaunch server http://anupam-Inspiron-15-7000-Gaming:34188/
 
 SUMMARY
 ========
@@ -21,78 +22,140 @@ PARAMETERS
  * /rtabmap/rtabmap/SURF/HessianThreshold: 100
  * /rtabmap/rtabmap/Vis/MinInliers: 15
  * /rtabmap/rtabmap/database_path: rtabmap.db
- * /rtabmap/rtabmap/frame_id: base_footprint
+ * /rtabmap/rtabmap/frame_id: robot_footprint
  * /rtabmap/rtabmap/odom_frame_id: odom
  * /rtabmap/rtabmap/subscribe_depth: True
  * /rtabmap/rtabmap/subscribe_scan: True
+ * /rtabmap/rtabmapviz/frame_id: robot_footprint
+ * /rtabmap/rtabmapviz/subscribe_depth: True
+ * /rtabmap/rtabmapviz/subscribe_scan: True
 
 NODES
   /rtabmap/
     rtabmap (rtabmap_ros/rtabmap)
+    rtabmapviz (rtabmap_ros/rtabmapviz)
 
-auto-starting new master
-process[master]: started with pid [15564]
 ROS_MASTER_URI=http://localhost:11311
 
-setting /run_id to 2ad23b56-7fed-11e9-867d-7c67a21201fb
-process[rosout-1]: started with pid [15577]
-started core service [/rosout]
-process[rtabmap/rtabmap-2]: started with pid [15594]
-[ INFO] [1558899222.372458088]: Starting node...
-[ INFO] [1558899222.409962898]: Initializing nodelet with 8 worker threads.
-[ INFO] [1558899222.610792320]: /rtabmap/rtabmap(maps): map_filter_radius          = 0.000000
-[ INFO] [1558899222.610834760]: /rtabmap/rtabmap(maps): map_filter_angle           = 30.000000
-[ INFO] [1558899222.610844518]: /rtabmap/rtabmap(maps): map_cleanup                = true
-[ INFO] [1558899222.610854803]: /rtabmap/rtabmap(maps): map_negative_poses_ignored = true
-[ INFO] [1558899222.610862393]: /rtabmap/rtabmap(maps): map_negative_scan_ray_tracing = true
-[ INFO] [1558899222.610871931]: /rtabmap/rtabmap(maps): cloud_output_voxelized     = true
-[ INFO] [1558899222.610881439]: /rtabmap/rtabmap(maps): cloud_subtract_filtering   = false
-[ INFO] [1558899222.610890841]: /rtabmap/rtabmap(maps): cloud_subtract_filtering_min_neighbors = 2
-[ INFO] [1558899222.640282713]: /rtabmap/rtabmap(maps): octomap_tree_depth         = 16
-[ INFO] [1558899222.659901873]: rtabmap: frame_id      = base_footprint
-[ INFO] [1558899222.659945264]: rtabmap: odom_frame_id = odom
-[ INFO] [1558899222.659954714]: rtabmap: map_frame_id  = map
-[ INFO] [1558899222.659980463]: rtabmap: tf_delay      = 0.050000
-[ INFO] [1558899222.660007386]: rtabmap: tf_tolerance  = 0.100000
-[ INFO] [1558899222.660018295]: rtabmap: odom_sensor_sync   = false
-[ INFO] [1558899222.788602947]: Setting RTAB-Map parameter "Kp/DetectorStrategy"="0"
-[ INFO] [1558899222.798198444]: Setting RTAB-Map parameter "Kp/MaxFeatures"="400"
-[ INFO] [1558899222.835257315]: Setting RTAB-Map parameter "Mem/NotLinkedNodesKept"="false"
-[ INFO] [1558899223.038993720]: Setting RTAB-Map parameter "Reg/Force3DoF"="true"
-[ INFO] [1558899223.040621726]: Setting RTAB-Map parameter "Reg/Strategy"="0"
-[ INFO] [1558899223.043894590]: Setting RTAB-Map parameter "Rtabmap/DetectionRate"="1"
-[ INFO] [1558899223.084137154]: Setting RTAB-Map parameter "SURF/HessianThreshold"="100"
-[ INFO] [1558899223.146388325]: Setting RTAB-Map parameter "Vis/MinInliers"="15"
-[ WARN] [1558899223.315676485]: Setting "Grid/FromDepth" parameter to false (default true) as "subscribe_scan" or "subscribe_scan_cloud" is true. The occupancy grid map will be constructed from laser scans. To get occupancy grid map from cloud projection, set "Grid/FromDepth" to true. To suppress this warning, add <param name="Grid/FromDepth" type="string" value="false"/>
-[ INFO] [1558899223.322214270]: Setting "Grid/RangeMax" parameter to 0 (default 5.000000) as "subscribe_scan" or "subscribe_scan_cloud" is true.
-[ INFO] [1558899223.562911998]: RTAB-Map detection rate = 1.000000 Hz
-[ INFO] [1558899223.562988852]: rtabmap: Using database from "/home/anupam/.ros/rtabmap.db" (0 MB).
-[ WARN] (2019-05-26 12:33:43.566) Memory.cpp:642::parseParameters() Mem/UseOdomFeatures is enabled, but Vis/FeatureType and Kp/DetectorStrategy parameters are not the same! Disabling Mem/UseOdomFeatures...
-[ WARN] (2019-05-26 12:33:43.568) Memory.cpp:642::parseParameters() Mem/UseOdomFeatures is enabled, but Vis/FeatureType and Kp/DetectorStrategy parameters are not the same! Disabling Mem/UseOdomFeatures...
-[ WARN] (2019-05-26 12:33:43.688) Memory.cpp:642::parseParameters() Mem/UseOdomFeatures is enabled, but Vis/FeatureType and Kp/DetectorStrategy parameters are not the same! Disabling Mem/UseOdomFeatures...
-[ INFO] [1558899223.688977505]: rtabmap: Database version = "0.17.6".
-[ INFO] [1558899223.754317265]: /rtabmap/rtabmap: queue_size    = 10
-[ INFO] [1558899223.754386929]: /rtabmap/rtabmap: rgbd_cameras = 1
-[ INFO] [1558899223.754428210]: /rtabmap/rtabmap: approx_sync   = true
-[ INFO] [1558899223.754528474]: Setup depth callback
-[ INFO] [1558899223.804477397]: 
+process[rtabmap/rtabmap-1]: started with pid [30679]
+process[rtabmap/rtabmapviz-2]: started with pid [30680]
+[ INFO] [1558919376.498022253]: Starting node...
+[ INFO] [1558919376.572412369]: Initializing nodelet with 8 worker threads.
+[ INFO] [1558919376.788752863]: Starting node...
+[ INFO] [1558919377.020652630, 408.934000000]: /rtabmap/rtabmap(maps): map_filter_radius          = 0.000000
+[ INFO] [1558919377.020712951, 408.934000000]: /rtabmap/rtabmap(maps): map_filter_angle           = 30.000000
+[ INFO] [1558919377.020740522, 408.934000000]: /rtabmap/rtabmap(maps): map_cleanup                = true
+[ INFO] [1558919377.020766683, 408.934000000]: /rtabmap/rtabmap(maps): map_negative_poses_ignored = true
+[ INFO] [1558919377.020792084, 408.934000000]: /rtabmap/rtabmap(maps): map_negative_scan_ray_tracing = true
+[ INFO] [1558919377.020818133, 408.934000000]: /rtabmap/rtabmap(maps): cloud_output_voxelized     = true
+[ INFO] [1558919377.020840700, 408.934000000]: /rtabmap/rtabmap(maps): cloud_subtract_filtering   = false
+[ INFO] [1558919377.020864009, 408.934000000]: /rtabmap/rtabmap(maps): cloud_subtract_filtering_min_neighbors = 2
+[ INFO] [1558919377.030081512, 408.935000000]: /rtabmap/rtabmap(maps): octomap_tree_depth         = 16
+[ INFO] [1558919377.082570796]: rtabmapviz: Using configuration from "/opt/ros/kinetic/share/rtabmap_ros/launch/config/rgbd_gui.ini"
+[ INFO] [1558919377.104296132, 409.005000000]: rtabmap: frame_id      = robot_footprint
+[ INFO] [1558919377.104329742, 409.005000000]: rtabmap: odom_frame_id = odom
+[ INFO] [1558919377.104345032, 409.005000000]: rtabmap: map_frame_id  = map
+[ INFO] [1558919377.104359165, 409.005000000]: rtabmap: tf_delay      = 0.050000
+[ INFO] [1558919377.104376285, 409.005000000]: rtabmap: tf_tolerance  = 0.100000
+[ INFO] [1558919377.104388184, 409.005000000]: rtabmap: odom_sensor_sync   = false
+[ INFO] [1558919377.486184221, 409.349000000]: Setting RTAB-Map parameter "Kp/DetectorStrategy"="0"
+[ INFO] [1558919377.508779597, 409.371000000]: Setting RTAB-Map parameter "Kp/MaxFeatures"="400"
+[ INFO] [1558919377.612338530, 409.462000000]: Setting RTAB-Map parameter "Mem/NotLinkedNodesKept"="false"
+[ INFO] [1558919378.436485969, 410.141000000]: Setting RTAB-Map parameter "Reg/Force3DoF"="true"
+[ INFO] [1558919378.442495117, 410.147000000]: Setting RTAB-Map parameter "Reg/Strategy"="0"
+[ INFO] [1558919378.450233425, 410.155000000]: Setting RTAB-Map parameter "Rtabmap/DetectionRate"="1"
+[ INFO] [1558919378.618654102, 410.283000000]: Setting RTAB-Map parameter "SURF/HessianThreshold"="100"
+[ INFO] [1558919378.661671329, 410.320000000]: Reading parameters from the ROS server...
+[ INFO] [1558919378.937534458, 410.563000000]: Setting RTAB-Map parameter "Vis/MinInliers"="15"
+[ INFO] [1558919379.383310582, 410.959000000]: Parameters read = 0
+[ INFO] [1558919379.801248558, 411.316000000]: /rtabmap/rtabmapviz: queue_size    = 10
+[ INFO] [1558919379.801282601, 411.316000000]: /rtabmap/rtabmapviz: rgbd_cameras = 1
+[ INFO] [1558919379.801313275, 411.316000000]: /rtabmap/rtabmapviz: approx_sync   = true
+[ INFO] [1558919379.801366542, 411.316000000]: Setup depth callback
+[ WARN] [1558919379.842172410, 411.343000000]: Setting "Grid/FromDepth" parameter to false (default true) as "subscribe_scan" or "subscribe_scan_cloud" is true. The occupancy grid map will be constructed from laser scans. To get occupancy grid map from cloud projection, set "Grid/FromDepth" to true. To suppress this warning, add <param name="Grid/FromDepth" type="string" value="false"/>
+[ INFO] [1558919379.842346821, 411.343000000]: Setting "Grid/RangeMax" parameter to 0 (default 5.000000) as "subscribe_scan" or "subscribe_scan_cloud" is true.
+[ INFO] [1558919379.928597718, 411.424000000]: 
+/rtabmap/rtabmapviz subscribed to (approx sync):
+   /rtabmap/odom,
+   /camera/rgb/image_raw,
+   /camera/depth/image_raw,
+   /camera/rgb/camera_info,
+   /scan
+[ INFO] [1558919379.928721482, 411.424000000]: rtabmapviz started.
+[ INFO] [1558919380.375640004, 411.812000000]: RTAB-Map detection rate = 1.000000 Hz
+[ INFO] [1558919380.375876932, 411.812000000]: rtabmap: Deleted database "/home/anupam/.ros/rtabmap.db" (--delete_db_on_start or -d are set).
+[ INFO] [1558919380.375994356, 411.812000000]: rtabmap: Using database from "/home/anupam/.ros/rtabmap.db" (0 MB).
+[ WARN] (2019-05-26 18:09:40.392) Memory.cpp:642::parseParameters() Mem/UseOdomFeatures is enabled, but Vis/FeatureType and Kp/DetectorStrategy parameters are not the same! Disabling Mem/UseOdomFeatures...
+[ WARN] (2019-05-26 18:09:40.394) Memory.cpp:642::parseParameters() Mem/UseOdomFeatures is enabled, but Vis/FeatureType and Kp/DetectorStrategy parameters are not the same! Disabling Mem/UseOdomFeatures...
+[ WARN] (2019-05-26 18:09:40.492) Memory.cpp:642::parseParameters() Mem/UseOdomFeatures is enabled, but Vis/FeatureType and Kp/DetectorStrategy parameters are not the same! Disabling Mem/UseOdomFeatures...
+[ INFO] [1558919380.492582854, 411.910000000]: rtabmap: Database version = "0.17.6".
+[ INFO] [1558919380.543474093, 411.949000000]: /rtabmap/rtabmap: queue_size    = 10
+[ INFO] [1558919380.543522734, 411.949000000]: /rtabmap/rtabmap: rgbd_cameras = 1
+[ INFO] [1558919380.543543014, 411.949000000]: /rtabmap/rtabmap: approx_sync   = true
+[ INFO] [1558919380.543808949, 411.949000000]: Setup depth callback
+[ INFO] [1558919380.585250294, 411.987000000]: 
 /rtabmap/rtabmap subscribed to (approx sync):
    /camera/rgb/image_raw,
    /camera/depth/image_raw,
    /camera/rgb/camera_info,
    /scan
-[ INFO] [1558899223.821362386]: rtabmap 0.17.6 started...
-[ WARN] [1558899228.804764483]: /rtabmap/rtabmap: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. If topics are coming from different computers, make sure the clocks of the computers are synchronized ("ntpdate"). If topics are not published at the same rate, you could increase "queue_size" parameter (current=10).
-/rtabmap/rtabmap subscribed to (approx sync):
+[ INFO] [1558919380.608073702, 412.007000000]: rtabmap 0.17.6 started...
+[ INFO:0] Initialize OpenCL runtime...
+[ INFO] [1558919380.966397237, 412.334000000]: rtabmap (1): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0764s, Maps update=0.0057s pub=0.0013s (local map=1, WM=1)
+[ INFO] [1558919382.088188983, 413.321000000]: rtabmap (2): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0678s, Maps update=0.0015s pub=0.0012s (local map=1, WM=1)
+[ INFO] [1558919383.445563829, 414.509000000]: rtabmap (3): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0694s, Maps update=0.0005s pub=0.0004s (local map=1, WM=1)
+[ INFO] [1558919384.577408464, 415.500000000]: rtabmap (4): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0647s, Maps update=0.0006s pub=0.0004s (local map=1, WM=1)
+[ WARN] [1558919385.616812948, 416.427000000]: /rtabmap/rtabmapviz: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. If topics are coming from different computers, make sure the clocks of the computers are synchronized ("ntpdate"). If topics are not published at the same rate, you could increase "queue_size" parameter (current=10).
+/rtabmap/rtabmapviz subscribed to (approx sync):
+   /rtabmap/odom,
    /camera/rgb/image_raw,
    /camera/depth/image_raw,
    /camera/rgb/camera_info,
    /scan
-[ WARN] [1558899233.805059137]: /rtabmap/rtabmap: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. If topics are coming from different computers, make sure the clocks of the computers are synchronized ("ntpdate"). If topics are not published at the same rate, you could increase "queue_size" parameter (current=10).
-/rtabmap/rtabmap subscribed to (approx sync):
+[ INFO] [1558919385.728526599, 416.521000000]: rtabmap (5): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0774s, Maps update=0.0005s pub=0.0006s (local map=1, WM=1)
+[ INFO] [1558919387.041954861, 417.700000000]: rtabmap (6): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0599s, Maps update=0.0028s pub=0.0006s (local map=1, WM=1)
+[ INFO] [1558919388.169280150, 418.705000000]: rtabmap (7): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0616s, Maps update=0.0006s pub=0.0004s (local map=1, WM=1)
+[ INFO] [1558919389.351565887, 419.744000000]: rtabmap (8): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0644s, Maps update=0.0009s pub=0.0004s (local map=1, WM=1)
+[ INFO] [1558919390.460421735, 420.731000000]: rtabmap (9): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0651s, Maps update=0.0007s pub=0.0008s (local map=1, WM=1)
+[ WARN] [1558919391.248424941, 421.427000000]: /rtabmap/rtabmapviz: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. If topics are coming from different computers, make sure the clocks of the computers are synchronized ("ntpdate"). If topics are not published at the same rate, you could increase "queue_size" parameter (current=10).
+/rtabmap/rtabmapviz subscribed to (approx sync):
+   /rtabmap/odom,
    /camera/rgb/image_raw,
    /camera/depth/image_raw,
    /camera/rgb/camera_info,
    /scan
-^C[rtabmap/rtabmap-2] killing on exit
+[ INFO] [1558919391.684479778, 421.808000000]: rtabmap (10): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0643s, Maps update=0.0007s pub=0.0004s (local map=1, WM=1)
+[ INFO] [1558919392.895168650, 422.902000000]: rtabmap (11): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0678s, Maps update=0.0005s pub=0.0004s (local map=1, WM=1)
+[ INFO] [1558919394.025038142, 423.901000000]: rtabmap (12): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0575s, Maps update=0.0007s pub=0.0004s (local map=1, WM=1)
+[ INFO] [1558919395.166436600, 424.906000000]: rtabmap (13): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0588s, Maps update=0.0005s pub=0.0005s (local map=1, WM=1)
+[ INFO] [1558919396.316741390, 425.920000000]: rtabmap (14): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0731s, Maps update=0.0007s pub=0.0005s (local map=1, WM=1)
+[ WARN] [1558919396.887320238, 426.427000000]: /rtabmap/rtabmapviz: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. If topics are coming from different computers, make sure the clocks of the computers are synchronized ("ntpdate"). If topics are not published at the same rate, you could increase "queue_size" parameter (current=10).
+/rtabmap/rtabmapviz subscribed to (approx sync):
+   /rtabmap/odom,
+   /camera/rgb/image_raw,
+   /camera/depth/image_raw,
+   /camera/rgb/camera_info,
+   /scan
+[ INFO] [1558919397.524035182, 427.001000000]: rtabmap (15): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0557s, Maps update=0.0009s pub=0.0008s (local map=1, WM=1)
+[ INFO] [1558919398.747357242, 428.108000000]: rtabmap (16): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0668s, Maps update=0.0006s pub=0.0004s (local map=1, WM=1)
+[ INFO] [1558919399.962027852, 429.205000000]: rtabmap (17): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0586s, Maps update=0.0017s pub=0.0009s (local map=1, WM=1)
+[ INFO] [1558919401.183871535, 430.292000000]: rtabmap (18): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0589s, Maps update=0.0006s pub=0.0005s (local map=1, WM=1)
+[ WARN] [1558919402.428997991, 431.431000000]: /rtabmap/rtabmapviz: Did not receive data since 5 seconds! Make sure the input topics are published ("$ rostopic hz my_topic") and the timestamps in their header are set. If topics are coming from different computers, make sure the clocks of the computers are synchronized ("ntpdate"). If topics are not published at the same rate, you could increase "queue_size" parameter (current=10).
+/rtabmap/rtabmapviz subscribed to (approx sync):
+   /rtabmap/odom,
+   /camera/rgb/image_raw,
+   /camera/depth/image_raw,
+   /camera/rgb/camera_info,
+   /scan
+[ INFO] [1558919402.488009871, 431.477000000]: rtabmap (19): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0812s, Maps update=0.0006s pub=0.0006s (local map=1, WM=1)
+[ INFO] [1558919403.645624807, 432.497000000]: rtabmap (20): Rate=1.00s, Limit=0.000s, RTAB-Map=0.0591s, Maps update=0.0006s pub=0.0003s (local map=1, WM=1)
+^C[rtabmap/rtabmapviz-2] killing on exit
+[rtabmap/rtabmap-1] killing on exit
+[ INFO] [1558919403.967376695, 432.790000000]: rtabmapviz: ctrl-c catched! Exiting Qt app...
+rtabmap: Saving database/long-term memory... (located at /home/anupam/.ros/rtabmap.db)
+rtabmap: 2D occupancy grid map saved.
+rtabmap: Saving database/long-term memory...done! (located at /home/anupam/.ros/rtabmap.db, 0 MB)
+shutting down processing monitor...
+... shutting down processing monitor complete
+done
 
