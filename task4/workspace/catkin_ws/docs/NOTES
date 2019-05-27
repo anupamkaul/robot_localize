@@ -18,6 +18,27 @@ http://official-rtab-map-forum.67519.x6.nabble.com/Could-not-get-transform-from-
 
 this generated a pdf file that showed that the base transmitter (robot_state_publisher) is robot_footprint, not base_footprint...
 
+--> Next issue: Loop Closures Rejected: Not enough Outliers between <x> and <y> ..
+
+https://answers.ros.org/question/271481/rtabmap-issue-with-loop-closure/
+
+--> Another one first: not getting data (perhaps not getting rtabmap/odom?)
+
+https://github.com/introlab/rtabmap_ros/issues/189
+
+(needs to launch the odom node as well - rgbd_odometry) ...
+
+an example:
+
+<node name="rtabmap" pkg="rgbd_odometry" type="rgbd_odometry" output="screen">
+   <param name="frame_id"            type="string" value="origin"/>
+   <param name="approx_sync"        type="bool" value="false"/> 
+
+   <remap from="rgb/image"       to="/realsense/camera/color/image_raw"/>
+   <remap from="depth/image"     to="/realsense/camera/depth/image_raw"/>
+   <remap from="rgb/camera_info" to="/realsense/camera/color/camera_info"/>
+</node>
+
 
 Notes from the course:
 
