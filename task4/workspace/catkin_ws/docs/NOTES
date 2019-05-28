@@ -26,8 +26,12 @@ this generated a pdf file that showed that the base transmitter (robot_state_pub
 
 https://answers.ros.org/question/271481/rtabmap-issue-with-loop-closure/
 
+
 --> Another one first: not getting data (perhaps not getting rtabmap/odom?)
 
+https://github.com/introlab/rtabmap_ros/blob/master/launch/demo/demo_turtlebot_mapping.launch
+
+https://github.com/introlab/rtabmap_ros/issues/181
 https://github.com/introlab/rtabmap_ros/issues/189
 
 (needs to launch the odom node as well - rgbd_odometry) ...
