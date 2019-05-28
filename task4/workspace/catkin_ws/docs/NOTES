@@ -1,11 +1,15 @@
 https://github.com/introlab/rtabmap/
 
+http://wiki.ros.org/rtabmap_ros
+
 https://github.com/introlab/rtabmap/wiki/Installation
 
 Instead of installing from source (as explained above) I used:
 sudo apt-get install ros-kinetic-rtabmap-ros
 
 (as mentioned in https://github.com/introlab/rtabmap_ros#rtabmap_ros- )
+
+http://wiki.ros.org/rtabmap_ros/Tutorials/SetupOnYourRobot
 
 Readups to check RTABMAP warnings:
 
