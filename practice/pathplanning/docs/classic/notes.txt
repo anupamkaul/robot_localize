@@ -32,6 +32,22 @@ Cons are that in 'uncertain' worlds, the optimal solution may actually be close 
 
 -----
 
+2. Cell Decomposition - Look at CellDecompo.pdf for better notes
+
+* Different from Roadmap as it divides the whole area into cells. Edges of the graph connect adjacent cells. 
+
+* Irregular shaped cells are not even Complete, as the solution may lie in a "mixed cell", (neither empty nor full, but both)
+
+* Approximate Cell Decompo is preferred, which divides the area into regular size cells. Even this may not catch the soln, as initial granularity of cells is important.
+
+* To accomodate this, a recursive approach for Approximate Cell Decompo is used. Divide the area into 4 quadrants, catch the Mixed ones, if path not found from Start Node to Finish Node using travelling on empty cells, then recursively break a Mixed cell into 4, and continue ... this algo is Complete but still not Optimal (as an optimal soln may still squeeze in holes left out)
+
+* Approx Cell Decompo is used over Cell Decompo. Usually finds a solution (faster). As the space gets larger, problem starts getting more intractable.
+
+* Data Structs for the algo used: Quad-trees for 2D and Oct-trees for 3D traversal.
+
+-----
+
 
 
 
