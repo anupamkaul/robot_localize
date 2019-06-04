@@ -1,3 +1,10 @@
+Discrete Path Planning consists of:
+
+1. Continuous Representation (i.e. configuration space)
+2. Discretization of this space
+3. Graph Search of this space
+
+
 Discretization
 --------------
 
@@ -47,6 +54,12 @@ Cons are that in 'uncertain' worlds, the optimal solution may actually be close 
 * Data Structs for the algo used: Quad-trees for 2D and Oct-trees for 3D traversal.
 
 -----
+
+3. Gradient Field
+
+Works on a different principle, has a gradient-attract function that stands for the destination/goal (bottoming out part of gradient descent) and a gradient-repulse function that stands for obstacles / potential obstacle (the strutting out parts of gradient descent). Problem may be that this method may neither be complete nor optimal (local minimas may confuse the robot into thinking this minima is the actual destination/goal). Getting stuck in local minima can be unstuck with 'random walks' and other techniques, but ultimately this method is not complete.
+
+----
 
 
 
