@@ -1,0 +1,38 @@
+Discretization
+--------------
+
+To be able to apply a Search Algorithm for path planning (classic), the Configuration space must be reduced to a Finite Size that an algorithm can traverse in a reasonable amount of time,
+as it searches for a path from the Start to the Goal.
+
+This reduction in size can be accomplised by Discretization
+
+D, is the process of breaking down a continuous entity (in this case the Configuration Space) into descrete segments.
+
+3 Methods are:
+
+1. Roadmap
+2. Cell Decomposition
+3. Gradient Field
+
+Once familiar with these 3, we will dive into Graph Search, which can be applied to find a path from Start node to Goal node.
+
+-----
+
+1. Roadmap
+
+Has a construction and query phase. Focus on construction here (query during graph search methods)
+Construction phase creates a graph like the metro-train map of a city (hence roadmap)
+
+Two categories:
+
+1. Visibility graph - Connects every visible-from-source thing to everything else. Is complete (finds a soln, if any) and optimal (finds the 'best' soln constrained on a parameter).
+Cons are that in 'uncertain' worlds, the optimal solution may actually be close to obstacles, hence will not always work in the real world (of uncertainty)
+
+2. Voronoi graph - Creates maximum clearance between obstacles and path, by bisecting the mean space and creating well-distanced-from-obstacle paths. (See Roadmap.pdf).
+
+-----
+
+
+
+
+
