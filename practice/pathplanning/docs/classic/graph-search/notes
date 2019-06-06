@@ -1,0 +1,28 @@
+Graph algorithms for searching a discretized space (for robot path planning):
+
+1. BFS - Uses queue, explores breadth first, is uninformed (does not know where the goal is). Is complete (but slow) and optimal (because it will explore shorter paths). But not efficient.
+
+2. DFS - Uses stack, explores depth first, uninformed, lucky if right track, otherwise could be slower than BFS. Is neither complete nor optimal. Also not efficient.
+
+3. Uniform Cost Search - Add wieghts to BFS paths, and thus pivoting / modifications are done with BFS as base. Is still uninformed (who assigns these path weights then??). Is both complete and optimal. The weights are the Cost values from root to that node. Uses a Priority Queue, as elements are moved up for dequeing based on their weights, and not based on pure FIFO (priority queue). The other thing is that wieghts can change ! (i.e. root paths have to be re-calculated with every iteration). 
+
+4. A* - Derives from Uniform Cost Search - and adds another weight to the Cost values from root: i.e. the "distance" from the goal node. Thus this is Informed. Distance from goal node could be euclidian distance ("as the crow flies"). A heuristic function f(n) = g(n) + h(n) , where g(n) is total cost from root and h(n) is distance from goal. Other than that, it operates exactly like Uniform Cost (because BFS was a winner). Unlike Uniform Cost search, we can see that A* searches happen towards the goal. It clearly avoids nodes that don't lead at all to goal, but it does explore some dead ends. Is complete, efficient, informed. (A* can take less time that UCS, as it uses heuristic to keep itself oriented towards the goal)
+
+---
+
+Why is A* not optimal?
+
+As you saw in the video above, A* search orders the frontier using a priority queue, ordered by f(n), the sum of the path cost and the heuristic function. This is very effective, as it requires the search to keep paths short, while moving towards the goal. However, as you may have discovered in the quiz - A* search is not guaranteed to be optimal. Let’s look at why this is so!
+
+A* search will find the optimal path if the following conditions are met,
+
+Every edge must have a cost greater than some value, \epsilonϵ, otherwise, the search can get stuck in infinite loops and the search would not be complete.
+
+The heuristic function must be consistent. This means that it must obey the triangle inequality theorem. That is, for three neighbouring points (x_1, x_2, x_3x 
+1
+The heuristic function must be admissible. This means that h(n) must always be less than or equal to the true cost of reaching the goal from every node. In other words, h(n) must never overestimate the true path cost.
+
+To understand where the admissibility clause comes from, take a look at the image below. Suppose you have two paths to a goal where one is optimal (the highlighted path), and one is not (the lower path). Both heuristics overestimate the path cost. From the start, you have four nodes on the frontier, but Node N would be expanded first because its h(n) is the lowest - it is equal to 62. From there, the goal node is added to the frontier - with a cost of 23 + 37 = 60. This node looks more promising than Node P, whose h(n) is equal to 63. In such a case, A* finds a path to the goal which is not optimal. If the heuristics never overestimated the true cost, this situation would not occur because Node P would look more promising than Node N and be explored first.
+
+----
+
