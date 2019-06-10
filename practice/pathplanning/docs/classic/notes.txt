@@ -1,3 +1,6 @@
+Classic, or Discrete, Path Planning
+-----------------------------------
+
 Discrete Path Planning consists of:
 
 1. Continuous Representation (i.e. configuration space)

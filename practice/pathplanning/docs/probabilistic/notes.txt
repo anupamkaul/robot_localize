@@ -1,0 +1,17 @@
+Discrete path planning was quite simple and applicable for 2D spaces (like the case of a simple vaccuum cleaner in a room).
+However as problems get more complicated and we need to compute across 3D spaces, discrete path planning approaches fall short.
+
+(Applying graph search algorithms to this large space may be too costly)
+
+To tackle path planning problems of larger size and for greater dimensions, a sub category of algorithms falls under "Sample Based Path Planning" category. In this approach, instead of discretizing the entire configuration space, these algos randomly sample the space, hoping that the collection of samples will adequately represent the configuration space.
+
+Two approaches:
+
+1. Sample based path planning
+2. Probabilistic path planning     (helps consider uncertainty of robot motion when planning paths)
+
+----
+
+
+
+
