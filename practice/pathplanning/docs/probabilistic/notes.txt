@@ -26,4 +26,21 @@ While not complete, sampe based path planning algos are said to be probablistic 
 
 ----
 
+2. Probabilistic path planning (ppp)
+
+Both discrete (classical) and sample planning methods have a drawback - they do not take uncertainty of a robot's motion into account. Even on an optimal path, we may actually want to consider this. Yes, one can increase the size of the rover (c space) but then the algo will no longer be complete. Another idea is to give negative values to riskier areas, so that the rover can avoid those, and reconstruct 'safer' paths. This is similar to an RL concept. This may cause the rover to avoid dangerous areas, but it will still not consider the uncertainty of motion.
+
+We wud like to model the uncertainty by considering a non-deterministic transition model. Since we have to be "real" in succeeding. Where does this leave us? Back to markov decision processes.
+
+Now, lets learn PPP based on MDP and add another algo to our repertoire!
+
+This is a lot common to RL - values, states, actions, transitions P(s, a, s'), policies ... and RL is basically powered by markov decision processes. 
+As the PDF shows - State Utility Values calculated iteratively, and finally the Value Iteration algo.
+
+---- 
+
+
+
+
+
 
