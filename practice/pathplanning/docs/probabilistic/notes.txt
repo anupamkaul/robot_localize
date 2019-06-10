@@ -20,8 +20,10 @@ B) RRT - Unlike PRM, RRT (Rapidly Exploring Random Tree) is single query. RRT di
 
 While these were simple reps, both PRM and RRT do excellently in path planning for multi dimensional robots with multiple DOFs. They have solved problems that traditional path planning algorithms are unable to solve.
 
+Path Smoothing : The paths created by PRM or RRT may induce "jerky" movements in the robot or car, so a "path smoothing" algo comes in. It just tries to find alternate nearest neighbors to this "path containing" graph (thereby changing a few inner directions) which results in 'smoother' although less-optimal paths. 
 
+While not complete, sampe based path planning algos are said to be probablistic complete, as completeness / optimality grows exponentially as samples are added. Both PRM and RRT are used today in real world path planning for robots ! 
 
-
+----
 
 
