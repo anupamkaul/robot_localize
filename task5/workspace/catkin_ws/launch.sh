@@ -3,9 +3,12 @@
 # replace xterm with gnome-terminal or konsole
 # a -hold option can be used to keep xterm persistent upon an exception (before -e) 
 
-# House the robot into the world
-#xterm -e "source devel/setup.bash; roslaunch turtlebot_gazebo turtlebot_world.launch" & 
-xterm -e "source devel/setup.bash ; roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=worlds/willowgarage.world" &
+# House the robot into the world (default world in turtlesim_gazebo is anupam.world)
+
+xterm -e "source devel/setup.bash; roslaunch turtlebot_gazebo turtlebot_world.launch" & 
+
+#xterm -e "source devel/setup.bash ; roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=worlds/willowgarage.world" &
+
 sleep 10 
 
 # Launch the optional teleop keyboard package to move the robot via keyboard 
