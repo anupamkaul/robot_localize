@@ -15,6 +15,7 @@ xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_teleop k
 sleep 5
 
 xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_gazebo amcl_demo.launch" & 
+#xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_gazebo amcl.launch" & 
 sleep 5
 
 xterm -e "cd $(pwd)/../..; source devel/setup.bash ; rosrun rviz rviz -d src/rvizConfig/myslamconfig.rviz" &
