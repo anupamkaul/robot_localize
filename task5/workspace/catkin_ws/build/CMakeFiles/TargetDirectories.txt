@@ -43,13 +43,6 @@
 /home/anupam/robond/task5/workspace/catkin_ws/build/slam_gmapping/slam_gmapping/CMakeFiles/install/local.dir
 /home/anupam/robond/task5/workspace/catkin_ws/build/slam_gmapping/slam_gmapping/CMakeFiles/test.dir
 /home/anupam/robond/task5/workspace/catkin_ws/build/slam_gmapping/slam_gmapping/CMakeFiles/edit_cache.dir
-/home/anupam/robond/task5/workspace/catkin_ws/build/teleop_twist_keyboard/CMakeFiles/list_install_components.dir
-/home/anupam/robond/task5/workspace/catkin_ws/build/teleop_twist_keyboard/CMakeFiles/install.dir
-/home/anupam/robond/task5/workspace/catkin_ws/build/teleop_twist_keyboard/CMakeFiles/rebuild_cache.dir
-/home/anupam/robond/task5/workspace/catkin_ws/build/teleop_twist_keyboard/CMakeFiles/install/strip.dir
-/home/anupam/robond/task5/workspace/catkin_ws/build/teleop_twist_keyboard/CMakeFiles/install/local.dir
-/home/anupam/robond/task5/workspace/catkin_ws/build/teleop_twist_keyboard/CMakeFiles/test.dir
-/home/anupam/robond/task5/workspace/catkin_ws/build/teleop_twist_keyboard/CMakeFiles/edit_cache.dir
 /home/anupam/robond/task5/workspace/catkin_ws/build/turtlebot/turtlebot/CMakeFiles/list_install_components.dir
 /home/anupam/robond/task5/workspace/catkin_ws/build/turtlebot/turtlebot/CMakeFiles/install.dir
 /home/anupam/robond/task5/workspace/catkin_ws/build/turtlebot/turtlebot/CMakeFiles/rebuild_cache.dir

@@ -10,7 +10,7 @@ sleep 10
 # Launch the optional teleop keyboard package to move the robot via keyboard 
 # instead of via nav move_base in rviz..
 
-xterm -e "source devel/setup.bash; rosrun teleop_twist_keyboard teleop_twist_keyboard.py" &
+xterm -e "source devel/setup.bash; roslaunch turtlebot_teleop keyboard_teleop.launch" &
 sleep 5
 
 #xterm -e "source devel/setup.bash; roslaunch my_robot mapping.launch" &
