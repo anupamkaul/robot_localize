@@ -11,8 +11,8 @@ xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_gazebo t
 
 sleep 10 
 
-xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_teleop keyboard_teleop.launch" &
-sleep 5
+#xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_teleop keyboard_teleop.launch" &
+#sleep 5
 
 xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_gazebo amcl_demo.launch" & 
 #xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_gazebo amcl.launch" & 
