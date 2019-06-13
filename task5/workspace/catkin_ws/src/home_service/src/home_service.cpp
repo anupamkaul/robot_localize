@@ -74,6 +74,30 @@ public:
         float pos_x = msg->pose.pose.position.x;
         float pos_y = msg->pose.pose.position.y;
 
+        ROS_INFO_STREAM("pos_x :" << pos_x << " pos_y :" << pos_y << "\n");
+
+        // odom could be coming in as x-inverted..
+      
+        /*
+        if (pos_x > 0) {
+            pos_x = -abs(pos_x);
+        } 
+        else 
+        {
+            pos_x = abs(pos_x);
+        }
+
+
+        if (pos_y > 0) {
+            pos_y = -abs(pos_y);
+        } 
+        else 
+        {
+            pos_y = abs(pos_y);
+        }
+        */
+
+
         // give position tolerance of + or - the marker's radius
         bool atPickupZone = (pickupZone_x - threshold < pos_x && pos_x < pickupZone_x + threshold)
                 && (pickupZone_y - threshold < pos_y && pos_y < pickupZone_y + threshold);

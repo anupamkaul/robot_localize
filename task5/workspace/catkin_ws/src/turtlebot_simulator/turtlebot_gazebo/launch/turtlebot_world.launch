@@ -15,12 +15,12 @@
   </include>
 
   <!-- Turtlebot's initial pose -->
-  <arg name="x" default="0.915189"/>
-  <arg name="y" default="-2.412050"/>
+  <arg name="x" default="1.166496"/>
+  <arg name="y" default="0.644799"/>
   <arg name="z" default="-0.000247"/>
-  <arg name="roll" default="0.000770"/>
-  <arg name="pitch" default="-0.014414"/>
-  <arg name="yaw" default="1.103272"/>
+  <arg name="roll" default="0.000765"/>
+  <arg name="pitch" default="-0.014418"/>
+  <arg name="yaw" default="0.000477"/>
 
   <include file="$(find turtlebot_gazebo)/launch/includes/$(arg base).launch.xml">
     <arg name="base" value="$(arg base)"/>
