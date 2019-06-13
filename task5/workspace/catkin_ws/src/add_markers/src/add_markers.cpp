@@ -108,7 +108,7 @@ int main( int argc, char** argv )
         ROS_INFO_ONCE("Showing Object at Dropoff");
         marker.action = visualization_msgs::Marker::ADD;
         marker.pose.position.x = 2.4000;
-        marker.pose.position.y = -4.2400;
+        marker.pose.position.y = -3.2400;
         marker.pose.position.z = 0.0;
         marker.pose.orientation.x = 0.0;
         marker.pose.orientation.y = 0.0;

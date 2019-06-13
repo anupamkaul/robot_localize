@@ -13,7 +13,7 @@ class AddMarker {
     double pickupZone_x = 3.4000;
     double pickupZone_y = -1.5400;
     double dropoffZone_x = 2.4000;
-    double dropoffZone_y = -4.2400;
+    double dropoffZone_y = -3.2400;
     double threshold;
 	const int threshold_multiplier = 3;
 
@@ -74,7 +74,7 @@ public:
         float pos_x = msg->pose.pose.position.x;
         float pos_y = msg->pose.pose.position.y;
 
-        ROS_INFO_STREAM("pos_x :" << pos_x << " pos_y :" << pos_y << "\n");
+        //ROS_INFO_STREAM("pos_x :" << pos_x << " pos_y :" << pos_y << "\n");
 
         // odom could be coming in as x-inverted..
       
