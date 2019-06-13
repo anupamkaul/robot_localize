@@ -10,4 +10,4 @@ xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_gazebo a
 sleep 5
 xterm -e "cd $(pwd)/../..; source devel/setup.bash; rosrun pick_objects pick_objects_node" &
 sleep 5
-xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_rviz_launchers view_navigation.launch" 
+xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_rviz_launchers view_navigation.launch" &
