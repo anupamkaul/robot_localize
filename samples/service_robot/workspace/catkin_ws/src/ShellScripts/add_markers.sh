@@ -10,5 +10,5 @@ xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_gazebo a
 sleep 5
 xterm -e "cd $(pwd)/../..; source devel/setup.bash; roslaunch turtlebot_rviz_launchers view_navigation.launch" &
 sleep 10
-xterm -e "cd $(pwd)/../..; source devel/setup.bash; rosrun add_markers add_markers_node" 
+xterm -e "cd $(pwd)/../..; source devel/setup.bash; rosrun add_markers add_markers_node" &
 
