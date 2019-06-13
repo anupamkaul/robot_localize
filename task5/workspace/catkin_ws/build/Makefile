@@ -647,6 +647,19 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named home_service_node
+
+# Build rule for target.
+home_service_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 home_service_node
+.PHONY : home_service_node
+
+# fast build rule for target.
+home_service_node/fast:
+	$(MAKE) -f home_service/CMakeFiles/home_service_node.dir/build.make home_service/CMakeFiles/home_service_node.dir/build
+.PHONY : home_service_node/fast
+
+#=============================================================================
 # Target rules for targets named actionlib_generate_messages_py
 
 # Build rule for target.
@@ -1853,6 +1866,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... home_service_node"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... actionlib_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_lisp"
