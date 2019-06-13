@@ -68,6 +68,7 @@ home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/k
 home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/kinetic/include/rosconsole/macros_generated.h
 home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/kinetic/include/std_msgs/ColorRGBA.h
 home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
+home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/kinetic/include/std_msgs/String.h
 home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/kinetic/include/visualization_msgs/Marker.h
 home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
 home_service/CMakeFiles/home_service_node.dir/src/home_service.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h

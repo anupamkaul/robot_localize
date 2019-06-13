@@ -2,6 +2,10 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 #include <string>
+#include <std_msgs/String.h>
+
+// Global joint publisher variables
+ros::Publisher pickzone_pub, dropzone_pub;
 
 // Define a client for to send goal requests to the move_base server through a SimpleActionClient
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
@@ -43,6 +47,11 @@ bool checkRobotGoalStatus(MoveBaseClient& ac, std::string success_msg, std::stri
 int main(int argc, char** argv){
   // Initialize the simple_navigation_goals node
   ros::init(argc, argv, "pick_objects");
+  ros::NodeHandle n;
+
+  // Define two publishers to publish std_msgs::Float64 messages on joints respective topics
+  pickzone_pub = n.advertise<std_msgs::String>("/pick_objects/pickzone", 1000);
+  dropzone_pub = n.advertise<std_msgs::String>("/pick_objects/dropzone", 1000);
 
   //tell the action client that we want to spin a thread by default
   MoveBaseClient ac("move_base", true);
@@ -65,6 +74,15 @@ int main(int argc, char** argv){
 
   // Check if the robot reached its goal
   bool checkPickupGoal = checkRobotGoalStatus(ac, "In Pickup Zone", "Unable to get to Pickup Zone");
+
+  if(checkPickupGoal) {
+      std_msgs::String msg;
+  
+      std::stringstream ss;
+      ss << "pick";
+      msg.data = ss.str();
+      pickzone_pub.publish(msg);  
+  }
  
    // Send the goal position and orientation for the robot to reach
   ROS_INFO("Sending dropoff goal");
@@ -74,6 +92,15 @@ int main(int argc, char** argv){
   ac.waitForResult();
 	// Check if the robot reached its goal
 	bool checkDropoffGoal = checkRobotGoalStatus(ac, "In Dropoff Zone", "Unable to get to Dropoff Zone");
+
+        if (checkDropoffGoal) {
+           std_msgs::String msg;
+  
+           std::stringstream ss;
+           ss << "drop";
+           msg.data = ss.str();
+           dropzone_pub.publish(msg);
+        }
 
 	// Infom user if both goals were accomplished or not
 	if (checkPickupGoal && checkDropoffGoal)

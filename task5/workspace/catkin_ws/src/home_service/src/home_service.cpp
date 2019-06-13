@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
 #include <visualization_msgs/Marker.h>
+#include <std_msgs/String.h>
 
 // class contain all the processes to track the robot location and add or delete markers as necessary
 class AddMarker {
@@ -9,6 +10,8 @@ class AddMarker {
     ros::NodeHandle n;
     ros::Publisher marker_pub;
     ros::Subscriber odom_sub;
+    ros::Subscriber pickzone_sub;
+    ros::Subscriber dropzone_sub;
     visualization_msgs::Marker marker;
     double pickupZone_x = 3.4000;
     double pickupZone_y = -1.5400;
@@ -25,6 +28,10 @@ public:
       
         // create the subscriber node to track the odomentry
         odom_sub = n.subscribe("/odom", 1, &AddMarker::odomCallback, this);
+
+        // create listeners for pickzone and dropzone topics
+        pickzone_sub = n.subscribe("/pick_objects/pickzone", 1000, &AddMarker::pickzone_callback, this);
+        dropzone_sub = n.subscribe("/pick_objects/dropzone", 1000, &AddMarker::dropzone_callback, this);
 
         // initialize marker
         // Set the frame ID and timestamp.  See the TF tutorials for information on these.
@@ -136,6 +143,36 @@ public:
 
     }
 
+    void pickzone_callback(const std_msgs::String::ConstPtr& msg) {
+
+        // delete marker and set it to new coordinates
+        marker.action = visualization_msgs::Marker::DELETE; 
+        // publish marker
+        publishMarker();
+ 
+        // setup marker for drop off zone
+        ROS_INFO("In Pickup Zone (callback)  ");
+  
+        // pause 5s to simulate pickup
+        ros::Duration(5).sleep();
+
+    }
+
+    void dropzone_callback(const std_msgs::String::ConstPtr& msg) {
+
+        // setup marker for drop off zone
+        marker.pose.position.x = dropoffZone_x;
+        marker.pose.position.y = dropoffZone_y;
+        marker.action = visualization_msgs::Marker::ADD;
+        ROS_INFO("In Dropoff Zone (callback)  ");
+
+        // publish marker
+        publishMarker();
+        // pause 5s to simulate dropoff
+        ros::Duration(5).sleep();
+
+    }
+
     void publishMarker() {
         // Publish the marker
         while (marker_pub.getNumSubscribers() < 1) {
@@ -148,9 +185,9 @@ public:
 
 };
 
-
 int main(int argc, char **argv) {
     ros::init(argc, argv, "add_markers");
+
     // create a call called AddMarker.  This class has all the call for creating and deleting markers based on robot location
     AddMarker addMarker;
   
