@@ -80,8 +80,8 @@ int main( int argc, char** argv )
       case 0:
         ROS_INFO_ONCE("Showing Pickup Object");
         marker.action = visualization_msgs::Marker::ADD;
-        marker.pose.position.x = 3.8168;
-        marker.pose.position.y = 2.1007;
+        marker.pose.position.x = 3.4000;
+        marker.pose.position.y = -1.5400;
         marker.pose.position.z = 0.0;
         marker.pose.orientation.x = 0.0;
         marker.pose.orientation.y = 0.0;
@@ -107,8 +107,8 @@ int main( int argc, char** argv )
       case 3:
         ROS_INFO_ONCE("Showing Object at Dropoff");
         marker.action = visualization_msgs::Marker::ADD;
-        marker.pose.position.x = -1.2361;
-        marker.pose.position.y = -0.19401;
+        marker.pose.position.x = 2.4000;
+        marker.pose.position.y = -4.2400;
         marker.pose.position.z = 0.0;
         marker.pose.orientation.x = 0.0;
         marker.pose.orientation.y = 0.0;

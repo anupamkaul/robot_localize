@@ -53,11 +53,8 @@ int main(int argc, char** argv){
   }
 
   // Set the values of the pickup goal and the drop goal
-  //move_base_msgs::MoveBaseGoal pickup_goal = setRobotGoal(3.8168, 2.1007, 0.4068, 0.73);
-  //move_base_msgs::MoveBaseGoal drop_goal = setRobotGoal(-1.2361, -0.19401, 0.4068, 0.719);
-  
-  move_base_msgs::MoveBaseGoal pickup_goal = setRobotGoal(-1.2304, 0.5213, 0.4068, 0.73);
-  move_base_msgs::MoveBaseGoal drop_goal = setRobotGoal(-2.1304, 5.2134, 0.4068, 0.719);
+  move_base_msgs::MoveBaseGoal pickup_goal = setRobotGoal(3.4000, -1.5400, 0.4068, 0.73);
+  move_base_msgs::MoveBaseGoal drop_goal = setRobotGoal(2.4000, -4.2400, 0.4068, 0.719);
 
   // Send the goal position and orientation for the robot to reach
   ROS_INFO("Sending pickup goal");
