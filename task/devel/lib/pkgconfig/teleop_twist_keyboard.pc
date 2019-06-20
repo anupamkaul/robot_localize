@@ -1,0 +1,8 @@
+prefix=/home/anupam/robot_localize/task/devel
+
+Name: teleop_twist_keyboard
+Description: Description of teleop_twist_keyboard
+Version: 0.6.2
+Cflags: 
+Libs: -L/home/anupam/robot_localize/task/devel/lib 
+Requires: 

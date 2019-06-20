@@ -1,0 +1,8 @@
+prefix=/home/anupam/robot_localize/task/install
+
+Name: pgm_map_creator
+Description: Description of pgm_map_creator
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/anupam/robot_localize/task/install/lib 
+Requires: 
